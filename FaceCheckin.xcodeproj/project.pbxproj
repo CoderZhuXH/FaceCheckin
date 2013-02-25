@@ -1,0 +1,471 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		709EC20116DBEF99005F891C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC20016DBEF99005F891C /* UIKit.framework */; };
+		709EC20316DBEF99005F891C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC20216DBEF99005F891C /* Foundation.framework */; };
+		709EC20516DBEF99005F891C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC20416DBEF99005F891C /* CoreGraphics.framework */; };
+		709EC20B16DBEF99005F891C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 709EC20916DBEF99005F891C /* InfoPlist.strings */; };
+		709EC20D16DBEF99005F891C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 709EC20C16DBEF99005F891C /* main.m */; };
+		709EC21116DBEF99005F891C /* NGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 709EC21016DBEF99005F891C /* NGAppDelegate.m */; };
+		709EC21316DBEF99005F891C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 709EC21216DBEF99005F891C /* Default.png */; };
+		709EC21516DBEF99005F891C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 709EC21416DBEF99005F891C /* Default@2x.png */; };
+		709EC21716DBEF99005F891C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 709EC21616DBEF99005F891C /* Default-568h@2x.png */; };
+		709EC21A16DBEF99005F891C /* NGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 709EC21916DBEF99005F891C /* NGViewController.m */; };
+		709EC21D16DBEF99005F891C /* NGViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709EC21B16DBEF99005F891C /* NGViewController.xib */; };
+		709EC22516DBEF99005F891C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC22416DBEF99005F891C /* SenTestingKit.framework */; };
+		709EC22616DBEF99005F891C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC20016DBEF99005F891C /* UIKit.framework */; };
+		709EC22716DBEF99005F891C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC20216DBEF99005F891C /* Foundation.framework */; };
+		709EC22F16DBEF99005F891C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 709EC22D16DBEF99005F891C /* InfoPlist.strings */; };
+		709EC23216DBEF9A005F891C /* FaceCheckinTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 709EC23116DBEF9A005F891C /* FaceCheckinTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		709EC22816DBEF99005F891C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 709EC1F516DBEF99005F891C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 709EC1FC16DBEF99005F891C;
+			remoteInfo = FaceCheckin;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		709EC1FD16DBEF99005F891C /* FaceCheckin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceCheckin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		709EC20016DBEF99005F891C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		709EC20216DBEF99005F891C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		709EC20416DBEF99005F891C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		709EC20816DBEF99005F891C /* FaceCheckin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FaceCheckin-Info.plist"; sourceTree = "<group>"; };
+		709EC20A16DBEF99005F891C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		709EC20C16DBEF99005F891C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		709EC20E16DBEF99005F891C /* FaceCheckin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FaceCheckin-Prefix.pch"; sourceTree = "<group>"; };
+		709EC20F16DBEF99005F891C /* NGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NGAppDelegate.h; sourceTree = "<group>"; };
+		709EC21016DBEF99005F891C /* NGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NGAppDelegate.m; sourceTree = "<group>"; };
+		709EC21216DBEF99005F891C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		709EC21416DBEF99005F891C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		709EC21616DBEF99005F891C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		709EC21816DBEF99005F891C /* NGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NGViewController.h; sourceTree = "<group>"; };
+		709EC21916DBEF99005F891C /* NGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NGViewController.m; sourceTree = "<group>"; };
+		709EC21C16DBEF99005F891C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NGViewController.xib; sourceTree = "<group>"; };
+		709EC22316DBEF99005F891C /* FaceCheckinTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceCheckinTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		709EC22416DBEF99005F891C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		709EC22C16DBEF99005F891C /* FaceCheckinTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FaceCheckinTests-Info.plist"; sourceTree = "<group>"; };
+		709EC22E16DBEF99005F891C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		709EC23016DBEF9A005F891C /* FaceCheckinTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceCheckinTests.h; sourceTree = "<group>"; };
+		709EC23116DBEF9A005F891C /* FaceCheckinTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceCheckinTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		709EC1FA16DBEF99005F891C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				709EC20116DBEF99005F891C /* UIKit.framework in Frameworks */,
+				709EC20316DBEF99005F891C /* Foundation.framework in Frameworks */,
+				709EC20516DBEF99005F891C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		709EC21F16DBEF99005F891C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				709EC22516DBEF99005F891C /* SenTestingKit.framework in Frameworks */,
+				709EC22616DBEF99005F891C /* UIKit.framework in Frameworks */,
+				709EC22716DBEF99005F891C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		709EC1F416DBEF99005F891C = {
+			isa = PBXGroup;
+			children = (
+				709EC20616DBEF99005F891C /* FaceCheckin */,
+				709EC22A16DBEF99005F891C /* FaceCheckinTests */,
+				709EC1FF16DBEF99005F891C /* Frameworks */,
+				709EC1FE16DBEF99005F891C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		709EC1FE16DBEF99005F891C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				709EC1FD16DBEF99005F891C /* FaceCheckin.app */,
+				709EC22316DBEF99005F891C /* FaceCheckinTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		709EC1FF16DBEF99005F891C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				709EC20016DBEF99005F891C /* UIKit.framework */,
+				709EC20216DBEF99005F891C /* Foundation.framework */,
+				709EC20416DBEF99005F891C /* CoreGraphics.framework */,
+				709EC22416DBEF99005F891C /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		709EC20616DBEF99005F891C /* FaceCheckin */ = {
+			isa = PBXGroup;
+			children = (
+				709EC20F16DBEF99005F891C /* NGAppDelegate.h */,
+				709EC21016DBEF99005F891C /* NGAppDelegate.m */,
+				709EC21816DBEF99005F891C /* NGViewController.h */,
+				709EC21916DBEF99005F891C /* NGViewController.m */,
+				709EC21B16DBEF99005F891C /* NGViewController.xib */,
+				709EC20716DBEF99005F891C /* Supporting Files */,
+			);
+			path = FaceCheckin;
+			sourceTree = "<group>";
+		};
+		709EC20716DBEF99005F891C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				709EC20816DBEF99005F891C /* FaceCheckin-Info.plist */,
+				709EC20916DBEF99005F891C /* InfoPlist.strings */,
+				709EC20C16DBEF99005F891C /* main.m */,
+				709EC20E16DBEF99005F891C /* FaceCheckin-Prefix.pch */,
+				709EC21216DBEF99005F891C /* Default.png */,
+				709EC21416DBEF99005F891C /* Default@2x.png */,
+				709EC21616DBEF99005F891C /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		709EC22A16DBEF99005F891C /* FaceCheckinTests */ = {
+			isa = PBXGroup;
+			children = (
+				709EC23016DBEF9A005F891C /* FaceCheckinTests.h */,
+				709EC23116DBEF9A005F891C /* FaceCheckinTests.m */,
+				709EC22B16DBEF99005F891C /* Supporting Files */,
+			);
+			path = FaceCheckinTests;
+			sourceTree = "<group>";
+		};
+		709EC22B16DBEF99005F891C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				709EC22C16DBEF99005F891C /* FaceCheckinTests-Info.plist */,
+				709EC22D16DBEF99005F891C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		709EC1FC16DBEF99005F891C /* FaceCheckin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 709EC23516DBEF9A005F891C /* Build configuration list for PBXNativeTarget "FaceCheckin" */;
+			buildPhases = (
+				709EC1F916DBEF99005F891C /* Sources */,
+				709EC1FA16DBEF99005F891C /* Frameworks */,
+				709EC1FB16DBEF99005F891C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FaceCheckin;
+			productName = FaceCheckin;
+			productReference = 709EC1FD16DBEF99005F891C /* FaceCheckin.app */;
+			productType = "com.apple.product-type.application";
+		};
+		709EC22216DBEF99005F891C /* FaceCheckinTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 709EC23816DBEF9A005F891C /* Build configuration list for PBXNativeTarget "FaceCheckinTests" */;
+			buildPhases = (
+				709EC21E16DBEF99005F891C /* Sources */,
+				709EC21F16DBEF99005F891C /* Frameworks */,
+				709EC22016DBEF99005F891C /* Resources */,
+				709EC22116DBEF99005F891C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				709EC22916DBEF99005F891C /* PBXTargetDependency */,
+			);
+			name = FaceCheckinTests;
+			productName = FaceCheckinTests;
+			productReference = 709EC22316DBEF99005F891C /* FaceCheckinTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		709EC1F516DBEF99005F891C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = NG;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = Neogov;
+			};
+			buildConfigurationList = 709EC1F816DBEF99005F891C /* Build configuration list for PBXProject "FaceCheckin" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 709EC1F416DBEF99005F891C;
+			productRefGroup = 709EC1FE16DBEF99005F891C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				709EC1FC16DBEF99005F891C /* FaceCheckin */,
+				709EC22216DBEF99005F891C /* FaceCheckinTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		709EC1FB16DBEF99005F891C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				709EC20B16DBEF99005F891C /* InfoPlist.strings in Resources */,
+				709EC21316DBEF99005F891C /* Default.png in Resources */,
+				709EC21516DBEF99005F891C /* Default@2x.png in Resources */,
+				709EC21716DBEF99005F891C /* Default-568h@2x.png in Resources */,
+				709EC21D16DBEF99005F891C /* NGViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		709EC22016DBEF99005F891C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				709EC22F16DBEF99005F891C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		709EC22116DBEF99005F891C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		709EC1F916DBEF99005F891C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				709EC20D16DBEF99005F891C /* main.m in Sources */,
+				709EC21116DBEF99005F891C /* NGAppDelegate.m in Sources */,
+				709EC21A16DBEF99005F891C /* NGViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		709EC21E16DBEF99005F891C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				709EC23216DBEF9A005F891C /* FaceCheckinTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		709EC22916DBEF99005F891C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 709EC1FC16DBEF99005F891C /* FaceCheckin */;
+			targetProxy = 709EC22816DBEF99005F891C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		709EC20916DBEF99005F891C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				709EC20A16DBEF99005F891C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		709EC21B16DBEF99005F891C /* NGViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				709EC21C16DBEF99005F891C /* en */,
+			);
+			name = NGViewController.xib;
+			sourceTree = "<group>";
+		};
+		709EC22D16DBEF99005F891C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				709EC22E16DBEF99005F891C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		709EC23316DBEF9A005F891C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		709EC23416DBEF9A005F891C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		709EC23616DBEF9A005F891C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FaceCheckin/FaceCheckin-Prefix.pch";
+				INFOPLIST_FILE = "FaceCheckin/FaceCheckin-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		709EC23716DBEF9A005F891C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FaceCheckin/FaceCheckin-Prefix.pch";
+				INFOPLIST_FILE = "FaceCheckin/FaceCheckin-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		709EC23916DBEF9A005F891C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FaceCheckin.app/FaceCheckin";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FaceCheckin/FaceCheckin-Prefix.pch";
+				INFOPLIST_FILE = "FaceCheckinTests/FaceCheckinTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		709EC23A16DBEF9A005F891C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FaceCheckin.app/FaceCheckin";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FaceCheckin/FaceCheckin-Prefix.pch";
+				INFOPLIST_FILE = "FaceCheckinTests/FaceCheckinTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		709EC1F816DBEF99005F891C /* Build configuration list for PBXProject "FaceCheckin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				709EC23316DBEF9A005F891C /* Debug */,
+				709EC23416DBEF9A005F891C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		709EC23516DBEF9A005F891C /* Build configuration list for PBXNativeTarget "FaceCheckin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				709EC23616DBEF9A005F891C /* Debug */,
+				709EC23716DBEF9A005F891C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		709EC23816DBEF9A005F891C /* Build configuration list for PBXNativeTarget "FaceCheckinTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				709EC23916DBEF9A005F891C /* Debug */,
+				709EC23A16DBEF9A005F891C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 709EC1F516DBEF99005F891C /* Project object */;
+}
