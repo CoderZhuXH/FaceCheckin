@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NGCoreTimer.h"
 
-@interface NGViewController : UIViewController
+@interface NGLockScreenController : UIViewController<NGCoreTimerProcotol>
 
 @end

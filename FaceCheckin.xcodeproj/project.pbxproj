@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7023F04716DC3822009306C2 /* NGBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F04616DC3822009306C2 /* NGBaseViewController.m */; };
+		7023F04F16DC3ADE009306C2 /* BBDomainObjectBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F04B16DC3ADE009306C2 /* BBDomainObjectBase.m */; };
+		7023F05016DC3ADE009306C2 /* BBObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F04D16DC3ADE009306C2 /* BBObservableObject.m */; };
+		7023F05416DC3B6B009306C2 /* MMExceptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F05316DC3B6B009306C2 /* MMExceptionUtils.m */; };
+		7023F05816DC3C44009306C2 /* NGCoreTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F05716DC3C44009306C2 /* NGCoreTimer.m */; };
+		7023F05B16DC53A4009306C2 /* NSDate+NGExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F05A16DC53A4009306C2 /* NSDate+NGExtensions.m */; };
+		7023F05F16DC57F4009306C2 /* NGCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F05E16DC57F4009306C2 /* NGCameraViewController.m */; };
 		709EC20116DBEF99005F891C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC20016DBEF99005F891C /* UIKit.framework */; };
 		709EC20316DBEF99005F891C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC20216DBEF99005F891C /* Foundation.framework */; };
 		709EC20516DBEF99005F891C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC20416DBEF99005F891C /* CoreGraphics.framework */; };
@@ -16,8 +23,8 @@
 		709EC21316DBEF99005F891C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 709EC21216DBEF99005F891C /* Default.png */; };
 		709EC21516DBEF99005F891C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 709EC21416DBEF99005F891C /* Default@2x.png */; };
 		709EC21716DBEF99005F891C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 709EC21616DBEF99005F891C /* Default-568h@2x.png */; };
-		709EC21A16DBEF99005F891C /* NGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 709EC21916DBEF99005F891C /* NGViewController.m */; };
-		709EC21D16DBEF99005F891C /* NGViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709EC21B16DBEF99005F891C /* NGViewController.xib */; };
+		709EC21A16DBEF99005F891C /* NGLockScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 709EC21916DBEF99005F891C /* NGLockScreenController.m */; };
+		709EC21D16DBEF99005F891C /* NGLockScreenController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709EC21B16DBEF99005F891C /* NGLockScreenController.xib */; };
 		709EC22516DBEF99005F891C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC22416DBEF99005F891C /* SenTestingKit.framework */; };
 		709EC22616DBEF99005F891C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC20016DBEF99005F891C /* UIKit.framework */; };
 		709EC22716DBEF99005F891C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC20216DBEF99005F891C /* Foundation.framework */; };
@@ -36,6 +43,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7023F04516DC3822009306C2 /* NGBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGBaseViewController.h; sourceTree = "<group>"; };
+		7023F04616DC3822009306C2 /* NGBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGBaseViewController.m; sourceTree = "<group>"; };
+		7023F04916DC3ADE009306C2 /* BBDomainObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBDomainObject.h; sourceTree = "<group>"; };
+		7023F04A16DC3ADE009306C2 /* BBDomainObjectBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBDomainObjectBase.h; sourceTree = "<group>"; };
+		7023F04B16DC3ADE009306C2 /* BBDomainObjectBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBDomainObjectBase.m; sourceTree = "<group>"; };
+		7023F04C16DC3ADE009306C2 /* BBObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBObservableObject.h; sourceTree = "<group>"; };
+		7023F04D16DC3ADE009306C2 /* BBObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBObservableObject.m; sourceTree = "<group>"; };
+		7023F04E16DC3ADE009306C2 /* BBObservableObject+ProtectedMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BBObservableObject+ProtectedMethods.h"; sourceTree = "<group>"; };
+		7023F05216DC3B6B009306C2 /* MMExceptionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMExceptionUtils.h; sourceTree = "<group>"; };
+		7023F05316DC3B6B009306C2 /* MMExceptionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMExceptionUtils.m; sourceTree = "<group>"; };
+		7023F05616DC3C44009306C2 /* NGCoreTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGCoreTimer.h; sourceTree = "<group>"; };
+		7023F05716DC3C44009306C2 /* NGCoreTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGCoreTimer.m; sourceTree = "<group>"; };
+		7023F05916DC53A4009306C2 /* NSDate+NGExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NGExtensions.h"; sourceTree = "<group>"; };
+		7023F05A16DC53A4009306C2 /* NSDate+NGExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NGExtensions.m"; sourceTree = "<group>"; };
+		7023F05D16DC57F4009306C2 /* NGCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGCameraViewController.h; sourceTree = "<group>"; };
+		7023F05E16DC57F4009306C2 /* NGCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGCameraViewController.m; sourceTree = "<group>"; };
 		709EC1FD16DBEF99005F891C /* FaceCheckin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceCheckin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		709EC20016DBEF99005F891C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		709EC20216DBEF99005F891C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -49,9 +72,9 @@
 		709EC21216DBEF99005F891C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		709EC21416DBEF99005F891C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		709EC21616DBEF99005F891C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		709EC21816DBEF99005F891C /* NGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NGViewController.h; sourceTree = "<group>"; };
-		709EC21916DBEF99005F891C /* NGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NGViewController.m; sourceTree = "<group>"; };
-		709EC21C16DBEF99005F891C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NGViewController.xib; sourceTree = "<group>"; };
+		709EC21816DBEF99005F891C /* NGLockScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NGLockScreenController.h; path = ../NGLockScreenController.h; sourceTree = "<group>"; };
+		709EC21916DBEF99005F891C /* NGLockScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NGLockScreenController.m; path = ../NGLockScreenController.m; sourceTree = "<group>"; };
+		709EC21C16DBEF99005F891C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NGLockScreenController.xib; sourceTree = "<group>"; };
 		709EC22316DBEF99005F891C /* FaceCheckinTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceCheckinTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		709EC22416DBEF99005F891C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		709EC22C16DBEF99005F891C /* FaceCheckinTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FaceCheckinTests-Info.plist"; sourceTree = "<group>"; };
@@ -84,6 +107,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7023F04316DC3803009306C2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7023F05C16DC57A4009306C2 /* ViewControllers */,
+				709EC21816DBEF99005F891C /* NGLockScreenController.h */,
+				709EC21916DBEF99005F891C /* NGLockScreenController.m */,
+				709EC21B16DBEF99005F891C /* NGLockScreenController.xib */,
+				7023F04416DC3803009306C2 /* Base */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7023F04416DC3803009306C2 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				7023F04516DC3822009306C2 /* NGBaseViewController.h */,
+				7023F04616DC3822009306C2 /* NGBaseViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		7023F04816DC38A1009306C2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7023F05516DC3C20009306C2 /* Models */,
+				7023F05116DC3B6B009306C2 /* Exceptions */,
+				7023F05616DC3C44009306C2 /* NGCoreTimer.h */,
+				7023F05716DC3C44009306C2 /* NGCoreTimer.m */,
+				7023F05916DC53A4009306C2 /* NSDate+NGExtensions.h */,
+				7023F05A16DC53A4009306C2 /* NSDate+NGExtensions.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7023F05116DC3B6B009306C2 /* Exceptions */ = {
+			isa = PBXGroup;
+			children = (
+				7023F05216DC3B6B009306C2 /* MMExceptionUtils.h */,
+				7023F05316DC3B6B009306C2 /* MMExceptionUtils.m */,
+			);
+			path = Exceptions;
+			sourceTree = "<group>";
+		};
+		7023F05516DC3C20009306C2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7023F04916DC3ADE009306C2 /* BBDomainObject.h */,
+				7023F04A16DC3ADE009306C2 /* BBDomainObjectBase.h */,
+				7023F04B16DC3ADE009306C2 /* BBDomainObjectBase.m */,
+				7023F04C16DC3ADE009306C2 /* BBObservableObject.h */,
+				7023F04D16DC3ADE009306C2 /* BBObservableObject.m */,
+				7023F04E16DC3ADE009306C2 /* BBObservableObject+ProtectedMethods.h */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		7023F05C16DC57A4009306C2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7023F05D16DC57F4009306C2 /* NGCameraViewController.h */,
+				7023F05E16DC57F4009306C2 /* NGCameraViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		709EC1F416DBEF99005F891C = {
 			isa = PBXGroup;
 			children = (
@@ -117,11 +205,10 @@
 		709EC20616DBEF99005F891C /* FaceCheckin */ = {
 			isa = PBXGroup;
 			children = (
+				7023F04816DC38A1009306C2 /* Utils */,
+				7023F04316DC3803009306C2 /* Views */,
 				709EC20F16DBEF99005F891C /* NGAppDelegate.h */,
 				709EC21016DBEF99005F891C /* NGAppDelegate.m */,
-				709EC21816DBEF99005F891C /* NGViewController.h */,
-				709EC21916DBEF99005F891C /* NGViewController.m */,
-				709EC21B16DBEF99005F891C /* NGViewController.xib */,
 				709EC20716DBEF99005F891C /* Supporting Files */,
 			);
 			path = FaceCheckin;
@@ -236,7 +323,7 @@
 				709EC21316DBEF99005F891C /* Default.png in Resources */,
 				709EC21516DBEF99005F891C /* Default@2x.png in Resources */,
 				709EC21716DBEF99005F891C /* Default-568h@2x.png in Resources */,
-				709EC21D16DBEF99005F891C /* NGViewController.xib in Resources */,
+				709EC21D16DBEF99005F891C /* NGLockScreenController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +360,14 @@
 			files = (
 				709EC20D16DBEF99005F891C /* main.m in Sources */,
 				709EC21116DBEF99005F891C /* NGAppDelegate.m in Sources */,
-				709EC21A16DBEF99005F891C /* NGViewController.m in Sources */,
+				709EC21A16DBEF99005F891C /* NGLockScreenController.m in Sources */,
+				7023F04716DC3822009306C2 /* NGBaseViewController.m in Sources */,
+				7023F04F16DC3ADE009306C2 /* BBDomainObjectBase.m in Sources */,
+				7023F05016DC3ADE009306C2 /* BBObservableObject.m in Sources */,
+				7023F05416DC3B6B009306C2 /* MMExceptionUtils.m in Sources */,
+				7023F05816DC3C44009306C2 /* NGCoreTimer.m in Sources */,
+				7023F05B16DC53A4009306C2 /* NSDate+NGExtensions.m in Sources */,
+				7023F05F16DC57F4009306C2 /* NGCameraViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,12 +398,13 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		709EC21B16DBEF99005F891C /* NGViewController.xib */ = {
+		709EC21B16DBEF99005F891C /* NGLockScreenController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				709EC21C16DBEF99005F891C /* en */,
 			);
-			name = NGViewController.xib;
+			name = NGLockScreenController.xib;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		709EC22D16DBEF99005F891C /* InfoPlist.strings */ = {
@@ -456,6 +551,7 @@
 				709EC23716DBEF9A005F891C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		709EC23816DBEF9A005F891C /* Build configuration list for PBXNativeTarget "FaceCheckinTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +560,7 @@
 				709EC23A16DBEF9A005F891C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

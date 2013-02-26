@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class NGViewController;
+@class NGLockScreenController;
 
 @interface NGAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) NGViewController *viewController;
+@property (strong, nonatomic) NGLockScreenController *viewController;
 
 @end

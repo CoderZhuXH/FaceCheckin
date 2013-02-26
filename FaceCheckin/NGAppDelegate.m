@@ -8,7 +8,7 @@
 
 #import "NGAppDelegate.h"
 
-#import "NGViewController.h"
+#import "NGLockScreenController.h"
 
 @implementation NGAppDelegate
 
@@ -16,7 +16,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[NGViewController alloc] initWithNibName:@"NGViewController" bundle:nil];
+    self.viewController = [[NGLockScreenController alloc] initWithNibName:@"NGLockScreenController" bundle:nil];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
