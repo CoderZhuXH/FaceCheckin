@@ -7,8 +7,11 @@
 //
 
 #import "NGCameraViewController.h"
+#import "UILabel+NGExtensions.h"
 
 @interface NGCameraViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *alignFaceLabel;
 
 @end
 
@@ -26,6 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.alignFaceLabel fitTextToWidth:self.alignFaceLabel.frame.size.width forFontName:@"GothamNarrow-Medium"];
 	// Do any additional setup after loading the view.
 }
 

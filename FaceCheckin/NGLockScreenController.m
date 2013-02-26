@@ -8,11 +8,15 @@
 
 #import "NGLockScreenController.h"
 #import "NSDate+NGExtensions.h"
+#import "UILabel+NGExtensions.h"
+#import "NGCameraViewController.h"
 
 @interface NGLockScreenController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
+- (IBAction)onTap:(id)sender;
 
 @end
 
@@ -28,12 +32,17 @@
     self.timeLabel.text = [formatter stringFromDate:currentDate];
     [formatter setDateFormat:@"MMM d YYYY"];
     self.dateLabel.text = [[formatter stringFromDate:currentDate] uppercaseString];
+    
+    [self.timeLabel fitTextToWidth:self.timeLabel.frame.size.width forFontName:@"GothamNarrow-Bold"];
+    [self.dateLabel fitTextToWidth:self.timeLabel.frame.size.width forFontName:@"GothamNarrow-Medium"];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [[NGCoreTimer coreTimer] registerListener:self];
+    
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -43,4 +52,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)onTap:(id)sender {
+    
+    NGCameraViewController * vc = [[NGCameraViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:NO];
+}
 @end

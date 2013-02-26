@@ -16,9 +16,16 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    
     self.viewController = [[NGLockScreenController alloc] initWithNibName:@"NGLockScreenController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    
+    self.navCtrl = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+    self.navCtrl.navigationBarHidden = YES;
+    
+    self.window.rootViewController = self.navCtrl;
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
