@@ -9,9 +9,13 @@
 #import "NGCameraViewController.h"
 #import "UILabel+NGExtensions.h"
 
+#import "NGUserPanelController.h"
+
 @interface NGCameraViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *alignFaceLabel;
+
+- (void)longPressToLoad:(id)someData;
 
 @end
 
@@ -30,9 +34,20 @@
 {
     [super viewDidLoad];
     
+    UILongPressGestureRecognizer * longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressToLoad:)];
+    
+    [longPress setNumberOfTouchesRequired:1];
+    [self.view addGestureRecognizer:longPress];
+    
     [self.alignFaceLabel fitTextToWidth:self.alignFaceLabel.frame.size.width forFontName:@"GothamNarrow-Medium"];
 	// Do any additional setup after loading the view.
 }
+
+- (void)longPressToLoad:(id)someData {
+    NGUserPanelController * controller = [NGUserPanelController new];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

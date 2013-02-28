@@ -11,5 +11,7 @@
 @interface NSDate (NGExtensions)
 
 - (NSDateComponents *)dateComponents;
+- (NSDate *)dateByStrippingHours;
+- (NSInteger)secondsBySubtracting:(NSDate *)other;
 
 @end
