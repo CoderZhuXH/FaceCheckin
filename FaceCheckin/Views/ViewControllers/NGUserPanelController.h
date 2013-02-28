@@ -7,7 +7,8 @@
 //
 
 #import "NGBaseViewController.h"
+#import "CUCellFramework.h"
 
-@interface NGUserPanelController : NGBaseViewController
+@interface NGUserPanelController : NGBaseViewController<CUCellFrameworkDelegate>
 
 @end

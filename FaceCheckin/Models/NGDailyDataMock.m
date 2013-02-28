@@ -15,7 +15,7 @@
     // Private cached iVars
     
     NSDate *        _dayInfo;
-    NSUInteger      _hours;
+    CGFloat         _hours;
 }
 
 - (id)initWithCheckins:(NSArray *)checkins {
@@ -29,11 +29,10 @@
             if(_dayInfo == nil) {
                 _dayInfo = [[checkin checkIn] dateByStrippingHours];
             }
-            
         }
         
         _checkins = checkins;
-        _hours = NAN;
+        _hours = -1;
     }
     
     return self;
@@ -48,14 +47,14 @@
 
 - (CGFloat)hours {
     
-    if(_hours == NAN) {
+    if(_hours == -1) {
         
         NSUInteger seconds = 0;
         for (NGCheckinData * checkinData in self.checkins) {
             seconds += ([checkinData.checkOut secondsBySubtracting:checkinData.checkIn]);
         }
         
-        _hours = (CGFloat)seconds / 60;
+        _hours = (CGFloat)seconds / 3600;
     }
     
     return _hours;

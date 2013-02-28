@@ -16,6 +16,10 @@
 /// Make sure you have a strong reference somwhere!
 - (id)initWithDailyReport:(id)dailyReportData;
 
++ (NSArray *)mockSomeData;
+
++ (NSArray *)cellObjectsFromReportData:(NSArray *)reportData;
+
 /// Daily report data. id currenlty, but will type-safe it after creating an object
 @property (nonatomic, unsafe_unretained, readonly) NGDailyDataMock * dailyReportData;
 

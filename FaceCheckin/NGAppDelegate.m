@@ -9,6 +9,7 @@
 #import "NGAppDelegate.h"
 
 #import "NGLockScreenController.h"
+#import "NGDailyReportCellObject.h"
 
 @implementation NGAppDelegate
 

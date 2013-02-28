@@ -7,8 +7,16 @@
 //
 
 #import "NGUserPanelController.h"
+#import "NGDailyReportCellObject.h"
+
+#import <QuartzCore/QuartzCore.h>
 
 @interface NGUserPanelController ()
+
+@property (nonatomic, strong) NSArray * loginArray;
+@property (nonatomic, strong) CUCellDataSource * dataSource;
+
+@property (weak, nonatomic) IBOutlet UITableView *dataLoginView;
 
 @end
 
@@ -26,7 +34,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+
+    self.loginArray = [NGDailyReportCellObject cellObjectsFromReportData:[NGDailyReportCellObject mockSomeData]];
+    self.dataSource = [[CUCellDataSource alloc] initWithArray:self.loginArray withDelegate:self];
+    
+    self.dataLoginView.dataSource = self.dataSource;
+    
+    CALayer * lyr = [CALayer layer];
+    lyr.frame = CGRectMake(0, 0, self.dataLoginView.frame.size.width, 1);
+    lyr.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.8 alpha:1].CGColor;
+    
+    [self.dataLoginView.layer addSublayer:lyr];
+    
+    [self.dataLoginView reloadData];
 	// Do any additional setup after loading the view.
+}
+
+- (UITableViewCell *)CUTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath forObject:(id)userData {
+    return [CUCellGenerator CUTableView:tableView atIndexPath:indexPath forObject:userData];
 }
 
 - (void)didReceiveMemoryWarning

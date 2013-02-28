@@ -36,7 +36,7 @@
 }
 
 - (NSInteger)secondsBySubtracting:(NSDate *)other {
-    NSTimeInterval firstByte = ([self timeIntervalSince1970] - [other timeIntervalSince1970]) * 1000;
+    NSTimeInterval firstByte = ([self timeIntervalSince1970] - [other timeIntervalSince1970]);
     return (NSUInteger)ceil(firstByte);
 }
 

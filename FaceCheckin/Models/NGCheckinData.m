@@ -13,12 +13,20 @@
 - (id)initWithCheckIn:(NSDate *)date andCheckout:(NSDate *)checkout {
     self = [super initWithDictionary:nil];
     
+    if([date compare:checkout] != NSOrderedAscending) {
+        raise(666);
+    }
+    
     if (self) {
         _checkIn = date;
-        _checkIn = checkout;
+        _checkOut = checkout;
     }
     
     return self;
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"Checkin - %@; Checkout - %@", _checkIn, _checkOut];
 }
 
 @end

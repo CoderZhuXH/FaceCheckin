@@ -54,6 +54,7 @@
 		70C7C9B816DFEACD001EE73F /* NGDomainObjectBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9B716DFEACD001EE73F /* NGDomainObjectBase.m */; };
 		70C7C9BB16DFEB08001EE73F /* NGDailyDataMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9BA16DFEB08001EE73F /* NGDailyDataMock.m */; };
 		70C7C9BE16DFEB57001EE73F /* NGCheckinData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9BD16DFEB57001EE73F /* NGCheckinData.m */; };
+		70C7C9C316E021C0001EE73F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C9C216E021C0001EE73F /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,7 @@
 		70C7C9BA16DFEB08001EE73F /* NGDailyDataMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGDailyDataMock.m; sourceTree = "<group>"; };
 		70C7C9BC16DFEB57001EE73F /* NGCheckinData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGCheckinData.h; sourceTree = "<group>"; };
 		70C7C9BD16DFEB57001EE73F /* NGCheckinData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGCheckinData.m; sourceTree = "<group>"; };
+		70C7C9C216E021C0001EE73F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70C7C9C316E021C0001EE73F /* QuartzCore.framework in Frameworks */,
 				709EC20116DBEF99005F891C /* UIKit.framework in Frameworks */,
 				709EC20316DBEF99005F891C /* Foundation.framework in Frameworks */,
 				709EC20516DBEF99005F891C /* CoreGraphics.framework in Frameworks */,
@@ -273,10 +276,11 @@
 		709EC1FF16DBEF99005F891C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				709EC20016DBEF99005F891C /* UIKit.framework */,
-				709EC20216DBEF99005F891C /* Foundation.framework */,
 				709EC20416DBEF99005F891C /* CoreGraphics.framework */,
+				709EC20216DBEF99005F891C /* Foundation.framework */,
+				70C7C9C216E021C0001EE73F /* QuartzCore.framework */,
 				709EC22416DBEF99005F891C /* SenTestingKit.framework */,
+				709EC20016DBEF99005F891C /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
