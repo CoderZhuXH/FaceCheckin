@@ -28,3 +28,13 @@
 - (NSArray *)checkinData;
 
 @end
+
+
+@interface NGCheckinFactory : NSObject
+
+@property (nonatomic, readonly) NSDate * startDate;
+
+- (NSDate *)clockIn;
+- (NSDate *)clockOut;
+
+@end

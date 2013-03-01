@@ -15,4 +15,7 @@
 @property (nonatomic, readonly) NSDate *checkIn;
 @property (nonatomic, readonly) NSDate *checkOut;
 
+- (CGFloat)hours;
+- (CGFloat)minutes;
+
 @end

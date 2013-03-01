@@ -17,10 +17,6 @@
 
 #pragma mark Data Mockups
 
-
-#define HOURS(x) (3600 * (x))
-#define MINUTES(x) (60 * (x))
-
 + (NSArray *)cellObjectsFromReportData:(NSArray *)reportData {
     
     NSMutableArray * arr = [NSMutableArray arrayWithCapacity:reportData.count];

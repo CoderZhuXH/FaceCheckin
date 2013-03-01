@@ -35,6 +35,11 @@
     return date;
 }
 
++ (NSDate *)dateFromComponentsGregorian:(NSDateComponents *)components {
+    NSCalendar * internalCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    return [internalCalendar dateFromComponents:components];
+}
+
 - (NSInteger)secondsBySubtracting:(NSDate *)other {
     NSTimeInterval firstByte = ([self timeIntervalSince1970] - [other timeIntervalSince1970]);
     return (NSUInteger)ceil(firstByte);
@@ -49,8 +54,9 @@
     NSCalendar * internalCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSInteger cEnum = NSYearCalendarUnit |  NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit;
     
-    *calendar = internalCalendar;
-    
+    if(calendar != nil) {
+        *calendar = internalCalendar;
+    }
     return [internalCalendar components:cEnum fromDate:self];
 }
 

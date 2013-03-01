@@ -7,8 +7,11 @@
 //
 
 #import "NGCheckinData.h"
+#import "NSDate+NGExtensions.h"
 
-@implementation NGCheckinData
+@implementation NGCheckinData {
+    CGFloat _hours;
+}
 
 - (id)initWithCheckIn:(NSDate *)date andCheckout:(NSDate *)checkout {
     self = [super initWithDictionary:nil];
@@ -20,6 +23,7 @@
     if (self) {
         _checkIn = date;
         _checkOut = checkout;
+        _hours = -1;
     }
     
     return self;
@@ -27,6 +31,20 @@
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"Checkin - %@; Checkout - %@", _checkIn, _checkOut];
+}
+
+- (CGFloat)hours {
+    if(_hours == -1) {
+        _hours = (CGFloat)[_checkOut secondsBySubtracting:_checkIn]/3600;
+    }
+    
+    return _hours;
+}
+
+- (CGFloat)minutes {
+    
+    CGFloat hours = [self hours];
+    return hours * 60;
 }
 
 @end
