@@ -55,6 +55,8 @@
 		70C7C9BB16DFEB08001EE73F /* NGDailyDataMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9BA16DFEB08001EE73F /* NGDailyDataMock.m */; };
 		70C7C9BE16DFEB57001EE73F /* NGCheckinData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9BD16DFEB57001EE73F /* NGCheckinData.m */; };
 		70C7C9C316E021C0001EE73F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C9C216E021C0001EE73F /* QuartzCore.framework */; };
+		70C7C9C616E02724001EE73F /* NGHourlyStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9C516E02724001EE73F /* NGHourlyStatus.m */; };
+		70C7C9C816E02738001EE73F /* NGHourlyStatus.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C7C9C716E02738001EE73F /* NGHourlyStatus.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +143,10 @@
 		70C7C9BC16DFEB57001EE73F /* NGCheckinData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGCheckinData.h; sourceTree = "<group>"; };
 		70C7C9BD16DFEB57001EE73F /* NGCheckinData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGCheckinData.m; sourceTree = "<group>"; };
 		70C7C9C216E021C0001EE73F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		70C7C9C416E02724001EE73F /* NGHourlyStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGHourlyStatus.h; sourceTree = "<group>"; };
+		70C7C9C516E02724001EE73F /* NGHourlyStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGHourlyStatus.m; sourceTree = "<group>"; };
+		70C7C9C716E02738001EE73F /* NGHourlyStatus.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NGHourlyStatus.xib; sourceTree = "<group>"; };
+		70C7C9C916E02DB0001EE73F /* NGColorSchema.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NGColorSchema.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +185,9 @@
 				7046BDA716DD4C5F0077BB39 /* UILabel+NGExtensions.m */,
 				7046BDAE16DD67C20077BB39 /* NGCameraView.h */,
 				7046BDAF16DD67C20077BB39 /* NGCameraView.m */,
+				70C7C9C416E02724001EE73F /* NGHourlyStatus.h */,
+				70C7C9C516E02724001EE73F /* NGHourlyStatus.m */,
+				70C7C9C916E02DB0001EE73F /* NGColorSchema.h */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -341,6 +350,7 @@
 				70C7C98116DFD000001EE73F /* NGCameraViewController.xib */,
 				70C7C98216DFD000001EE73F /* NGLockScreenController.xib */,
 				70C7C98816DFD0B6001EE73F /* NGUserPanelController.xib */,
+				70C7C9C716E02738001EE73F /* NGHourlyStatus.xib */,
 			);
 			path = Nibs;
 			sourceTree = "<group>";
@@ -518,6 +528,7 @@
 				70C7C99216DFD68A001EE73F /* square.png in Resources */,
 				70C7C99316DFD68A001EE73F /* square@2x.png in Resources */,
 				70C7C9B016DFE671001EE73F /* NGDailyReportCell.xib in Resources */,
+				70C7C9C816E02738001EE73F /* NGHourlyStatus.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,6 +586,7 @@
 				70C7C9B816DFEACD001EE73F /* NGDomainObjectBase.m in Sources */,
 				70C7C9BB16DFEB08001EE73F /* NGDailyDataMock.m in Sources */,
 				70C7C9BE16DFEB57001EE73F /* NGCheckinData.m in Sources */,
+				70C7C9C616E02724001EE73F /* NGHourlyStatus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

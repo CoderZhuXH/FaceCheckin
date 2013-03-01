@@ -8,6 +8,7 @@
 
 #import "NGUserPanelController.h"
 #import "NGDailyReportCellObject.h"
+#import "NGHourlyStatus.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -15,6 +16,8 @@
 
 @property (nonatomic, strong) NSArray * loginArray;
 @property (nonatomic, strong) CUCellDataSource * dataSource;
+
+@property (weak, nonatomic) IBOutlet NGHourlyStatus *hourlyStatusManager;
 
 @property (weak, nonatomic) IBOutlet UITableView *dataLoginView;
 
@@ -29,6 +32,25 @@
         // Custom initialization
     }
     return self;
+}
+
+- (IBAction)doCheckin:(id)sender {
+    
+    if(self.hourlyStatusManager.sessionInProgress) {
+        [self.hourlyStatusManager clockOut];
+    } else {
+        [self.hourlyStatusManager clockIn];
+    }
+    
+    [self updateCheckinButtonText];
+}
+
+- (void)updateCheckinButtonText {
+    if(self.hourlyStatusManager.sessionInProgress) {
+        [self.checkinButton setTitle:@"ULTIMATE CLOCK OUT BUTTON" forState:UIControlStateNormal];
+    } else {
+        [self.checkinButton setTitle:@"ULTIMATE CLOCK IN BUTTON" forState:UIControlStateNormal];
+    }
 }
 
 - (void)viewDidLoad
@@ -48,6 +70,10 @@
     [self.dataLoginView.layer addSublayer:lyr];
     
     [self.dataLoginView reloadData];
+    
+    [self updateCheckinButtonText];
+
+    
 	// Do any additional setup after loading the view.
 }
 

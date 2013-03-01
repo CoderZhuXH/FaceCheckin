@@ -11,4 +11,6 @@
 
 @interface NGUserPanelController : NGBaseViewController<CUCellFrameworkDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton *checkinButton;
+
 @end
