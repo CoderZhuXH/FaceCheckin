@@ -57,7 +57,6 @@
 {
     [super viewDidLoad];
     
-
     self.loginArray = [NGDailyReportCellObject cellObjectsFromReportData:[NGDailyReportCellObject mockSomeData]];
     self.dataSource = [[CUCellDataSource alloc] initWithArray:self.loginArray withDelegate:self];
     

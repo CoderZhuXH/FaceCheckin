@@ -29,7 +29,6 @@
 
 @end
 
-
 @interface NGCheckinFactory : NSObject
 
 @property (nonatomic, readonly) NSDate * startDate;

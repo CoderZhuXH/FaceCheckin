@@ -7,11 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
-@interface NGCameraView : UIView
-
-@end
-
-@interface NGCameraViewPlugin : NSObject
+@interface NGCameraView : UIView<AVCaptureVideoDataOutputSampleBufferDelegate>
 
 @end

@@ -57,6 +57,10 @@
 		70C7C9C316E021C0001EE73F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C9C216E021C0001EE73F /* QuartzCore.framework */; };
 		70C7C9C616E02724001EE73F /* NGHourlyStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9C516E02724001EE73F /* NGHourlyStatus.m */; };
 		70C7C9C816E02738001EE73F /* NGHourlyStatus.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C7C9C716E02738001EE73F /* NGHourlyStatus.xib */; };
+		70C7C9CB16E06B34001EE73F /* NGCheckinInterval.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C7C9CA16E06B34001EE73F /* NGCheckinInterval.xib */; };
+		70C7C9D016E13A43001EE73F /* NGCheckinInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9CF16E13A43001EE73F /* NGCheckinInterval.m */; };
+		70C7C9D216E172FB001EE73F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C9D116E172FB001EE73F /* AVFoundation.framework */; };
+		70C7C9D616E175ED001EE73F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C9D516E175EC001EE73F /* CoreVideo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +151,12 @@
 		70C7C9C516E02724001EE73F /* NGHourlyStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGHourlyStatus.m; sourceTree = "<group>"; };
 		70C7C9C716E02738001EE73F /* NGHourlyStatus.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NGHourlyStatus.xib; sourceTree = "<group>"; };
 		70C7C9C916E02DB0001EE73F /* NGColorSchema.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NGColorSchema.h; sourceTree = "<group>"; };
+		70C7C9CA16E06B34001EE73F /* NGCheckinInterval.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NGCheckinInterval.xib; sourceTree = "<group>"; };
+		70C7C9CC16E06B6D001EE73F /* NGCheckinInterval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGCheckinInterval.h; sourceTree = "<group>"; };
+		70C7C9CF16E13A43001EE73F /* NGCheckinInterval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NGCheckinInterval.m; path = FaceCheckin/Views/NGCheckinInterval.m; sourceTree = SOURCE_ROOT; };
+		70C7C9D116E172FB001EE73F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		70C7C9D316E175E6001EE73F /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		70C7C9D516E175EC001EE73F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +164,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70C7C9D616E175ED001EE73F /* CoreVideo.framework in Frameworks */,
+				70C7C9D216E172FB001EE73F /* AVFoundation.framework in Frameworks */,
 				70C7C9C316E021C0001EE73F /* QuartzCore.framework in Frameworks */,
 				709EC20116DBEF99005F891C /* UIKit.framework in Frameworks */,
 				709EC20316DBEF99005F891C /* Foundation.framework in Frameworks */,
@@ -188,6 +200,8 @@
 				70C7C9C416E02724001EE73F /* NGHourlyStatus.h */,
 				70C7C9C516E02724001EE73F /* NGHourlyStatus.m */,
 				70C7C9C916E02DB0001EE73F /* NGColorSchema.h */,
+				70C7C9CC16E06B6D001EE73F /* NGCheckinInterval.h */,
+				70C7C9CF16E13A43001EE73F /* NGCheckinInterval.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -266,6 +280,8 @@
 		709EC1F416DBEF99005F891C = {
 			isa = PBXGroup;
 			children = (
+				70C7C9D516E175EC001EE73F /* CoreVideo.framework */,
+				70C7C9D316E175E6001EE73F /* CoreMedia.framework */,
 				709EC20616DBEF99005F891C /* FaceCheckin */,
 				709EC22A16DBEF99005F891C /* FaceCheckinTests */,
 				709EC1FF16DBEF99005F891C /* Frameworks */,
@@ -285,6 +301,7 @@
 		709EC1FF16DBEF99005F891C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				70C7C9D116E172FB001EE73F /* AVFoundation.framework */,
 				709EC20416DBEF99005F891C /* CoreGraphics.framework */,
 				709EC20216DBEF99005F891C /* Foundation.framework */,
 				70C7C9C216E021C0001EE73F /* QuartzCore.framework */,
@@ -351,6 +368,7 @@
 				70C7C98216DFD000001EE73F /* NGLockScreenController.xib */,
 				70C7C98816DFD0B6001EE73F /* NGUserPanelController.xib */,
 				70C7C9C716E02738001EE73F /* NGHourlyStatus.xib */,
+				70C7C9CA16E06B34001EE73F /* NGCheckinInterval.xib */,
 			);
 			path = Nibs;
 			sourceTree = "<group>";
@@ -529,6 +547,7 @@
 				70C7C99316DFD68A001EE73F /* square@2x.png in Resources */,
 				70C7C9B016DFE671001EE73F /* NGDailyReportCell.xib in Resources */,
 				70C7C9C816E02738001EE73F /* NGHourlyStatus.xib in Resources */,
+				70C7C9CB16E06B34001EE73F /* NGCheckinInterval.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +606,7 @@
 				70C7C9BB16DFEB08001EE73F /* NGDailyDataMock.m in Sources */,
 				70C7C9BE16DFEB57001EE73F /* NGCheckinData.m in Sources */,
 				70C7C9C616E02724001EE73F /* NGHourlyStatus.m in Sources */,
+				70C7C9D016E13A43001EE73F /* NGCheckinInterval.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

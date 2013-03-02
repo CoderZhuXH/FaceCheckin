@@ -11,6 +11,7 @@
 
 #define HOURS(x) (3600 * (x))
 #define MINUTES(x) (60 * (x))
+#define DAYS(x) (24*(x)*HOURS(1))
 
 @interface NSDate (NGExtensions)
 
@@ -18,6 +19,15 @@
 
 - (NSDate *)dateByStrippingHours;
 + (NSDate *)dateFromComponentsGregorian:(NSDateComponents *)components;
+
 - (NSInteger)secondsBySubtracting:(NSDate *)other;
+- (NSInteger)minutesBySubtracting:(NSDate *)date;
+
+- (NSDate *)dateByAddingDays:(NSUInteger)days;
+- (NSDate *)dateByAddingHours:(NSUInteger)hours;
+
+- (CGFloat)pixelPerMinuteInTimeIntervalSinceDate:(NSDate *)date forPixels:(CGFloat)pixels;
+
+
 
 @end

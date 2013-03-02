@@ -42,9 +42,10 @@
         date = [date dateByAddingTimeInterval:HOURS(8)];
         
         for (uint k = 0; k < numberOfCheckins; k++) {
-        
             
-            NSDate * date2 = [date dateByAddingTimeInterval:HOURS(arc4random_uniform(2)+3)];
+            CGFloat hours = 2 + arc4random_uniform(180)/60.0f;
+            
+            NSDate * date2 = [date dateByAddingTimeInterval:HOURS(hours)];
             
             NGCheckinData * data = [[NGCheckinData alloc] initWithCheckIn:date andCheckout:date2];
             [arrayOfCheckins addObject:data];

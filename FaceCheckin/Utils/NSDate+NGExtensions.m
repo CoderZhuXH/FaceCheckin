@@ -41,9 +41,49 @@
 }
 
 - (NSInteger)secondsBySubtracting:(NSDate *)other {
-    NSTimeInterval firstByte = ([self timeIntervalSince1970] - [other timeIntervalSince1970]);
+    NSTimeInterval firstByte = [self timeIntervalSinceDate:other];
     return (NSUInteger)ceil(firstByte);
 }
+
+- (NSInteger)minutesBySubtracting:(NSDate *)date {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSInteger cEnum = NSMinuteCalendarUnit;
+
+    NSDateComponents * components = [gregorian components:cEnum fromDate:date toDate:self options:0];
+    return components.minute;
+}
+
+- (NSDate *)dateByAddingDays:(NSUInteger)days {
+    NSDate *now = self;
+    int daysToAdd = days;  // or 60 :-)
+    
+    // set up date components
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setDay:daysToAdd];
+    
+    // create a calendar
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    NSDate *newDate2 = [gregorian dateByAddingComponents:components toDate:now options:0];
+    NSLog(@"Clean: %@", newDate2);
+    
+    return newDate2;
+}
+
+- (CGFloat)pixelPerMinuteInTimeIntervalSinceDate:(NSDate *)date forPixels:(CGFloat)pixels {
+    NSUInteger minutesDelta = [self secondsBySubtracting:date] / 60.0f;
+    return pixels/minutesDelta; // pixels for minute
+}
+
+-(NSDate *)dateByAddingHours:(NSUInteger)hours {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    components.hour = hours;
+    
+    return [gregorian dateByAddingComponents:components toDate:self options:0];
+}
+
 
 @end
 

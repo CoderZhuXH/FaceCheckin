@@ -54,7 +54,7 @@
             seconds += ([checkinData.checkOut secondsBySubtracting:checkinData.checkIn]);
         }
         
-        _hours = (CGFloat)seconds / 3600;
+        _hours = (CGFloat)seconds / 3600.0f;
     }
     
     return _hours;

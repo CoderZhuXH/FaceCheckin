@@ -8,11 +8,14 @@
 
 #import "NGHourlyStatus.h"
 #import "NSDate+NGExtensions.h"
+#import "UILabel+NGExtensions.h"
 #import "NGCheckinData.h"
+#import "NGCheckinInterval.h"
 
 #import <QuartzCore/QuartzCore.h>
 
 @interface NGHourlyStatus ()
+
 ////////////////////////////// -> Mutable Labels
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
@@ -20,28 +23,24 @@
 
 ////////////////////////////// -> Views
 
-@property (weak, nonatomic) IBOutlet UIView *checkinSlider;
+@property (weak, nonatomic) IBOutlet    UIView              * checkinSlider;
+@property (strong, nonatomic)           NGCheckinInterval   * checkinInterval;
 
 ////////////////////////////// -> Business Logic
 
 @property (nonatomic, strong) NSArray           * checkins;
 @property (nonatomic, strong) NGCheckinFactory  * checkinFactory;
+@property (nonatomic, assign) CGFloat           pixelsPerMinute;
 
 ////////////////////////////// -> Instance methods of Interest
 
-- (CALayer *)buildCheckpoint;
 - (CGFloat)minutesPerPixel;
 
 @end
 
-#define CheckpointRectAt(x,y) CGRectMake(x, y, 8.0f, 64.0f)
-
-
 @implementation NGHourlyStatus {
     NSDate * _currentStart;
     NSDate * _currentEnd;
-    
-    CGFloat pixelsPerMinute;
 }
 
 - (void)customInit {
@@ -51,6 +50,7 @@
     self.dateLabel.font = self.timeLabel.font = [UIFont fontWithName:@"GothamNarrow-Medium" size:24];
     self.checkinSlider.layer.borderWidth = 2;
     self.checkinSlider.layer.borderColor = [UIColor darkGrayColor].CGColor;
+    self.checkinSlider.clipsToBounds = YES;
     
     self.checkins = [NSArray array];
     self.checkinFactory = [NGCheckinFactory new];
@@ -73,35 +73,26 @@
         return;
     }
     
-    CALayer * checkPointAt = [self buildCheckpoint];
+    self.checkinInterval = [[NGCheckinInterval alloc] init];
     
     _currentStart = [self.checkinFactory clockIn];
+    [self.checkinInterval setClockInDate:_currentStart];
     
     if(self.checkins.count == 0) {
-        checkPointAt.frame = CheckpointRectAt(0, 0);
-        pixelsPerMinute = 1.0f/[self minutesPerPixel];
+        [self.checkinInterval setPositionOnSlider:0];
+        
+        NSDate * endLine = [_currentStart dateByAddingDays:1];
+        self.pixelsPerMinute = [endLine pixelPerMinuteInTimeIntervalSinceDate:_currentStart forPixels:self.checkinSlider.frame.size.width];
+        
     } else {
-        CGFloat xPos = pixelsPerMinute * [_currentStart secondsBySubtracting:self.checkinFactory.startDate] / 60;
-        checkPointAt.frame = CheckpointRectAt(xPos, 0);
+        CGFloat minutesSirMinutes =  [_currentStart secondsBySubtracting:self.checkinFactory.startDate] / 60.0f;
+        CGFloat xPos = self.pixelsPerMinute * minutesSirMinutes;
+        [self.checkinInterval setPositionOnSlider:xPos];
+        NSLog(@"The break took: %f minutes!", (CGFloat)[_currentStart secondsBySubtracting:_currentEnd] / 60);
     }
     
-    [self.checkinSlider.layer addSublayer:checkPointAt];
+    [self.checkinSlider addSubview:self.checkinInterval];
     _sessionInProgress = YES;
-}
-
-- (CGFloat)minutesPerPixel {
-    CGFloat pixelWidth = self.checkinSlider.bounds.size.width;
-    
-    
-    NSDate * stripped = [_currentStart dateByStrippingHours];
-    NSDateComponents * components = [stripped dateComponents];
-    components.day++;
-    NSDate * midnight = [NSDate dateFromComponentsGregorian:components];
-    
-    CGFloat deltaMinutes = (CGFloat)[midnight secondsBySubtracting:_currentStart] / 60;
-    CGFloat minutesPerPixel = deltaMinutes / pixelWidth;
-    
-    return minutesPerPixel;
 }
 
 - (void)clockOut {
@@ -116,22 +107,9 @@
     self.checkins = [self.checkins arrayByAddingObject:data];
     
     NSLog(@"Hours checked in:%.2f", data.hours);
+    [self.checkinInterval setClockOutDate:_currentEnd pixelsPerMinute:self.pixelsPerMinute];
     
-    CALayer * buildCheckpoint = [self buildCheckpoint];
-    
-    
-    CGFloat position = pixelsPerMinute * [_currentEnd secondsBySubtracting:self.checkinFactory.startDate]/60;
-    
-    buildCheckpoint.frame = CheckpointRectAt(position, 0);
-    [self.checkinSlider.layer addSublayer:buildCheckpoint];
-
     _sessionInProgress = NO;
-}
-
-- (CALayer *)buildCheckpoint {
-    CALayer * checkPointAt = [CALayer layer];
-    checkPointAt.backgroundColor = [UIColor darkGrayColor].CGColor;
-    return checkPointAt;
 }
 
 - (NSArray *)checkinData {
@@ -160,7 +138,7 @@
         _startDate = [[[NSDate date] dateByStrippingHours] dateByAddingTimeInterval:HOURS(8)];
         self.start = self.startDate;
     } else {
-        CGFloat hours = (CGFloat)arc4random_uniform(45)/60+0.33;
+        CGFloat hours = 0.33f + (CGFloat)arc4random_uniform(45)/60;
         self.start = [self.end dateByAddingTimeInterval:HOURS(hours)];
     }
     
