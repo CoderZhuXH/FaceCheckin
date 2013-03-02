@@ -17,8 +17,8 @@
 @property (nonatomic, strong) NSArray * loginArray;
 @property (nonatomic, strong) CUCellDataSource * dataSource;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet NGHourlyStatus *hourlyStatusManager;
-
 @property (weak, nonatomic) IBOutlet UITableView *dataLoginView;
 
 @end
@@ -71,6 +71,8 @@
     [self.dataLoginView reloadData];
     
     [self updateCheckinButtonText];
+    
+    [self.imageView setImage:self.imageToShow];
 
     
 	// Do any additional setup after loading the view.

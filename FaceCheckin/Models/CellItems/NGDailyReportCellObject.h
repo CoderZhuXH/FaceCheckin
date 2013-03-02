@@ -21,6 +21,6 @@
 + (NSArray *)cellObjectsFromReportData:(NSArray *)reportData;
 
 /// Daily report data. id currenlty, but will type-safe it after creating an object
-@property (nonatomic, unsafe_unretained, readonly) NGDailyDataMock * dailyReportData;
+@property (nonatomic, strong, readonly) NGDailyDataMock * dailyReportData;
 
 @end

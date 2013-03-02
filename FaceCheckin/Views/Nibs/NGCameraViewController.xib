@@ -36,13 +36,13 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIView" id="276497164">
+					<object class="IBUIView" id="192787324">
 						<reference key="NSNextResponder" ref="124991498"/>
 						<int key="NSvFlags">274</int>
 						<string key="NSFrameSize">{1024, 768}</string>
 						<reference key="NSSuperview" ref="124991498"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1030563017"/>
+						<reference key="NSNextKeyView" ref="815271953"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -56,7 +56,6 @@
 						<string key="NSFrame">{{287, 670}, {450, 60}}</string>
 						<reference key="NSSuperview" ref="124991498"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -82,7 +81,7 @@
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
-					<object class="IBUIImageView" id="1030563017">
+					<object class="IBUIImageView" id="815271953">
 						<reference key="NSNextResponder" ref="124991498"/>
 						<int key="NSvFlags">293</int>
 						<string key="NSFrame">{{326, 36}, {370, 370}}</string>
@@ -103,8 +102,9 @@
 				<string key="NSFrame">{{0, 20}, {1024, 748}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="276497164"/>
+				<reference key="NSNextKeyView" ref="192787324"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
+				<array key="IBUIGestureRecognizers" id="0"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
 					<int key="IBUIStatusBarStyle">2</int>
 				</object>
@@ -133,12 +133,20 @@
 					</object>
 					<int key="connectionID">12</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">cameraView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="192787324"/>
+					</object>
+					<int key="connectionID">15</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
 					<object class="IBObjectRecord">
 						<int key="objectID">0</int>
-						<array key="object" id="0"/>
+						<reference key="object" ref="0"/>
 						<reference key="children" ref="1000"/>
 						<nil key="parent"/>
 					</object>
@@ -158,8 +166,8 @@
 						<reference key="object" ref="124991498"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="140464558"/>
-							<reference ref="1030563017"/>
-							<reference ref="276497164"/>
+							<reference ref="815271953"/>
+							<reference ref="192787324"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -172,12 +180,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">13</int>
-						<reference key="object" ref="1030563017"/>
+						<reference key="object" ref="815271953"/>
 						<reference key="parent" ref="124991498"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">14</int>
-						<reference key="object" ref="276497164"/>
+						<reference key="object" ref="192787324"/>
 						<reference key="parent" ref="124991498"/>
 					</object>
 				</array>
@@ -197,7 +205,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">14</int>
+			<int key="maxID">17</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -220,17 +228,20 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">NGCameraViewController</string>
 					<string key="superclassName">NGBaseViewController</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">alignFaceLabel</string>
-						<string key="NS.object.0">UILabel</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">alignFaceLabel</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="alignFaceLabel">UILabel</string>
+						<string key="cameraView">NGCameraView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="alignFaceLabel">
 							<string key="name">alignFaceLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
-					</object>
+						<object class="IBToOneOutletInfo" key="cameraView">
+							<string key="name">cameraView</string>
+							<string key="candidateClassName">NGCameraView</string>
+						</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/NGCameraViewController.h</string>

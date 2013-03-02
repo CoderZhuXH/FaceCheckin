@@ -61,6 +61,8 @@
 		70C7C9D016E13A43001EE73F /* NGCheckinInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9CF16E13A43001EE73F /* NGCheckinInterval.m */; };
 		70C7C9D216E172FB001EE73F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C9D116E172FB001EE73F /* AVFoundation.framework */; };
 		70C7C9D616E175ED001EE73F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C9D516E175EC001EE73F /* CoreVideo.framework */; };
+		70C7C9D816E1836A001EE73F /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C9D716E18369001EE73F /* CoreImage.framework */; };
+		70C7C9DB16E183AC001EE73F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C9D316E175E6001EE73F /* CoreMedia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +159,8 @@
 		70C7C9D116E172FB001EE73F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		70C7C9D316E175E6001EE73F /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		70C7C9D516E175EC001EE73F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		70C7C9D716E18369001EE73F /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		70C7C9D916E18392001EE73F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70C7C9DB16E183AC001EE73F /* CoreMedia.framework in Frameworks */,
+				70C7C9D816E1836A001EE73F /* CoreImage.framework in Frameworks */,
 				70C7C9D616E175ED001EE73F /* CoreVideo.framework in Frameworks */,
 				70C7C9D216E172FB001EE73F /* AVFoundation.framework in Frameworks */,
 				70C7C9C316E021C0001EE73F /* QuartzCore.framework in Frameworks */,
@@ -280,8 +286,7 @@
 		709EC1F416DBEF99005F891C = {
 			isa = PBXGroup;
 			children = (
-				70C7C9D516E175EC001EE73F /* CoreVideo.framework */,
-				70C7C9D316E175E6001EE73F /* CoreMedia.framework */,
+				70C7C9D916E18392001EE73F /* ImageIO.framework */,
 				709EC20616DBEF99005F891C /* FaceCheckin */,
 				709EC22A16DBEF99005F891C /* FaceCheckinTests */,
 				709EC1FF16DBEF99005F891C /* Frameworks */,
@@ -303,6 +308,9 @@
 			children = (
 				70C7C9D116E172FB001EE73F /* AVFoundation.framework */,
 				709EC20416DBEF99005F891C /* CoreGraphics.framework */,
+				70C7C9D716E18369001EE73F /* CoreImage.framework */,
+				70C7C9D316E175E6001EE73F /* CoreMedia.framework */,
+				70C7C9D516E175EC001EE73F /* CoreVideo.framework */,
 				709EC20216DBEF99005F891C /* Foundation.framework */,
 				70C7C9C216E021C0001EE73F /* QuartzCore.framework */,
 				709EC22416DBEF99005F891C /* SenTestingKit.framework */,

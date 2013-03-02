@@ -12,19 +12,27 @@
 
 ////////////////////////////////////////////////// -> Video Specifics
 
-@property (nonatomic, strong) AVCaptureSession          * currentSession;
-@property (nonatomic, strong) AVCaptureVideoDataOutput  * videoDataOutput;
+@property (nonatomic, strong) AVCaptureSession               * currentSession;
+@property (nonatomic, strong) AVCaptureStillImageOutput      * stillCapture;
+@property (nonatomic, strong) dispatch_queue_t              captureQueue;
 
 ////////////////////////////////////////////////// ->  Preview
 
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer    * previewLayer;
-@property (nonatomic, retain) dispatch_queue_t              videoDataDispatchQueue;
+@property (nonatomic, strong) UIImage                       *returnPicture;
+
+////////////////////////////////////////////////// ->  Take a shot
+
+@property (nonatomic, copy
+           ) NGCameraViewCapturedImageCallback callback;
 
 - (void)didRotateInterface:(id)message;
 
 @end
 
-@implementation NGCameraView
+@implementation NGCameraView {
+    BOOL letsNotTriggerIt;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -70,23 +78,12 @@
 		[self.currentSession addInput:deviceInput];
 
     // Make a video data output
-	self.videoDataOutput = [AVCaptureVideoDataOutput new];
+	self.stillCapture = [AVCaptureStillImageOutput new];
+    self.captureQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
+
 	
-    // we want BGRA, both CoreGraphics and OpenGL work well with 'BGRA'
-	NSDictionary *rgbOutputSettings = [NSDictionary dictionaryWithObject:
-									   [NSNumber numberWithInt:kCMPixelFormat_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey];
-    
-	[self.videoDataOutput setVideoSettings:rgbOutputSettings];
-    
-    // create a serial dispatch queue used for the sample buffer delegate as well as when a still image is captured
-    // a serial dispatch queue must be used to guarantee that video frames will be delivered in order
-    // see the header doc for setSampleBufferDelegate:queue: for more information
-	self.videoDataDispatchQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
-	[_videoDataOutput setSampleBufferDelegate:self queue:self.videoDataDispatchQueue];
-	
-    if ( [_currentSession canAddOutput:_videoDataOutput] )
-		[_currentSession addOutput:_videoDataOutput];
-	[[_videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:NO];
+    if ( [_currentSession canAddOutput:self.stillCapture ])
+		[_currentSession addOutput:self.stillCapture ];
     
     _previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_currentSession];
     [_previewLayer setVideoGravity:AVLayerVideoGravityResizeAspect];
@@ -118,12 +115,58 @@
     _previewLayer.frame = self.bounds;
 }
 
+- (void)takePicture:(NGCameraViewCapturedImageCallback)callback {
+    
+    if (self.callback) {
+        return;
+    }
+    
+    self.callback = callback;
+    [self _reallyTakePicture];
+    
+}
+
+- (void)returnImage:(UIImage *)image withError:(NSError *)err {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.callback(image,err);
+        self.callback = nil;
+    });
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
+- (AVCaptureVideoOrientation)avOrientationForDeviceOrientation:(UIDeviceOrientation)deviceOrientation
+{
+	AVCaptureVideoOrientation result = deviceOrientation;
+	if ( deviceOrientation == UIDeviceOrientationLandscapeLeft )
+		result = AVCaptureVideoOrientationLandscapeRight;
+	else if ( deviceOrientation == UIDeviceOrientationLandscapeRight )
+		result = AVCaptureVideoOrientationLandscapeLeft;
+	return result;
+}
+
+- (void)_reallyTakePicture {
+
+    NSLog(@"Called... how many times?");
     
+    AVCaptureConnection *stillImageConnection = [self.stillCapture connectionWithMediaType:AVMediaTypeVideo];
+    
+    NSDictionary * prefs = [NSDictionary dictionaryWithObject:AVVideoCodecJPEG forKey:AVVideoCodecKey];
+    [self.stillCapture setOutputSettings:prefs];
+    
+    UIDeviceOrientation curDeviceOrientation = [[UIDevice currentDevice] orientation];
+	AVCaptureVideoOrientation avcaptureOrientation = [self avOrientationForDeviceOrientation:curDeviceOrientation];
+	[stillImageConnection setVideoOrientation:avcaptureOrientation];
+    
+    [self.stillCapture captureStillImageAsynchronouslyFromConnection:stillImageConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
+        if(imageDataSampleBuffer == nil) return;
+        
+        NSData *jpegData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+        UIImage * resultImage = [[UIImage alloc] initWithData:jpegData];
+        [self returnImage:resultImage withError:error];        
+    }];
 }
 
 @end

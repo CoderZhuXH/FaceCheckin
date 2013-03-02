@@ -8,12 +8,14 @@
 
 #import "NGCameraViewController.h"
 #import "UILabel+NGExtensions.h"
+#import "NGCameraView.h"
 
 #import "NGUserPanelController.h"
 
 @interface NGCameraViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *alignFaceLabel;
+@property (weak, nonatomic) IBOutlet NGCameraView *cameraView;
 
 - (void)longPressToLoad:(id)someData;
 
@@ -34,17 +36,39 @@
 {
     [super viewDidLoad];
     
-    UILongPressGestureRecognizer * longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressToLoad:)];
+    UILongPressGestureRecognizer * recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    recognizer.minimumPressDuration = 2.0f;
     
-    [longPress setNumberOfTouchesRequired:1];
-    [self.view addGestureRecognizer:longPress];
+    [self.view addGestureRecognizer:recognizer];
     
+    NSLog(@"viewDidLoad on object %@", self.description);
     [self.alignFaceLabel fitTextToWidth:self.alignFaceLabel.frame.size.width forFontName:@"GothamNarrow-Medium"];
 	// Do any additional setup after loading the view.
 }
 
+-  (void)handleLongPress:(UILongPressGestureRecognizer*)sender {
+    if (sender.state == UIGestureRecognizerStateEnded) {
+
+    }
+    else if (sender.state == UIGestureRecognizerStateBegan){
+        [self longPressToLoad:nil];
+    }
+}
+
 - (void)longPressToLoad:(id)someData {
+    NSLog(@"longPressToLoad on object %@", self.description);
+    
+    [self.cameraView takePicture:^(UIImage *capturedImage, NSError *error) {
+        [self doSomethingWithImage:capturedImage];
+    }];
+}
+
+- (void)doSomethingWithImage:(UIImage *)image {
+    
+    NSLog(@"doSomethingWithImage on object %@", self.description);
+    
     NGUserPanelController * controller = [NGUserPanelController new];
+    controller.imageToShow = image;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

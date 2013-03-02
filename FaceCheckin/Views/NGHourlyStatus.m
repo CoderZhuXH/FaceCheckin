@@ -32,15 +32,18 @@
 @property (nonatomic, strong) NGCheckinFactory  * checkinFactory;
 @property (nonatomic, assign) CGFloat           pixelsPerMinute;
 
-////////////////////////////// -> Instance methods of Interest
+@property (nonatomic, strong) NSDate            * upperBound;
+@property (nonatomic, strong) NSDate            * lowerBound;
 
-- (CGFloat)minutesPerPixel;
+////////////////////////////// -> Instance methods of Interest
 
 @end
 
 @implementation NGHourlyStatus {
     NSDate * _currentStart;
     NSDate * _currentEnd;
+    
+    CGFloat deltaPixels;
 }
 
 - (void)customInit {
@@ -54,6 +57,12 @@
     
     self.checkins = [NSArray array];
     self.checkinFactory = [NGCheckinFactory new];
+    
+    NSDate * date = [NSDate date];
+    date = [date dateByStrippingHours];
+    
+    self.lowerBound= [date dateByAddingHours:6.0];
+    self.upperBound  = [self.lowerBound dateByAddingHours:12.0];
 }
 
 - (void)coreTimer:(NGCoreTimer *)timer timerChanged:(id)changedData {
@@ -79,15 +88,16 @@
     [self.checkinInterval setClockInDate:_currentStart];
     
     if(self.checkins.count == 0) {
-        [self.checkinInterval setPositionOnSlider:0];
+        self.pixelsPerMinute = [self.upperBound pixelPerMinuteInTimeIntervalSinceDate:self.lowerBound forPixels:self.checkinSlider.frame.size.width];
         
-        NSDate * endLine = [_currentStart dateByAddingDays:1];
-        self.pixelsPerMinute = [endLine pixelPerMinuteInTimeIntervalSinceDate:_currentStart forPixels:self.checkinSlider.frame.size.width];
+        CGFloat delta = [_currentStart minutesBySubtracting:self.lowerBound];
+        deltaPixels = delta * self.pixelsPerMinute;
+        [self.checkinInterval setPositionOnSlider:deltaPixels];
         
     } else {
         CGFloat minutesSirMinutes =  [_currentStart secondsBySubtracting:self.checkinFactory.startDate] / 60.0f;
         CGFloat xPos = self.pixelsPerMinute * minutesSirMinutes;
-        [self.checkinInterval setPositionOnSlider:xPos];
+        [self.checkinInterval setPositionOnSlider:deltaPixels + xPos];
         NSLog(@"The break took: %f minutes!", (CGFloat)[_currentStart secondsBySubtracting:_currentEnd] / 60);
     }
     

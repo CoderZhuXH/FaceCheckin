@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface NGCameraView : UIView<AVCaptureVideoDataOutputSampleBufferDelegate>
+typedef void(^NGCameraViewCapturedImageCallback)(UIImage * capturedImage, NSError * error);
+
+@interface NGCameraView : UIView
+
+- (void)takePicture:(NGCameraViewCapturedImageCallback)callback;
 
 @end

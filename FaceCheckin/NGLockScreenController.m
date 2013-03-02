@@ -54,7 +54,7 @@
 
 - (IBAction)onTap:(id)sender {
     
-    NGCameraViewController * vc = [[NGCameraViewController alloc] init];
+    NGCameraViewController * vc = [[NGCameraViewController alloc] initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:vc animated:NO];
 }
 @end
