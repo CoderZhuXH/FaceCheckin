@@ -8,7 +8,6 @@
 
 #import "NGCameraViewController.h"
 #import "UILabel+NGExtensions.h"
-#import "NGCameraView.h"
 
 #import "NGUserPanelController.h"
 
@@ -16,12 +15,18 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *alignFaceLabel;
 @property (weak, nonatomic) IBOutlet NGCameraView *cameraView;
+@property (weak, nonatomic) IBOutlet UIImageView *faceSquareView;
+
+@property (strong, nonatomic) NSTimer * capturingIn;
 
 - (void)longPressToLoad:(id)someData;
 
 @end
 
-@implementation NGCameraViewController
+@implementation NGCameraViewController {
+    NSDate * _startedCapturing;
+    BOOL stillInImage;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,37 +41,38 @@
 {
     [super viewDidLoad];
     
-    UILongPressGestureRecognizer * recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    recognizer.minimumPressDuration = 2.0f;
+    self.cameraView.delegate = self;
     
-    [self.view addGestureRecognizer:recognizer];
-    
-    NSLog(@"viewDidLoad on object %@", self.description);
     [self.alignFaceLabel fitTextToWidth:self.alignFaceLabel.frame.size.width forFontName:@"GothamNarrow-Medium"];
 	// Do any additional setup after loading the view.
 }
 
--  (void)handleLongPress:(UILongPressGestureRecognizer*)sender {
-    if (sender.state == UIGestureRecognizerStateEnded) {
-
-    }
-    else if (sender.state == UIGestureRecognizerStateBegan){
+- (void)cameraView:(NGCameraView *)view faceFoundInFrame:(CGRect)frame {
+    
+    BOOL contains = CGRectContainsRect(self.faceSquareView.frame, frame);
+    
+    if(contains) {
         [self longPressToLoad:nil];
     }
 }
 
-- (void)longPressToLoad:(id)someData {
-    NSLog(@"longPressToLoad on object %@", self.description);
+-(void)viewWillAppear:(BOOL)animated {
     
+    double delayInSeconds = 1.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        self.cameraView.faceCaptureEnabled = YES;
+    });
+}
+
+- (void)longPressToLoad:(id)someData {
     [self.cameraView takePicture:^(UIImage *capturedImage, NSError *error) {
         [self doSomethingWithImage:capturedImage];
+        self.cameraView.faceCaptureEnabled = NO;
     }];
 }
 
 - (void)doSomethingWithImage:(UIImage *)image {
-    
-    NSLog(@"doSomethingWithImage on object %@", self.description);
-    
     NGUserPanelController * controller = [NGUserPanelController new];
     controller.imageToShow = image;
     [self.navigationController pushViewController:controller animated:YES];

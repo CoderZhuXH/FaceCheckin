@@ -8,6 +8,8 @@
 
 #import "NGBaseViewController.h"
 
-@interface NGCameraViewController : NGBaseViewController
+#import "NGCameraView.h"
+
+@interface NGCameraViewController : NGBaseViewController<NGCameraViewDelegate>
 
 @end

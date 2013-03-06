@@ -13,3 +13,16 @@
     #import <Foundation/Foundation.h>
     #import "MMExceptionUtils.h"
 #endif
+
+#define kLambdaLabsAuthKey @"Rv64hxfBEkx178BZ3ElB49gSVq5y0gK2"
+#define kLambdaLabsProdKey @"cVMsa1xkzqRxdkubXnrYZthuwvulaEpt"
+
+#define kSkyBiomettyAppName     @"NEOGOV_TEST"
+#define kSkyBiometryAPIKey      @"d7a5baa964904cb886edd580833e39eb"
+#define kSkyBiometryAPISecret   @"6d0be5ea3bf049c4b983c4a7be523d64"
+
+
+/* bruno tid 00fe0135_286501df138b5 
+ BrunoBulic@NG_TEST
+ 
+ */

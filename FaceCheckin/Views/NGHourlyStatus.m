@@ -62,7 +62,7 @@
     date = [date dateByStrippingHours];
     
     self.lowerBound= [date dateByAddingHours:6.0];
-    self.upperBound  = [self.lowerBound dateByAddingHours:12.0];
+    self.upperBound  = [self.lowerBound dateByAddingHours:15.0];
 }
 
 - (void)coreTimer:(NGCoreTimer *)timer timerChanged:(id)changedData {

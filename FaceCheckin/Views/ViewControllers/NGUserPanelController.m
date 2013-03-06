@@ -9,6 +9,11 @@
 #import "NGUserPanelController.h"
 #import "NGDailyReportCellObject.h"
 #import "NGHourlyStatus.h"
+#import "NGEmployeeData.h"
+
+#import "NGFaceRecognitionResult.h"
+#import "NGFaceRecognitionAlbum.h"
+#import "NGImageRecognizer.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -57,6 +62,22 @@
 {
     [super viewDidLoad];
     
+    UITapGestureRecognizer * r = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap:)];
+    [self.imageView addGestureRecognizer:r];
+    
+    /*
+    NSData * imageData = UIImagePNGRepresentation(self.imageToShow);
+    
+    [NGFaceRecognitionResult getRecognitionResulsForImageData:imageData forNameSpace:@"NG_TEST" withResult:^(NGFaceRecognitionResult *result, NSError *error) {
+        
+    }];*/
+    
+    [NGEmployeeData getEmployeeDataForEncryptedID:@"28902ae038ce43c0bfbff78dad1bad5a" forCallback:^(NGEmployeeData *data, NSError *error) {
+        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:data.id message:[NSString stringWithFormat:@"%@ %@ - %@",data.firstName, data.lastName, data.email] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [alertView show];
+    }];
+    
     self.loginArray = [NGDailyReportCellObject cellObjectsFromReportData:[NGDailyReportCellObject mockSomeData]];
     self.dataSource = [[CUCellDataSource alloc] initWithArray:self.loginArray withDelegate:self];
     
@@ -76,6 +97,10 @@
 
     
 	// Do any additional setup after loading the view.
+}
+
+- (void)onTap:(id)tap {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (UITableViewCell *)CUTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath forObject:(id)userData {
