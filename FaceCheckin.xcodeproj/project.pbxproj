@@ -79,6 +79,7 @@
 		70C7C9DB16E183AC001EE73F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C9D316E175E6001EE73F /* CoreMedia.framework */; };
 		70FC568A16E6C13500E313D0 /* NGHRCloudApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC568916E6C13500E313D0 /* NGHRCloudApi.m */; };
 		70FC568D16E6C87800E313D0 /* NGEmployeeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC568C16E6C87800E313D0 /* NGEmployeeData.m */; };
+		70FC569116E6D7A700E313D0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC569016E6D7A700E313D0 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -209,6 +210,8 @@
 		70FC568916E6C13500E313D0 /* NGHRCloudApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGHRCloudApi.m; sourceTree = "<group>"; };
 		70FC568B16E6C87800E313D0 /* NGEmployeeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGEmployeeData.h; sourceTree = "<group>"; };
 		70FC568C16E6C87800E313D0 /* NGEmployeeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGEmployeeData.m; sourceTree = "<group>"; };
+		70FC568F16E6D7A700E313D0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		70FC569016E6D7A700E313D0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -492,6 +495,7 @@
 			isa = PBXGroup;
 			children = (
 				7049A3A616E5818C00900216 /* AFNetworking */,
+				70FC568E16E6D7A700E313D0 /* Loading */,
 				70C7C99516DFDBFA001EE73F /* TableViewFramework */,
 			);
 			path = Frameworks;
@@ -578,6 +582,15 @@
 				70FC568C16E6C87800E313D0 /* NGEmployeeData.m */,
 			);
 			path = HRCloud;
+			sourceTree = "<group>";
+		};
+		70FC568E16E6D7A700E313D0 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				70FC568F16E6D7A700E313D0 /* MBProgressHUD.h */,
+				70FC569016E6D7A700E313D0 /* MBProgressHUD.m */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -743,6 +756,7 @@
 				7049A3D216E66A3600900216 /* UIImage+NGExtensions.m in Sources */,
 				70FC568A16E6C13500E313D0 /* NGHRCloudApi.m in Sources */,
 				70FC568D16E6C87800E313D0 /* NGEmployeeData.m in Sources */,
+				70FC569116E6D7A700E313D0 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

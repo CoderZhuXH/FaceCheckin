@@ -15,6 +15,8 @@
 #import "NGFaceRecognitionAlbum.h"
 #import "NGImageRecognizer.h"
 
+#import "MBProgressHUD.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 @interface NGUserPanelController ()
@@ -25,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet NGHourlyStatus *hourlyStatusManager;
 @property (weak, nonatomic) IBOutlet UITableView *dataLoginView;
+
+@property (nonatomic, strong) MBProgressHUD * loadingHud;
 
 @end
 
@@ -65,17 +69,15 @@
     UITapGestureRecognizer * r = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap:)];
     [self.imageView addGestureRecognizer:r];
     
-    /*
     NSData * imageData = UIImagePNGRepresentation(self.imageToShow);
     
-    [NGFaceRecognitionResult getRecognitionResulsForImageData:imageData forNameSpace:@"NG_TEST" withResult:^(NGFaceRecognitionResult *result, NSError *error) {
-        
-    }];*/
+    self.loadingHud  = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.loadingHud.mode            = MBProgressHUDAnimationFade;
+    self.loadingHud.labelText       = @"Identifying person...";
     
-    [NGEmployeeData getEmployeeDataForEncryptedID:@"28902ae038ce43c0bfbff78dad1bad5a" forCallback:^(NGEmployeeData *data, NSError *error) {
-        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:data.id message:[NSString stringWithFormat:@"%@ %@ - %@",data.firstName, data.lastName, data.email] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        
-        [alertView show];
+    [NGFaceRecognitionResult getRecognitionResulsForImageData:imageData forNameSpace:@"NG_TEST" withResult:^(NGFaceRecognitionResult *result, NSError *error) {
+        self.loadingHud.labelText = @"Loading person data... almost there!";
+        [self loadUserDetailsByEncryptedId:@"28902ae038ce43c0bfbff78dad1bad5a"];
     }];
     
     self.loginArray = [NGDailyReportCellObject cellObjectsFromReportData:[NGDailyReportCellObject mockSomeData]];
@@ -97,6 +99,14 @@
 
     
 	// Do any additional setup after loading the view.
+}
+
+- (void)loadUserDetailsByEncryptedId:(NSString *)encryptedId {
+    
+    [NGEmployeeData getEmployeeDataForEncryptedID:encryptedId forCallback:^(NGEmployeeData *data, NSError *error) {
+        self.loadingHud.labelText = [NSString stringWithFormat:@"Complete! Hello, %@", data.firstName];
+        [self.loadingHud hide:YES afterDelay:1.5f];
+    }];
 }
 
 - (void)onTap:(id)tap {

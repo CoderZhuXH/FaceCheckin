@@ -31,9 +31,8 @@
     
     AFHTTPRequestOperation * op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         
-//        NGFaceRecognitionResult * result = [[NGFaceRecognitionResult alloc] initWithDictionary:JSON];
         NSLog(@"I have: %@",[JSON description]);
-//        cblk(result,nil);
+        cblk(nil,nil);
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         cblk(nil,error);
