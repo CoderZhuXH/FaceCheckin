@@ -16,7 +16,9 @@ typedef void(^NGEmployeeDataCallback)(NGEmployeeData * data, NSError * error);
 
 @interface NGEmployeeData : NGDomainObjectBase
 
-+(void)getEmployeeDataForEncryptedID:(NSString *)eid forCallback:(NGEmployeeDataCallback)callback;
++ (void)getEmployeeDataForEncryptedID:(NSString *)eid forCallback:(NGEmployeeDataCallback)callback;
+
++ (NSString *)encryptedIdForId:(NSString *)skyBiometryId;
 
 PROP_NRO NSString * id;
 PROP_NRO NSString * uri;

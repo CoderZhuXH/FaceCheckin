@@ -14,6 +14,20 @@
 
 @implementation NGFaceRecognitionResult
 
+
+
+#ifdef DEBUG
+
++ (NSDictionary *)mockedData {
+    NSString * pathOfMock = [[NSBundle mainBundle] pathForResource:@"MockResponse" ofType:@"json"];
+    NSData * stringData = [[NSString stringWithContentsOfFile:pathOfMock encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
+    id JSON = [NSJSONSerialization JSONObjectWithData:stringData options:0 error:nil];
+    return (NSDictionary *)JSON;
+}
+
+#endif
+
+
 + (void)getRecognitionResulsForImageData:(NSData *)imageData forNameSpace:(NSString *)nameSpace withResult:(NGFaceRecognitionCallback)cblk {
     
     NSMutableDictionary * postArguments = [
@@ -31,9 +45,10 @@
     
     AFHTTPRequestOperation * op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         
-        NSLog(@"I have: %@",[JSON description]);
-        cblk(nil,nil);
-        
+        NSLog(@"Got data: %@", JSON);
+        NGFaceRecognitionResult * result = [[NGFaceRecognitionResult alloc] initWithDictionary:JSON withUserData:nameSpace];
+        cblk(result, nil);
+
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         cblk(nil,error);
     }];
@@ -41,21 +56,52 @@
     [op start];
 }
 
-@end
-
-@implementation NGFaceRecognitionUUID
-
-- (id)initWithDictionary:(NSDictionary *)dictionary
-{
-    self = [super initWithDictionary:dictionary];
+- (id)initWithDictionary:(NSDictionary *)dictionary withUserData:(id)object {
+    self = [self initWithDictionary:dictionary];
     if (self) {
-        
-        _confidence = [[dictionary valueForKey:@"confidence"] floatValue];
-        _predictedPictureId = [dictionary objectForKey:@"prediction"];
-        _imageUUID = [dictionary objectForKey:@"uid"];
+        _nameSpace = (NSString *)object;
     }
+    
     return self;
 }
+
+- (id)initWithDictionary:(NSDictionary *)dictionary {
+    if (self = [super initWithDictionary:dictionary]) {
+        _result = [dictionary objectForKey:jkSkyBiometryResultField];
+        _usage = [dictionary objectForKey:jkSkyBiometryUsageField];
+        NSArray * array = [dictionary objectForKey:jkSkyBiometryPhotosField];
+        
+        // @array MUST HAVE a count == 1. I'm sending just one picture anyway.
+        NSAssert(array.count == 1, @"I didn't send more than one picture, DAFUQ here?");
+        
+        _photos = [[self class] parsePhotosToFields:array];
+    }
+    
+    return self;
+}
+
+// Private
++ (NSArray *)parsePhotosToFields:(id)photosObject {
+    
+    NSAssert(photosObject != nil, @"Photos object must exist here.");
+    NSAssert([photosObject isKindOfClass:[NSArray class]], @"Passed object must be a NSArray, and not a %@", NSStringFromClass([photosObject class]));
+    
+    NSMutableArray * results = [NSMutableArray arrayWithCapacity:[photosObject count]];
+    
+    for (NSDictionary * jsonElement in photosObject) {
+        NGFaceRecognitionPhotoResult * result = [[NGFaceRecognitionPhotoResult alloc] initWithDictionary:jsonElement];
+        [results addObject:result];
+    }
+    
+    return (results);
+}
+
+@end
+
+@interface NGFaceRecognitionPhotoResult ()
+
+@property (nonatomic, strong) NSArray * tags;
+@property (nonatomic, strong) NSArray * uuidsInPicture;
 
 @end
 
@@ -68,29 +114,33 @@
         _width = [[dictionary objectForKey:@"width"] integerValue];
         _height = [[dictionary objectForKey:@"height"] integerValue];
         _imgUrlString = [dictionary objectForKey:@"url"];
-        _tags = [dictionary objectForKey:@"tags"];
+        self.tags = [dictionary objectForKey:@"tags"];
+        
+        _facesOnPicture = self.tags.count;
+        
+        self.uuidsInPicture = [self ngFaceRecognitionUUIDs];
+        
     }
     return self;
 }
 
 - (NSArray *)ngFaceRecognitionUUIDs {
     
-    NSArray * uids = nil;
+    NSMutableArray * allUids = [NSMutableArray array];
     
     // get from Tag Array
     for (NSDictionary * tag in self.tags) {
         
-        id obj = [tag objectForKey:@"uids"];
-        if (obj && [obj isKindOfClass:[NSArray class]]){
-            uids = obj;
-            break;
+        NSArray * arraysOfUids = [tag objectForKey:@"uids"];
+        for (NSDictionary * dict in arraysOfUids) {
+            [allUids addObject:dict];
         }
     }
     
-    NSMutableArray * resultArray = [NSMutableArray arrayWithCapacity:uids.count];
+    NSMutableArray * resultArray = [NSMutableArray arrayWithCapacity:allUids.count];
     
     // parse into NGFaceRecognitionUUIDs
-    for (NSDictionary * uid in uids) {
+    for (NSDictionary * uid in allUids) {
         NGFaceRecognitionUUID * uuid = [[NGFaceRecognitionUUID alloc] initWithDictionary:uid];
         [resultArray addObject:uuid];
     }
@@ -98,5 +148,59 @@
     return [NSArray arrayWithArray:resultArray];
 }
 
+-(NSArray *)getUUIDsForNamespace:(NSString *)nameSpace {
+    NSMutableArray * newArray = [NSMutableArray array];
+    
+    for (NGFaceRecognitionUUID * uuid in self.uuidsInPicture) {
+        
+        if([uuid.uid hasSuffix:nameSpace]) {
+            [newArray addObject:uuid];
+        }
+        
+    }
+    
+    // always return immutable sh1te
+    return [NSArray arrayWithArray:[newArray sortedArrayUsingSelector:@selector(compareByConfidence:)]];
+}
 
 @end
+
+@implementation NGFaceRecognitionUUID {
+    NSString * strippedUuidCache;
+}
+
+- (id)initWithDictionary:(NSDictionary *)dictionary
+{
+    self = [super initWithDictionary:dictionary];
+    if (self) {
+        
+        _confidence = [[dictionary objectForKey:@"confidence"] integerValue];
+        _uid = [dictionary objectForKey:@"uid"];
+
+        NSArray * stringArray = [_uid componentsSeparatedByString:@"@"];
+        strippedUuidCache = [stringArray objectAtIndex:0];
+        _nameSpace = [stringArray objectAtIndex:1];
+    }
+    
+    return self;
+}
+
+- (NSString *)strippedUid {
+    return strippedUuidCache;
+}
+
+- (NSComparisonResult)compareByConfidence:(NGFaceRecognitionUUID *)otherObject {
+    
+    int result;
+    
+    if (self.confidence < otherObject.confidence)
+        result = NSOrderedAscending;
+    else if (self.confidence  > otherObject.confidence)
+        result = NSOrderedDescending;
+    else
+        result = NSOrderedSame;
+    
+    return -result;
+}
+@end
+

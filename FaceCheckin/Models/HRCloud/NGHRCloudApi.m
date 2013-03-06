@@ -13,8 +13,10 @@
 
 @implementation NGHRCloudApi
 
+static NGHRCloudApi * _backing;
+
 + (NGHRCloudApi *)sharedApi {
-    static NGHRCloudApi * _backing;
+
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _backing = [[NGHRCloudApi alloc] initWithBaseURL:[NSURL URLWithString:kNGHRCloudApiBaseUrl]];

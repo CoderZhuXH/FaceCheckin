@@ -76,8 +76,37 @@
     self.loadingHud.labelText       = @"Identifying person...";
     
     [NGFaceRecognitionResult getRecognitionResulsForImageData:imageData forNameSpace:@"NG_TEST" withResult:^(NGFaceRecognitionResult *result, NSError *error) {
-        self.loadingHud.labelText = @"Loading person data... almost there!";
-        [self loadUserDetailsByEncryptedId:@"28902ae038ce43c0bfbff78dad1bad5a"];
+
+        NGFaceRecognitionPhotoResult * res = [result.photos objectAtIndex:0];
+        NSArray * frUUIDs = [res getUUIDsForNamespace:result.nameSpace];
+        
+        
+        if(res.facesOnPicture != 1) {
+            [self.loadingHud hide:YES];
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Multiple faces found!" message:@"We're sorry, but there's more then one face on the picture. Please repeat the photograph!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+            return;
+        }
+        
+        
+        NGFaceRecognitionUUID * firstObject = [frUUIDs objectAtIndex:0];
+        
+        if(firstObject) {
+            if (firstObject.confidence > 80) {
+                NSString * employeeHiddenId = [NGEmployeeData encryptedIdForId:firstObject.strippedUid];
+                [self loadUserDetailsByEncryptedId:employeeHiddenId];
+                self.loadingHud.labelText = @"Person found! Loading person data...";
+            } else {
+                [self.loadingHud hide:YES];
+                UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Cannot find people in picutre" message:@"We may have found a person we know, but our system is not accurate enough to determine it is exactly you. " delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [av show];
+
+            }
+        } else {
+            [self.loadingHud hide:YES];
+            UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Cannot find people in picutre" message:@"We're sorry, but our System cannot identify the person in the image. Please retake the photo to try again!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+        }
     }];
     
     self.loginArray = [NGDailyReportCellObject cellObjectsFromReportData:[NGDailyReportCellObject mockSomeData]];

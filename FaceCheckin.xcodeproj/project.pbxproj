@@ -80,6 +80,7 @@
 		70FC568A16E6C13500E313D0 /* NGHRCloudApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC568916E6C13500E313D0 /* NGHRCloudApi.m */; };
 		70FC568D16E6C87800E313D0 /* NGEmployeeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC568C16E6C87800E313D0 /* NGEmployeeData.m */; };
 		70FC569116E6D7A700E313D0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC569016E6D7A700E313D0 /* MBProgressHUD.m */; };
+		70FC569316E7F7D000E313D0 /* MockResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 70FC569216E7F7D000E313D0 /* MockResponse.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +213,7 @@
 		70FC568C16E6C87800E313D0 /* NGEmployeeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGEmployeeData.m; sourceTree = "<group>"; };
 		70FC568F16E6D7A700E313D0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		70FC569016E6D7A700E313D0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		70FC569216E7F7D000E313D0 /* MockResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockResponse.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -580,6 +582,7 @@
 				70FC568916E6C13500E313D0 /* NGHRCloudApi.m */,
 				70FC568B16E6C87800E313D0 /* NGEmployeeData.h */,
 				70FC568C16E6C87800E313D0 /* NGEmployeeData.m */,
+				70FC569216E7F7D000E313D0 /* MockResponse.json */,
 			);
 			path = HRCloud;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				70C7C9B016DFE671001EE73F /* NGDailyReportCell.xib in Resources */,
 				70C7C9C816E02738001EE73F /* NGHourlyStatus.xib in Resources */,
 				70C7C9CB16E06B34001EE73F /* NGCheckinInterval.xib in Resources */,
+				70FC569316E7F7D000E313D0 /* MockResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
