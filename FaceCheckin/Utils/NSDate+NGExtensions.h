@@ -23,10 +23,12 @@
 - (NSInteger)secondsBySubtracting:(NSDate *)other;
 - (NSInteger)minutesBySubtracting:(NSDate *)date;
 
-- (NSDate *)dateByAddingDays:(NSUInteger)days;
-- (NSDate *)dateByAddingHours:(NSUInteger)hours;
+- (NSDate *)dateByAddingDays:(NSInteger)days;
+- (NSDate *)dateByAddingHours:(NSInteger)hours;
 
 - (CGFloat)pixelPerMinuteInTimeIntervalSinceDate:(NSDate *)date forPixels:(CGFloat)pixels;
+
+- (NSArray *)entireWeekFromDate;
 
 
 

@@ -48,14 +48,14 @@
 - (NSInteger)minutesBySubtracting:(NSDate *)date {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSInteger cEnum = NSMinuteCalendarUnit;
-
+    
     NSDateComponents * components = [gregorian components:cEnum fromDate:date toDate:self options:0];
     return components.minute;
 }
 
-- (NSDate *)dateByAddingDays:(NSUInteger)days {
+- (NSDate *)dateByAddingDays:(NSInteger)days {
     NSDate *now = self;
-    int daysToAdd = days;  // or 60 :-)
+    NSInteger daysToAdd = days;  // or 60 :-)
     
     // set up date components
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -70,12 +70,32 @@
     return newDate2;
 }
 
+- (NSArray *)entireWeekFromDate {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    [gregorian setLocale:[NSLocale systemLocale]];
+    
+    NSDateComponents *weekdayComponents =[gregorian components:NSWeekdayCalendarUnit fromDate:self];
+    NSInteger weekday = weekdayComponents.weekday;
+    
+    NSDate * firstDayOfWeek = [self dateByAddingDays:-weekday];
+    
+    NSMutableArray * array = [NSMutableArray arrayWithCapacity:7];
+    [array addObject:firstDayOfWeek];
+    
+    for (uint8_t i = 1; i < 7; i++) {
+        
+        [array addObject:[firstDayOfWeek dateByAddingDays:i]];
+    }
+    
+    return [NSArray arrayWithArray:array];
+}
+
 - (CGFloat)pixelPerMinuteInTimeIntervalSinceDate:(NSDate *)date forPixels:(CGFloat)pixels {
     NSUInteger minutesDelta = [self secondsBySubtracting:date] / 60.0f;
     return pixels/minutesDelta; // pixels for minute
 }
 
--(NSDate *)dateByAddingHours:(NSUInteger)hours {
+-(NSDate *)dateByAddingHours:(NSInteger)hours {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -83,7 +103,6 @@
     
     return [gregorian dateByAddingComponents:components toDate:self options:0];
 }
-
 
 @end
 

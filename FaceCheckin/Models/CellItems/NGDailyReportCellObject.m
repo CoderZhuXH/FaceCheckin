@@ -32,30 +32,30 @@
     
     NSMutableArray * arrayOfData = [NSMutableArray arrayWithCapacity:7];
     
-    NSDate * date = [[NSDate date] dateByStrippingHours];
+    NSArray * array = [[NSDate date] entireWeekFromDate];
     
-    for(uint i = 1;i <= 7;i++) {
+    
+    for (NSDate * singleDate in array) {
         
+        NSDate * workingDate = [[singleDate dateByStrippingHours] dateByAddingHours:8];
         NSUInteger numberOfCheckins = arc4random_uniform(3)+1;
-        NSMutableArray * arrayOfCheckins = [NSMutableArray arrayWithCapacity:numberOfCheckins];
         
-        date = [date dateByAddingTimeInterval:HOURS(8)];
+        NSMutableArray * arrayOfCheckins = [NSMutableArray arrayWithCapacity:numberOfCheckins];
         
         for (uint k = 0; k < numberOfCheckins; k++) {
             
             CGFloat hours = 2 + arc4random_uniform(180)/60.0f;
             
-            NSDate * date2 = [date dateByAddingTimeInterval:HOURS(hours)];
+            NSDate * date2 = [workingDate dateByAddingTimeInterval:HOURS(hours)];
             
-            NGCheckinData * data = [[NGCheckinData alloc] initWithCheckIn:date andCheckout:date2];
+            NGCheckinData * data = [[NGCheckinData alloc] initWithCheckIn:workingDate andCheckout:date2];
             [arrayOfCheckins addObject:data];
             
-            date = [date2 dateByAddingTimeInterval:MINUTES(arc4random_uniform(30)+15)];
+            workingDate = [date2 dateByAddingTimeInterval:MINUTES(arc4random_uniform(30)+15)];
         }
         
-        date = [[[NSDate date] dateByAddingTimeInterval:i*HOURS(24)] dateByStrippingHours];
-        
         NGDailyDataMock * mockery = [[NGDailyDataMock alloc] initWithCheckins:arrayOfCheckins];
+
         [arrayOfData addObject:mockery];
     }
     
