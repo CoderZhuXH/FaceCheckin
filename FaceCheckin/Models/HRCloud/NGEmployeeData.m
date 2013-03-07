@@ -16,7 +16,7 @@ static NSDictionary * _imageRecognizerTranslator;
 
 + (void)initialize {
     if(self == [NGEmployeeData class]) {
-        _imageRecognizerTranslator = @{@"BrunoAlfirevic" : @"34d47b567419a34d8c0c39de5b060d4c", @"BrunoBulic" : @"28902ae038ce43c0bfbff78dad1bad5a"};
+        _imageRecognizerTranslator = @{@"BrunoAlfirevic" : @"28902ae038ce43c0bfbff78dad1bad5a", @"BrunoBulic" : @"34d47b567419a34d8c0c39de5b060d4c"};
     }
 }
 
@@ -59,6 +59,36 @@ static NSDictionary * _imageRecognizerTranslator;
         _firstName          = [dictionary   objectForKey:@"firstname"];
         _lastName           = [dictionary   objectForKey:@"lastname"];
         _email              = [dictionary   objectForKey:@"email"];
+        _evaluationCycleDate= [dictionary   objectForKey:@"evaluationcycledate"];
+        _position           = [[NGEmployeePosition alloc] initWithDictionary:[dictionary objectForKey:@"position"]];
+        
+        // BONUSSSSSSSSS
+        _fastEmployeeNumber = [_employeeNumber integerValue];
+    }
+    return self;
+}
+
+@end
+
+
+/*  "position": {
+        "id": "b505d97d6f037bb77cb93430400b1e91",
+        "uri": "http://api.qa.neogov.net/rest/position/b505d97d6f037bb77cb93430400b1e91",
+        "code": "SSE",
+        "title": "Senior Software Engineer"
+    },
+ */
+
+@implementation NGEmployeePosition
+
+- (id)initWithDictionary:(NSDictionary *)dictionary
+{
+    self = [super initWithDictionary:dictionary];
+    if (self) {
+        _positionId = [dictionary objectForKey:@"id"];
+        _uri        = [dictionary objectForKey:@"uri"];
+        _code       = [dictionary objectForKey:@"code"];
+        _title      = [dictionary objectForKey:@"title"];
     }
     return self;
 }

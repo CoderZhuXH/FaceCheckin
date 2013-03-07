@@ -9,13 +9,16 @@
 #import "NGUserPanelController.h"
 #import "NGDailyReportCellObject.h"
 #import "NGHourlyStatus.h"
+
 #import "NGEmployeeData.h"
+#import "NGCloudObjectAPI.h"
 
 #import "NGFaceRecognitionResult.h"
 #import "NGFaceRecognitionAlbum.h"
 #import "NGImageRecognizer.h"
 
 #import "MBProgressHUD.h"
+#import "NGProfileInfo.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -27,6 +30,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet NGHourlyStatus *hourlyStatusManager;
 @property (weak, nonatomic) IBOutlet UITableView *dataLoginView;
+
+@property (weak, nonatomic) IBOutlet NGProfileInfo *profileInfoView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 
 @property (nonatomic, strong) MBProgressHUD * loadingHud;
 
@@ -56,9 +62,9 @@
 
 - (void)updateCheckinButtonText {
     if(self.hourlyStatusManager.sessionInProgress) {
-        [self.checkinButton setTitle:@"ULTIMATE CLOCK OUT BUTTON" forState:UIControlStateNormal];
+        [self.checkinButton setTitle:@"CLOCK OUT" forState:UIControlStateNormal];
     } else {
-        [self.checkinButton setTitle:@"ULTIMATE CLOCK IN BUTTON" forState:UIControlStateNormal];
+        [self.checkinButton setTitle:@"CLOCK IN" forState:UIControlStateNormal];
     }
 }
 
@@ -119,7 +125,6 @@
     lyr.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.8 alpha:1].CGColor;
     
     [self.dataLoginView.layer addSublayer:lyr];
-    
     [self.dataLoginView reloadData];
     
     [self updateCheckinButtonText];
@@ -133,8 +138,34 @@
 - (void)loadUserDetailsByEncryptedId:(NSString *)encryptedId {
     
     [NGEmployeeData getEmployeeDataForEncryptedID:encryptedId forCallback:^(NGEmployeeData *data, NSError *error) {
-        self.loadingHud.labelText = [NSString stringWithFormat:@"Complete! Hello, %@", data.firstName];
+
+        [self.loadingIndicator stopAnimating];
+        [self.profileInfoView loadPerfsFromProfile:data];
+        self.profileInfoView.hidden = NO;
+        
+        if (error == nil) {
+            self.loadingHud.labelText = [NSString stringWithFormat:@"Hello, %@! Loading Your clockin data...", data.firstName];
+            [self loadCloudObject:@"Time_Clock" forUser:data];
+        } else {
+            self.loadingHud.labelText = [NSString stringWithFormat:@"Failed loading user data... aborting.", nil];
+            [self.loadingHud hide:YES afterDelay:1.5f];
+        }
+        
+    }];
+}
+
+- (void)loadCloudObject:(NSString *)cloudObjectId forUser:(NGEmployeeData *)employee {
+    
+    [NGCloudObject getCloudObjects:cloudObjectId withCallback:^(NSArray *cloudObjects, NSError *error) {
+        self.loadingHud.labelText = [NSString stringWithFormat:@"And we're done! You can now clock in normally.", nil];
         [self.loadingHud hide:YES afterDelay:1.5f];
+        
+        NSArray * cloudObjectsForEmployee = [cloudObjects cloudObjectsForEmployeeNumberFast:employee.fastEmployeeNumber];
+        
+        for (NGCloudObject * cloudObject in cloudObjectsForEmployee) {
+            NSLog(@"Loading %@ for %@", cloudObject.cloudObject, cloudObject.employeeName);
+        }
+        
     }];
 }
 

@@ -81,6 +81,10 @@
 		70FC568D16E6C87800E313D0 /* NGEmployeeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC568C16E6C87800E313D0 /* NGEmployeeData.m */; };
 		70FC569116E6D7A700E313D0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC569016E6D7A700E313D0 /* MBProgressHUD.m */; };
 		70FC569316E7F7D000E313D0 /* MockResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 70FC569216E7F7D000E313D0 /* MockResponse.json */; };
+		70FC569616E80DBD00E313D0 /* NGProfileInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70FC569516E80DBD00E313D0 /* NGProfileInfo.xib */; };
+		70FC569B16E811CF00E313D0 /* NGProfileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC569A16E811CF00E313D0 /* NGProfileInfo.m */; };
+		70FC569D16E81EF500E313D0 /* sssymboliconsblock.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70FC569C16E81EF500E313D0 /* sssymboliconsblock.ttf */; };
+		70FC56A016E8269F00E313D0 /* NGCloudObjectAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC569F16E8269F00E313D0 /* NGCloudObjectAPI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,6 +218,12 @@
 		70FC568F16E6D7A700E313D0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		70FC569016E6D7A700E313D0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		70FC569216E7F7D000E313D0 /* MockResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockResponse.json; sourceTree = "<group>"; };
+		70FC569516E80DBD00E313D0 /* NGProfileInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NGProfileInfo.xib; sourceTree = "<group>"; };
+		70FC569916E811CF00E313D0 /* NGProfileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGProfileInfo.h; sourceTree = "<group>"; };
+		70FC569A16E811CF00E313D0 /* NGProfileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGProfileInfo.m; sourceTree = "<group>"; };
+		70FC569C16E81EF500E313D0 /* sssymboliconsblock.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sssymboliconsblock.ttf; sourceTree = "<group>"; };
+		70FC569E16E8269F00E313D0 /* NGCloudObjectAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGCloudObjectAPI.h; sourceTree = "<group>"; };
+		70FC569F16E8269F00E313D0 /* NGCloudObjectAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGCloudObjectAPI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +272,8 @@
 				70C7C9C916E02DB0001EE73F /* NGColorSchema.h */,
 				70C7C9CC16E06B6D001EE73F /* NGCheckinInterval.h */,
 				70C7C9CF16E13A43001EE73F /* NGCheckinInterval.m */,
+				70FC569916E811CF00E313D0 /* NGProfileInfo.h */,
+				70FC569A16E811CF00E313D0 /* NGProfileInfo.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -330,6 +342,7 @@
 		7046BD9A16DD454D0077BB39 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				70FC569C16E81EF500E313D0 /* sssymboliconsblock.ttf */,
 				7046BDAA16DD4F4A0077BB39 /* GothamNarrow-Medium.otf */,
 				7046BDA016DD477C0077BB39 /* GothamNarrow-Bold.otf */,
 				7046BDA116DD477C0077BB39 /* GothamNarrow-Book.otf */,
@@ -474,6 +487,7 @@
 		70C7C98016DFD000001EE73F /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
+				70FC569416E80D9E00E313D0 /* Controls */,
 				70C7C9AE16DFE652001EE73F /* Cells */,
 				70C7C98116DFD000001EE73F /* NGCameraViewController.xib */,
 				70C7C98216DFD000001EE73F /* NGLockScreenController.xib */,
@@ -583,6 +597,8 @@
 				70FC568B16E6C87800E313D0 /* NGEmployeeData.h */,
 				70FC568C16E6C87800E313D0 /* NGEmployeeData.m */,
 				70FC569216E7F7D000E313D0 /* MockResponse.json */,
+				70FC569E16E8269F00E313D0 /* NGCloudObjectAPI.h */,
+				70FC569F16E8269F00E313D0 /* NGCloudObjectAPI.m */,
 			);
 			path = HRCloud;
 			sourceTree = "<group>";
@@ -594,6 +610,14 @@
 				70FC569016E6D7A700E313D0 /* MBProgressHUD.m */,
 			);
 			path = Loading;
+			sourceTree = "<group>";
+		};
+		70FC569416E80D9E00E313D0 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				70FC569516E80DBD00E313D0 /* NGProfileInfo.xib */,
+			);
+			path = Controls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -686,6 +710,7 @@
 				70C7C9C816E02738001EE73F /* NGHourlyStatus.xib in Resources */,
 				70C7C9CB16E06B34001EE73F /* NGCheckinInterval.xib in Resources */,
 				70FC569316E7F7D000E313D0 /* MockResponse.json in Resources */,
+				70FC569616E80DBD00E313D0 /* NGProfileInfo.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -696,6 +721,7 @@
 				709EC22F16DBEF99005F891C /* InfoPlist.strings in Resources */,
 				7046BDA316DD477C0077BB39 /* GothamNarrow-Bold.otf in Resources */,
 				7046BDA516DD477C0077BB39 /* GothamNarrow-Book.otf in Resources */,
+				70FC569D16E81EF500E313D0 /* sssymboliconsblock.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,6 +787,8 @@
 				70FC568A16E6C13500E313D0 /* NGHRCloudApi.m in Sources */,
 				70FC568D16E6C87800E313D0 /* NGEmployeeData.m in Sources */,
 				70FC569116E6D7A700E313D0 /* MBProgressHUD.m in Sources */,
+				70FC569B16E811CF00E313D0 /* NGProfileInfo.m in Sources */,
+				70FC56A016E8269F00E313D0 /* NGCloudObjectAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,8 +27,9 @@
 
 #endif
 
-
 + (void)getRecognitionResulsForImageData:(NSData *)imageData forNameSpace:(NSString *)nameSpace withResult:(NGFaceRecognitionCallback)cblk {
+    
+    /*
     
     NSMutableDictionary * postArguments = [
   @{@"uids"    : @"all",
@@ -54,6 +55,18 @@
     }];
     
     [op start];
+     
+     */
+    
+    id JSON = [[self class] mockedData];
+    NSLog(@"Got data: %@", JSON);
+    NGFaceRecognitionResult * result = [[NGFaceRecognitionResult alloc] initWithDictionary:JSON withUserData:nameSpace];
+    
+    double delayInSeconds = 1.0f + arc4random_uniform(120)/60.0f;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        cblk(result, nil);
+    });
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary withUserData:(id)object {
