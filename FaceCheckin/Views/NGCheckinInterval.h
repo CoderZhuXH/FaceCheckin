@@ -14,7 +14,7 @@
 
 
 - (void)setClockInDate:(NSDate *)date;
-- (void)setClockOutDate:(NSDate *)date pixelsPerMinute:(CGFloat)ppm;
+- (CGFloat)setClockOutDate:(NSDate *)date pixelsPerMinute:(CGFloat)ppm;
 
 - (void)setPositionOnSlider:(CGFloat)xCoord;
 

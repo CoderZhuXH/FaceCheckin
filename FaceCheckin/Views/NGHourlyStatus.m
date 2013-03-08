@@ -10,6 +10,7 @@
 #import "NSDate+NGExtensions.h"
 #import "UILabel+NGExtensions.h"
 #import "NGCheckinData.h"
+#import "NGDailyTimeClockData.h"
 #import "NGCheckinInterval.h"
 
 #import <QuartzCore/QuartzCore.h>
@@ -36,6 +37,11 @@
 @property (nonatomic, strong) NSDate            * lowerBound;
 
 ////////////////////////////// -> Instance methods of Interest
+
+- (void)clockInWithForcedDate:(NSDate *)date;
+- (void)clockOutWithForcedDate:(NSDate *)date;
+
+- (void)drawCursorForDate:(NSDate *)date;
 
 @end
 
@@ -76,7 +82,38 @@
     self.timeLabel.text = [formatter stringFromDate:date].uppercaseString;
 }
 
+- (void)loadCheckinData:(NGDailyTimeClockData *)data {
+    
+    for (NGCheckinData * datum in data.checkins) {
+        [self clockInWithForcedDate:datum.checkIn];
+        
+        if(datum.checkOut != nil) {
+            [self clockOutWithForcedDate:datum.checkOut];
+        } else {
+            [self drawCursorForDate:[NSDate date]];
+        }
+    }
+}
+
 - (void)clockIn {
+    [self clockInWithForcedDate:[self.checkinFactory clockIn]];
+}
+
+- (void)clockOut {
+    [self clockOutWithForcedDate:[self.checkinFactory clockOut]];
+}
+
+- (void)clockInWithForcedDate:(NSDate *)date {
+    _currentStart = date;
+    [self clockInActual];
+}
+
+- (void)clockOutWithForcedDate:(NSDate *)date {
+    _currentEnd = date;
+    [self clockOutActual];
+}
+
+- (void)clockInActual{
     
     if(self.sessionInProgress) {
         return;
@@ -84,7 +121,6 @@
     
     self.checkinInterval = [[NGCheckinInterval alloc] init];
     
-    _currentStart = [self.checkinFactory clockIn];
     [self.checkinInterval setClockInDate:_currentStart];
     
     if(self.checkins.count == 0) {
@@ -105,13 +141,11 @@
     _sessionInProgress = YES;
 }
 
-- (void)clockOut {
+- (void)clockOutActual {
     
     if(!self.sessionInProgress) {
         return;
     }
-    
-    _currentEnd = [self.checkinFactory clockOut];
     
     NGCheckinData * data = [[NGCheckinData alloc] initWithCheckIn:_currentStart andCheckout:_currentEnd];
     self.checkins = [self.checkins arrayByAddingObject:data];
@@ -120,6 +154,10 @@
     [self.checkinInterval setClockOutDate:_currentEnd pixelsPerMinute:self.pixelsPerMinute];
     
     _sessionInProgress = NO;
+}
+
+- (void)drawCursorForDate:(NSDate *)date {
+    
 }
 
 - (NSArray *)checkinData {

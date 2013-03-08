@@ -66,7 +66,7 @@
 		70C7C9B016DFE671001EE73F /* NGDailyReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C7C9AF16DFE671001EE73F /* NGDailyReportCell.xib */; };
 		70C7C9B416DFE826001EE73F /* NGDailyReportCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9B316DFE826001EE73F /* NGDailyReportCellObject.m */; };
 		70C7C9B816DFEACD001EE73F /* NGDomainObjectBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9B716DFEACD001EE73F /* NGDomainObjectBase.m */; };
-		70C7C9BB16DFEB08001EE73F /* NGDailyDataMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9BA16DFEB08001EE73F /* NGDailyDataMock.m */; };
+		70C7C9BB16DFEB08001EE73F /* NGDailyTimeClockData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9BA16DFEB08001EE73F /* NGDailyTimeClockData.m */; };
 		70C7C9BE16DFEB57001EE73F /* NGCheckinData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9BD16DFEB57001EE73F /* NGCheckinData.m */; };
 		70C7C9C316E021C0001EE73F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C9C216E021C0001EE73F /* QuartzCore.framework */; };
 		70C7C9C616E02724001EE73F /* NGHourlyStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9C516E02724001EE73F /* NGHourlyStatus.m */; };
@@ -85,6 +85,14 @@
 		70FC569B16E811CF00E313D0 /* NGProfileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC569A16E811CF00E313D0 /* NGProfileInfo.m */; };
 		70FC569D16E81EF500E313D0 /* sssymboliconsblock.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70FC569C16E81EF500E313D0 /* sssymboliconsblock.ttf */; };
 		70FC56A016E8269F00E313D0 /* NGCloudObjectAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC569F16E8269F00E313D0 /* NGCloudObjectAPI.m */; };
+		70FC56DD16E9213900E313D0 /* Calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 70FC56D716E9213900E313D0 /* Calendar.png */; };
+		70FC56DE16E9213900E313D0 /* Calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70FC56D816E9213900E313D0 /* Calendar@2x.png */; };
+		70FC56DF16E9213900E313D0 /* Clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 70FC56D916E9213900E313D0 /* Clock.png */; };
+		70FC56E016E9213900E313D0 /* Clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70FC56DA16E9213900E313D0 /* Clock@2x.png */; };
+		70FC56E116E9213900E313D0 /* Cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 70FC56DB16E9213900E313D0 /* Cross.png */; };
+		70FC56E216E9213900E313D0 /* Cross@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70FC56DC16E9213900E313D0 /* Cross@2x.png */; };
+		70FC56E516E93A4600E313D0 /* TimeClockMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 70FC56E416E93A4600E313D0 /* TimeClockMock.json */; };
+		70FC56E616E93C5300E313D0 /* TimeClockMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 70FC56E416E93A4600E313D0 /* TimeClockMock.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,8 +202,8 @@
 		70C7C9B316DFE826001EE73F /* NGDailyReportCellObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGDailyReportCellObject.m; sourceTree = "<group>"; };
 		70C7C9B616DFEACD001EE73F /* NGDomainObjectBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGDomainObjectBase.h; sourceTree = "<group>"; };
 		70C7C9B716DFEACD001EE73F /* NGDomainObjectBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGDomainObjectBase.m; sourceTree = "<group>"; };
-		70C7C9B916DFEB08001EE73F /* NGDailyDataMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGDailyDataMock.h; sourceTree = "<group>"; };
-		70C7C9BA16DFEB08001EE73F /* NGDailyDataMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGDailyDataMock.m; sourceTree = "<group>"; };
+		70C7C9B916DFEB08001EE73F /* NGDailyTimeClockData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGDailyTimeClockData.h; sourceTree = "<group>"; };
+		70C7C9BA16DFEB08001EE73F /* NGDailyTimeClockData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGDailyTimeClockData.m; sourceTree = "<group>"; };
 		70C7C9BC16DFEB57001EE73F /* NGCheckinData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGCheckinData.h; sourceTree = "<group>"; };
 		70C7C9BD16DFEB57001EE73F /* NGCheckinData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGCheckinData.m; sourceTree = "<group>"; };
 		70C7C9C216E021C0001EE73F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -224,6 +232,13 @@
 		70FC569C16E81EF500E313D0 /* sssymboliconsblock.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sssymboliconsblock.ttf; sourceTree = "<group>"; };
 		70FC569E16E8269F00E313D0 /* NGCloudObjectAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGCloudObjectAPI.h; sourceTree = "<group>"; };
 		70FC569F16E8269F00E313D0 /* NGCloudObjectAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGCloudObjectAPI.m; sourceTree = "<group>"; };
+		70FC56D716E9213900E313D0 /* Calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Calendar.png; sourceTree = "<group>"; };
+		70FC56D816E9213900E313D0 /* Calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar@2x.png"; sourceTree = "<group>"; };
+		70FC56D916E9213900E313D0 /* Clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clock.png; sourceTree = "<group>"; };
+		70FC56DA16E9213900E313D0 /* Clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Clock@2x.png"; sourceTree = "<group>"; };
+		70FC56DB16E9213900E313D0 /* Cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cross.png; sourceTree = "<group>"; };
+		70FC56DC16E9213900E313D0 /* Cross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cross@2x.png"; sourceTree = "<group>"; };
+		70FC56E416E93A4600E313D0 /* TimeClockMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TimeClockMock.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -468,6 +483,7 @@
 		709EC22A16DBEF99005F891C /* FaceCheckinTests */ = {
 			isa = PBXGroup;
 			children = (
+				70FC56E316E93A2000E313D0 /* Resources */,
 				709EC23016DBEF9A005F891C /* FaceCheckinTests.h */,
 				709EC23116DBEF9A005F891C /* FaceCheckinTests.m */,
 				709EC22B16DBEF99005F891C /* Supporting Files */,
@@ -501,6 +517,7 @@
 		70C7C98F16DFD68A001EE73F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				70FC56D616E9213900E313D0 /* Icons */,
 				70C7C99016DFD68A001EE73F /* square.png */,
 				70C7C99116DFD68A001EE73F /* square@2x.png */,
 			);
@@ -546,8 +563,8 @@
 				7049A3C316E5833B00900216 /* APIs */,
 				70C7C9B516DFEACD001EE73F /* Base */,
 				70C7C9B116DFE806001EE73F /* CellItems */,
-				70C7C9B916DFEB08001EE73F /* NGDailyDataMock.h */,
-				70C7C9BA16DFEB08001EE73F /* NGDailyDataMock.m */,
+				70C7C9B916DFEB08001EE73F /* NGDailyTimeClockData.h */,
+				70C7C9BA16DFEB08001EE73F /* NGDailyTimeClockData.m */,
 				70C7C9BC16DFEB57001EE73F /* NGCheckinData.h */,
 				70C7C9BD16DFEB57001EE73F /* NGCheckinData.m */,
 			);
@@ -618,6 +635,27 @@
 				70FC569516E80DBD00E313D0 /* NGProfileInfo.xib */,
 			);
 			path = Controls;
+			sourceTree = "<group>";
+		};
+		70FC56D616E9213900E313D0 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				70FC56D716E9213900E313D0 /* Calendar.png */,
+				70FC56D816E9213900E313D0 /* Calendar@2x.png */,
+				70FC56D916E9213900E313D0 /* Clock.png */,
+				70FC56DA16E9213900E313D0 /* Clock@2x.png */,
+				70FC56DB16E9213900E313D0 /* Cross.png */,
+				70FC56DC16E9213900E313D0 /* Cross@2x.png */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		70FC56E316E93A2000E313D0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				70FC56E416E93A4600E313D0 /* TimeClockMock.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -692,6 +730,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70FC56E616E93C5300E313D0 /* TimeClockMock.json in Resources */,
 				709EC20B16DBEF99005F891C /* InfoPlist.strings in Resources */,
 				709EC21316DBEF99005F891C /* Default.png in Resources */,
 				709EC21516DBEF99005F891C /* Default@2x.png in Resources */,
@@ -711,6 +750,12 @@
 				70C7C9CB16E06B34001EE73F /* NGCheckinInterval.xib in Resources */,
 				70FC569316E7F7D000E313D0 /* MockResponse.json in Resources */,
 				70FC569616E80DBD00E313D0 /* NGProfileInfo.xib in Resources */,
+				70FC56DD16E9213900E313D0 /* Calendar.png in Resources */,
+				70FC56DE16E9213900E313D0 /* Calendar@2x.png in Resources */,
+				70FC56DF16E9213900E313D0 /* Clock.png in Resources */,
+				70FC56E016E9213900E313D0 /* Clock@2x.png in Resources */,
+				70FC56E116E9213900E313D0 /* Cross.png in Resources */,
+				70FC56E216E9213900E313D0 /* Cross@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,6 +767,7 @@
 				7046BDA316DD477C0077BB39 /* GothamNarrow-Bold.otf in Resources */,
 				7046BDA516DD477C0077BB39 /* GothamNarrow-Book.otf in Resources */,
 				70FC569D16E81EF500E313D0 /* sssymboliconsblock.ttf in Resources */,
+				70FC56E516E93A4600E313D0 /* TimeClockMock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,7 +813,7 @@
 				70C7C9AD16DFE63E001EE73F /* NGDailyReportCell.m in Sources */,
 				70C7C9B416DFE826001EE73F /* NGDailyReportCellObject.m in Sources */,
 				70C7C9B816DFEACD001EE73F /* NGDomainObjectBase.m in Sources */,
-				70C7C9BB16DFEB08001EE73F /* NGDailyDataMock.m in Sources */,
+				70C7C9BB16DFEB08001EE73F /* NGDailyTimeClockData.m in Sources */,
 				70C7C9BE16DFEB57001EE73F /* NGCheckinData.m in Sources */,
 				70C7C9C616E02724001EE73F /* NGHourlyStatus.m in Sources */,
 				70C7C9D016E13A43001EE73F /* NGCheckinInterval.m in Sources */,

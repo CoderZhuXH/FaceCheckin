@@ -11,6 +11,7 @@
 
 
 @class NGCheckinData;
+@class NGDailyTimeClockData;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -24,6 +25,8 @@
 
 - (void)clockIn;
 - (void)clockOut;
+
+- (void)loadCheckinData:(NGDailyTimeClockData *)data;
 
 - (NSArray *)checkinData;
 

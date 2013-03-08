@@ -8,6 +8,7 @@
 
 #import "NGUserPanelController.h"
 #import "NGDailyReportCellObject.h"
+#import "NGDailyTimeClockData.h"
 #import "NGHourlyStatus.h"
 
 #import "NGEmployeeData.h"
@@ -20,11 +21,15 @@
 #import "MBProgressHUD.h"
 #import "NGProfileInfo.h"
 
+#import "NSDate+NGExtensions.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 @interface NGUserPanelController ()
 
+@property (nonatomic, strong) NSArray * checkinsArrayFromAPI;
 @property (nonatomic, strong) NSArray * loginArray;
+
 @property (nonatomic, strong) CUCellDataSource * dataSource;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -77,7 +82,7 @@
     
     NSData * imageData = UIImagePNGRepresentation(self.imageToShow);
     
-    self.loadingHud  = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.loadingHud                 = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.loadingHud.mode            = MBProgressHUDAnimationFade;
     self.loadingHud.labelText       = @"Identifying person...";
     
@@ -93,7 +98,6 @@
             [av show];
             return;
         }
-        
         
         NGFaceRecognitionUUID * firstObject = [frUUIDs objectAtIndex:0];
         
@@ -115,17 +119,15 @@
         }
     }];
     
-    self.loginArray = [NGDailyReportCellObject cellObjectsFromReportData:[NGDailyReportCellObject mockSomeData]];
-    self.dataSource = [[CUCellDataSource alloc] initWithArray:self.loginArray withDelegate:self];
-    
-    self.dataLoginView.dataSource = self.dataSource;
+    self.checkinsArrayFromAPI   = [NGDailyTimeClockData getPlaceholders];
+    [self reloadDataSource];
     
     CALayer * lyr = [CALayer layer];
     lyr.frame = CGRectMake(0, 0, self.dataLoginView.frame.size.width, 1);
     lyr.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.8 alpha:1].CGColor;
-    
+
     [self.dataLoginView.layer addSublayer:lyr];
-    [self.dataLoginView reloadData];
+
     
     [self updateCheckinButtonText];
     
@@ -141,6 +143,9 @@
 
         [self.loadingIndicator stopAnimating];
         [self.profileInfoView loadPerfsFromProfile:data];
+        
+        self.profileInfoView.profileImage = self.imageToShow;
+        
         self.profileInfoView.hidden = NO;
         
         if (error == nil) {
@@ -156,17 +161,83 @@
 
 - (void)loadCloudObject:(NSString *)cloudObjectId forUser:(NGEmployeeData *)employee {
     
-    [NGCloudObject getCloudObjects:cloudObjectId withCallback:^(NSArray *cloudObjects, NSError *error) {
+    [NGTimeClockCloudObject getCloudObjectWithCallback:^(NSArray *cloudObjects, NSError *error) {
         self.loadingHud.labelText = [NSString stringWithFormat:@"And we're done! You can now clock in normally.", nil];
         [self.loadingHud hide:YES afterDelay:1.5f];
         
         NSArray * cloudObjectsForEmployee = [cloudObjects cloudObjectsForEmployeeNumberFast:employee.fastEmployeeNumber];
+        NSArray * arrOfDailyTimeClockData = [NGDailyTimeClockData createDailyClockDataFromCloudObjects:cloudObjectsForEmployee]; // we have data... BITCH!
         
-        for (NGCloudObject * cloudObject in cloudObjectsForEmployee) {
-            NSLog(@"Loading %@ for %@", cloudObject.cloudObject, cloudObject.employeeName);
+        
+        NSDate * startWatchDate = [[self.checkinsArrayFromAPI objectAtIndex:0] dayInfo];
+        
+        NSInteger startIndex = -1;
+        
+        for(int i = 0; i < arrOfDailyTimeClockData.count; i++) {
+            NGDailyTimeClockData * data = [arrOfDailyTimeClockData objectAtIndex:i];
+            
+            if(startIndex < 0) {
+                
+                if(DATE_GT_OR_EQUAL(data.dayInfo, startWatchDate) ) {
+                    startIndex = i;
+                    break;
+                }
+            }
         }
         
+        if(startIndex < 0) return;
+        
+        NSInteger counter = 0;
+        CGFloat hours = 0;
+        
+        NSDate * today = [[NSDate date] dateByStrippingHours];
+        NGDailyTimeClockData * todayData;
+        
+        for(int i = startIndex; i < arrOfDailyTimeClockData.count && i < startIndex + 7; i++) {
+            
+            NGDailyTimeClockData * data = [self.checkinsArrayFromAPI objectAtIndex:counter ++];
+            NGDailyTimeClockData * apiData = [arrOfDailyTimeClockData objectAtIndex:i];
+            
+            if([data.dayInfo compare:apiData.dayInfo] != NSOrderedSame)
+            {
+                i--;
+                continue;
+            }
+            
+            for (NGCheckinData * cData in apiData.checkins) {
+                BOOL wereCool = [data insertCheckinData:cData];
+                NSAssert(wereCool, @"Inserting Checkin data of %@ to %@. Wrong.", apiData.dayInfo, data.dayInfo);
+            }
+            
+            hours += data.hours;
+            
+            if([apiData.dayInfo compare:today] == NSOrderedSame) {
+                todayData = data;
+            }
+        }
+        
+        if(todayData) {
+            [self.hourlyStatusManager loadCheckinData:todayData];
+        }
+        
+        self.profileInfoView.hoursWorked = hours;
+        [self reloadDataSource];
+        
     }];
+}
+
+- (void)commitCheckin:(NGCheckinData *)checkinData {
+    
+}
+
+- (void)reloadDataSource {
+    NSAssert(self.checkinsArrayFromAPI != nil, @"self.checkinsArrayFromAPI cannot be nil");
+    
+    self.loginArray             = [NGDailyReportCellObject cellObjectsFromReportData:self.checkinsArrayFromAPI];
+    self.dataSource             = [[CUCellDataSource alloc] initWithArray:self.loginArray withDelegate:self];
+    
+    self.dataLoginView.dataSource = self.dataSource;
+    [self.dataLoginView reloadData];
 }
 
 - (void)onTap:(id)tap {

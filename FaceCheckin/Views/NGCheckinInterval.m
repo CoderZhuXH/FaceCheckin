@@ -70,7 +70,7 @@
     self.inTime.text = [self _formatDate:self.startDate];
 }
 
-- (void)setClockOutDate:(NSDate *)date pixelsPerMinute:(CGFloat)ppm {
+- (CGFloat)setClockOutDate:(NSDate *)date pixelsPerMinute:(CGFloat)ppm {
     self.endDate = date;
     
     NSInteger minutesSirMinutes = [self.endDate minutesBySubtracting:self.startDate];
@@ -88,6 +88,8 @@
     self.outTime.hidden     = NO;
     
     self.outTime.text = [self _formatDate:self.endDate];
+    
+    return minutesSirMinutes * ppm;
 }
 
 @end

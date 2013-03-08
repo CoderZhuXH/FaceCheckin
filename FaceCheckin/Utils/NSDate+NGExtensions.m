@@ -72,18 +72,19 @@
 
 - (NSArray *)entireWeekFromDate {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    [gregorian setLocale:[NSLocale systemLocale]];
+    NSLocale * locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    
+    [gregorian setLocale:locale];
     
     NSDateComponents *weekdayComponents =[gregorian components:NSWeekdayCalendarUnit fromDate:self];
     NSInteger weekday = weekdayComponents.weekday;
     
-    NSDate * firstDayOfWeek = [self dateByAddingDays:-weekday];
+    NSDate * firstDayOfWeek = [self dateByAddingDays:-weekday+2]; // first get it to zero and then add 2 days because monday is on index 2.
     
     NSMutableArray * array = [NSMutableArray arrayWithCapacity:7];
     [array addObject:firstDayOfWeek];
     
     for (uint8_t i = 1; i < 7; i++) {
-        
         [array addObject:[firstDayOfWeek dateByAddingDays:i]];
     }
     

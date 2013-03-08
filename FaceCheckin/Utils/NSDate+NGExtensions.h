@@ -30,6 +30,7 @@
 
 - (NSArray *)entireWeekFromDate;
 
-
+#define DATE_GT_OR_EQUAL(x,y) ([x compare:y] == NSOrderedDescending || [x compare:y] == NSOrderedSame)
+#define DATE_LT_OR_EQUAL(x,y) ([x compare:y] == NSOrderedAscending || [x compare:y] == NSOrderedSame)
 
 @end

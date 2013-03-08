@@ -9,7 +9,7 @@
 #import "NGDailyReportCellObject.h"
 #import "NGDailyReportCell.h"
 
-#import "NGDailyDataMock.h"
+#import "NGDailyTimeClockData.h"
 #import "NSDate+NGExtensions.h"
 #import "NGCheckinData.h"
 
@@ -21,7 +21,7 @@
     
     NSMutableArray * arr = [NSMutableArray arrayWithCapacity:reportData.count];
     
-    for (NGDailyDataMock * mocked in reportData) {
+    for (NGDailyTimeClockData * mocked in reportData) {
         NGDailyReportCellObject * obj = [[NGDailyReportCellObject alloc] initWithDailyReport:mocked];
         [arr addObject:obj];
     }
@@ -33,7 +33,6 @@
     NSMutableArray * arrayOfData = [NSMutableArray arrayWithCapacity:7];
     
     NSArray * array = [[NSDate date] entireWeekFromDate];
-    
     
     for (NSDate * singleDate in array) {
         
@@ -54,7 +53,7 @@
             workingDate = [date2 dateByAddingTimeInterval:MINUTES(arc4random_uniform(30)+15)];
         }
         
-        NGDailyDataMock * mockery = [[NGDailyDataMock alloc] initWithCheckins:arrayOfCheckins];
+        NGDailyTimeClockData * mockery = [[NGDailyTimeClockData alloc] initWithCheckins:arrayOfCheckins];
 
         [arrayOfData addObject:mockery];
     }

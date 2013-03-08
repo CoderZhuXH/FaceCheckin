@@ -70,7 +70,6 @@ static NSDictionary * _imageRecognizerTranslator;
 
 @end
 
-
 /*  "position": {
         "id": "b505d97d6f037bb77cb93430400b1e91",
         "uri": "http://api.qa.neogov.net/rest/position/b505d97d6f037bb77cb93430400b1e91",

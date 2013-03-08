@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CUCellFramework.h"
 
-@class NGDailyDataMock;
+@class NGDailyTimeClockData;
 
 @interface NGDailyReportCellObject : NSObject<CUCellItem>
 
@@ -21,6 +21,6 @@
 + (NSArray *)cellObjectsFromReportData:(NSArray *)reportData;
 
 /// Daily report data. id currenlty, but will type-safe it after creating an object
-@property (nonatomic, strong, readonly) NGDailyDataMock * dailyReportData;
+@property (nonatomic, strong, readonly) NGDailyTimeClockData * dailyReportData;
 
 @end

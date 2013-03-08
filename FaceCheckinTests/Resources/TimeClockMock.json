@@ -1,0 +1,42 @@
+ [
+  {
+  "Id": "db2288b141fda136664f2366f5ca57af",
+  "Employee_Number": "001",
+  "Employee_Name": "Alexander Graham Bell AGB",
+  "Date": "3/5/2013",
+  "Day_of_Week": "Tue",
+  "Time_In_Txt": "10:00",
+  "Time_out_Txt": "14:00",
+  "Hours_Worked": "4.00"
+  },
+  {
+  "Id": "db2288b141fda1369e351bc5fbe69c50",
+  "Employee_Number": "001",
+  "Employee_Name": "Alexander Graham Bell AGB",
+  "Date": "3/4/2013",
+  "Day_of_Week": "Mon",
+  "Time_In_Txt": "10:00",
+  "Time_out_Txt": "14:00",
+  "Hours_Worked": "4.00"
+  },
+  {
+  "Id": "db2288b141fda136534aa9f8efcae2bb",
+  "Employee_Number": "9420",
+  "Employee_Name": "Andre Agassi",
+  "Date": "3/5/2013",
+  "Day_of_Week": "Tue",
+  "Time_In_Txt": "13:00",
+  "Time_out_Txt": "14:00",
+  "Hours_Worked": "1.00"
+  },
+  {
+  "Id": "db2288b141fda13600bc0f7627274899",
+  "Employee_Number": "39022",
+  "Employee_Name": "Goran Ivanesevic",
+  "Date": "3/6/2013",
+  "Day_of_Week": "Wed",
+  "Time_In_Txt": "13:00",
+  "Time_out_Txt": "14:00",
+  "Hours_Worked": "1.00"
+  }
+]

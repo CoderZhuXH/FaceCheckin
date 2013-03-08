@@ -8,7 +8,7 @@
 
 #import "NGDailyReportCell.h"
 #import "NGDailyReportCellObject.h"
-#import "NGDailyDataMock.h"
+#import "NGDailyTimeClockData.h"
 
 #import "UILabel+NGExtensions.h"
 #import <QuartzCore/QuartzCore.h>
@@ -57,7 +57,18 @@
         [string addAttribute:NSForegroundColorAttributeName value:[UIColor darkGrayColor] range:NSMakeRange(0, 4)];
         
         self.datumField.attributedText = string;
-        self.hoursField.text = [NSString stringWithFormat:@"%.2f", [mock.dailyReportData hours]];
+        
+        if(mock.dailyReportData.hours == 0)
+        {
+            self.hoursField.text = @"--";
+
+        }
+        else
+        {
+            self.hoursField.text = [NSString stringWithFormat:@"%.2f", [mock.dailyReportData hours]];
+
+        }
+        
     }
     
     return shouldUpdate;
