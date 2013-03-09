@@ -36,7 +36,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        self.hoursField.font = self.datumField.font = [UIFont fontWithName:@"GothamNarrow-Medium" size:24];
+        self.datumField.font = [UIFont fontWithName:@"GothamNarrow-Book" size:24];
+        self.hoursField.font = [UIFont fontWithName:@"GothamNarrow-Bold" size:24];
+
     }
     return self;
 }
@@ -54,7 +56,9 @@
         NSString * weekday = [formatter stringFromDate:mock.dailyReportData.objectDate];
         
         NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:weekday];
-        [string addAttribute:NSForegroundColorAttributeName value:[UIColor darkGrayColor] range:NSMakeRange(0, 4)];
+        
+        UIColor * colorWithHsv = [UIColor colorWithHue:53.0f/360.0f saturation:0.05f brightness:0.69f alpha:1.0];
+        [string addAttribute:NSForegroundColorAttributeName value:colorWithHsv range:NSMakeRange(0, 4)];
         
         self.datumField.attributedText = string;
         

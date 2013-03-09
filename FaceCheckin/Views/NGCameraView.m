@@ -82,7 +82,11 @@
         }
     }
     
+#if TARGET_IPHONE_SIMULATOR
+    return;
+#else
     NSAssert(device != nil, @"Device cannot be nil here.");
+#endif
     
 	AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
     
@@ -250,7 +254,7 @@
 
 - (void)drawFeatures:(NSArray *)features inRectangle:(CGRect)rect withAperture:(CGSize)apertureSize {
     if (!self.faceRectangle) {
-        self.faceRectangle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"square"]];
+        self.faceRectangle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"FaceBox"]];
         [self.faceRectangle setContentMode:UIViewContentModeScaleAspectFill];
         [self addSubview:self.faceRectangle];
     }
@@ -266,8 +270,8 @@
         
         newFrame.origin.x       =  feature.origin.x     * deltas.width;
         newFrame.origin.y       =  feature.origin.y     * deltas.height;
-        newFrame.size.height    =  feature.size.height  * deltas.height;
-        newFrame.size.width     =  feature.size.width   * deltas.width;
+        newFrame.size.height    =  feature.size.height  * deltas.height * 0.66;
+        newFrame.size.width     =  feature.size.width   * deltas.width * 0.66;
     }
 
     if(features.count == 0) {

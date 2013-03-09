@@ -12,11 +12,14 @@
 #import "NGHourlyStatus.h"
 
 #import "NGEmployeeData.h"
+
 #import "NGCloudObjectAPI.h"
+#import "NGTimeClockCloudObject.h"
 
 #import "NGFaceRecognitionResult.h"
 #import "NGFaceRecognitionAlbum.h"
 #import "NGImageRecognizer.h"
+#import "NGCheckinData.h"
 
 #import "MBProgressHUD.h"
 #import "NGProfileInfo.h"
@@ -41,6 +44,13 @@
 
 @property (nonatomic, strong) MBProgressHUD * loadingHud;
 
+@property (nonatomic, strong) NGTimeClockCloudObject * todayData;
+@property (nonatomic, strong) NGDailyTimeClockData * todayTableSlot;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *totalHours;
+@property (weak, nonatomic) IBOutlet UILabel *totalHoursReal;
+
 @end
 
 @implementation NGUserPanelController
@@ -57,9 +67,31 @@
 - (IBAction)doCheckin:(id)sender {
     
     if(self.hourlyStatusManager.sessionInProgress) {
-        [self.hourlyStatusManager clockOut];
+        self.todayData.dateCheckingOut   = [self.hourlyStatusManager clockOut];
     } else {
-        [self.hourlyStatusManager clockIn];
+        self.todayData.dateCheckingIn  = [self.hourlyStatusManager clockIn];
+    }
+    
+    if([self.todayData isReadyToSend]) {
+        [self.todayData uploadData:^(NSError *error) {
+            
+            NGCheckinData * data = [[NGCheckinData alloc] initWithCheckIn:self.todayData.dateCheckingIn andCheckout:self.todayData.dateCheckingOut];
+            
+            BOOL good = [self.todayTableSlot insertCheckinData:data];
+            
+            if(good) {
+                NSLog(@"Adding new data to today!");
+            }
+            
+            [self reloadDataSource];
+            
+            self.todayData = (NGTimeClockCloudObject *)[self.todayData cloudObjectWithEmployeeIdAndName];
+            self.loadingHud.labelText = @"Done!";
+            [self.loadingHud hide:YES afterDelay:1.0f];
+        }];
+        
+        self.loadingHud.labelText = @"Checking in...";
+        [self.loadingHud show:YES];
     }
     
     [self updateCheckinButtonText];
@@ -76,9 +108,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    UITapGestureRecognizer * r = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap:)];
-    [self.imageView addGestureRecognizer:r];
     
     NSData * imageData = UIImagePNGRepresentation(self.imageToShow);
     
@@ -124,9 +153,13 @@
     
     CALayer * lyr = [CALayer layer];
     lyr.frame = CGRectMake(0, 0, self.dataLoginView.frame.size.width, 1);
-    lyr.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.8 alpha:1].CGColor;
+    lyr.backgroundColor = [UIColor colorWithHue:202.0f/360.0f saturation:0.3 brightness:0.25 alpha:1].CGColor;
 
     [self.dataLoginView.layer addSublayer:lyr];
+    
+    
+    self.totalHours.font = [UIFont fontWithName:@"GothamNarrow-Bold" size:24];
+    self.totalHoursReal.font = [UIFont fontWithName:@"GothamNarrow-Bold" size:24];
 
     
     [self updateCheckinButtonText];
@@ -157,6 +190,10 @@
         }
         
     }];
+}
+
++ (NSString *)buildKeyForEmployeeId:(NSString *)empId {
+    return [NSString stringWithFormat:@"%@_%@",currentCheckinKey, empId];
 }
 
 - (void)loadCloudObject:(NSString *)cloudObjectId forUser:(NGEmployeeData *)employee {
@@ -191,11 +228,10 @@
         CGFloat hours = 0;
         
         NSDate * today = [[NSDate date] dateByStrippingHours];
-        NGDailyTimeClockData * todayData;
         
         for(int i = startIndex; i < arrOfDailyTimeClockData.count && i < startIndex + 7; i++) {
             
-            NGDailyTimeClockData * data = [self.checkinsArrayFromAPI objectAtIndex:counter ++];
+            NGDailyTimeClockData * data = [self.checkinsArrayFromAPI objectAtIndex:counter++];
             NGDailyTimeClockData * apiData = [arrOfDailyTimeClockData objectAtIndex:i];
             
             if([data.dayInfo compare:apiData.dayInfo] != NSOrderedSame)
@@ -210,17 +246,35 @@
             }
             
             hours += data.hours;
-            
+                        
             if([apiData.dayInfo compare:today] == NSOrderedSame) {
-                todayData = data;
+                [self.hourlyStatusManager loadCheckinData:data];
             }
         }
         
-        if(todayData) {
-            [self.hourlyStatusManager loadCheckinData:todayData];
+        for (NGDailyTimeClockData * data in self.checkinsArrayFromAPI) {
+            if([data.dayInfo compare:today] == NSOrderedSame) {
+                self.todayTableSlot = data;
+            }
         }
         
-        self.profileInfoView.hoursWorked = hours;
+        self.todayData = (NGTimeClockCloudObject *)[NGTimeClockCloudObject templateWithEmployeeId:employee.employeeNumber andName:[NSString stringWithFormat:@"%@ %@",employee.firstName,employee.lastName]];
+
+        NSString * key = [[self class] buildKeyForEmployeeId:self.todayData.employeeNumber];
+        
+        id result = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+        if(result && [[result objectForKey:jkCloudObjectEmployeeNumber] isEqualToString:employee.employeeNumber]) {
+            
+            self.todayData = [[NGTimeClockCloudObject alloc] initWithDictionary:result];
+            
+            NGCheckinData * data = [[NGCheckinData alloc] initWithCheckIn:self.todayData.dateCheckingIn andCheckout:nil];
+            NGDailyTimeClockData * d = [[NGDailyTimeClockData alloc] initBasic:[NSDate date]];
+            [d insertCheckinData:data];
+            
+            [self.hourlyStatusManager loadCheckinData:d];
+        }
+        
+        self.totalHoursReal.text = [NSString stringWithFormat:@"%.2f", hours];
         [self reloadDataSource];
         
     }];
@@ -240,8 +294,20 @@
     [self.dataLoginView reloadData];
 }
 
-- (void)onTap:(id)tap {
+- (IBAction)onTap:(id)tap {
     [self.navigationController popViewControllerAnimated:YES];
+
+    NSString * key = [[self class] buildKeyForEmployeeId:self.todayData.employeeNumber];
+    
+    if(self.todayData.dateCheckingIn) {
+        NSDictionary * outWithIt = [self.todayData dictionaryRepresentation];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:outWithIt forKey:key];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:key];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (UITableViewCell *)CUTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath forObject:(id)userData {

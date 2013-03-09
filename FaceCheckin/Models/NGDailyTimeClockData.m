@@ -12,6 +12,7 @@
 #import "NSDate+NGExtensions.h"
 
 #import "NGCloudObjectAPI.h"
+#import "NGTimeClockCloudObject.h"
 
 @implementation NGDailyTimeClockData {
     // Private cached iVars

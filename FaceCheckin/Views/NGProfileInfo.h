@@ -14,7 +14,6 @@
 
 - (void)loadPerfsFromProfile:(NGEmployeeData *)employeeData;
 
-@property (atomic, assign) CGFloat hoursWorked;
 @property (atomic, assign) UIImage * profileImage;
 
 @end

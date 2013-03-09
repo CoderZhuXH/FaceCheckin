@@ -23,8 +23,8 @@
 /// Notifices weather the user's checked in (readonly).
 @property (nonatomic, readonly) BOOL sessionInProgress;
 
-- (void)clockIn;
-- (void)clockOut;
+- (NSDate *)clockIn;
+- (NSDate *)clockOut;
 
 - (void)loadCheckinData:(NGDailyTimeClockData *)data;
 
@@ -34,9 +34,14 @@
 
 @interface NGCheckinFactory : NSObject
 
+@property (nonatomic, assign) BOOL isSimulating;
+
 @property (nonatomic, readonly) NSDate * startDate;
 
 - (NSDate *)clockIn;
 - (NSDate *)clockOut;
+
+- (void)manualClockIn:(NSDate *)date;
+- (void)manualClockOut:(NSDate *)date;
 
 @end

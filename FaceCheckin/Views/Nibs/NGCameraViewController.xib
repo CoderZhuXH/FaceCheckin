@@ -39,9 +39,10 @@
 					<object class="IBUIView" id="192787324">
 						<reference key="NSNextResponder" ref="124991498"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrameSize">{1024, 768}</string>
+						<array class="NSMutableArray" key="NSSubviews"/>
+						<string key="NSFrameSize">{1024, 788}</string>
 						<reference key="NSSuperview" ref="124991498"/>
-						<reference key="NSNextKeyView" ref="815271953"/>
+						<reference key="NSNextKeyView" ref="1036157865"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -52,9 +53,8 @@
 					<object class="IBUILabel" id="140464558">
 						<reference key="NSNextResponder" ref="124991498"/>
 						<int key="NSvFlags">269</int>
-						<string key="NSFrame">{{287, 670}, {450, 60}}</string>
+						<string key="NSFrame">{{287, 690}, {450, 60}}</string>
 						<reference key="NSSuperview" ref="124991498"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -80,31 +80,28 @@
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
-					<object class="IBUIImageView" id="815271953">
+					<object class="IBUIImageView" id="1036157865">
 						<reference key="NSNextResponder" ref="124991498"/>
-						<int key="NSvFlags">293</int>
-						<string key="NSFrame">{{326, 160}, {370, 370}}</string>
+						<int key="NSvFlags">256</int>
+						<string key="NSFrame">{{362, 189}, {300, 300}}</string>
 						<reference key="NSSuperview" ref="124991498"/>
 						<reference key="NSNextKeyView" ref="140464558"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">4</int>
+						<int key="IBUIContentMode">1</int>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">square.png</string>
+							<string key="NSResourceName">Box.png</string>
 						</object>
 					</object>
 				</array>
-				<string key="NSFrame">{{0, 20}, {1024, 748}}</string>
+				<string key="NSFrameSize">{1024, 768}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="192787324"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<array key="IBUIGestureRecognizers" id="0"/>
-				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
-					<int key="IBUIStatusBarStyle">2</int>
-				</object>
 				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 					<int key="IBUIInterfaceOrientation">3</int>
 					<int key="interfaceOrientation">3</int>
@@ -142,9 +139,9 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">faceSquareView</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="815271953"/>
+						<reference key="destination" ref="1036157865"/>
 					</object>
-					<int key="connectionID">18</int>
+					<int key="connectionID">20</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -171,8 +168,8 @@
 						<reference key="object" ref="124991498"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="140464558"/>
-							<reference ref="815271953"/>
 							<reference ref="192787324"/>
+							<reference ref="1036157865"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -184,13 +181,14 @@
 						<string key="objectName">AlignFaceLabel</string>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">13</int>
-						<reference key="object" ref="815271953"/>
+						<int key="objectID">14</int>
+						<reference key="object" ref="192787324"/>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="124991498"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">14</int>
-						<reference key="object" ref="192787324"/>
+						<int key="objectID">19</int>
+						<reference key="object" ref="1036157865"/>
 						<reference key="parent" ref="124991498"/>
 					</object>
 				</array>
@@ -200,9 +198,9 @@
 				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="13.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="14.CustomClassName">NGCameraView</string>
 				<string key="14.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="19.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
@@ -210,7 +208,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">18</int>
+			<int key="maxID">20</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
@@ -218,8 +216,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">square.png</string>
-			<string key="NS.object.0">{370, 370}</string>
+			<string key="NS.key.0">Box.png</string>
+			<string key="NS.object.0">{240, 240}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>

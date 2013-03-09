@@ -19,9 +19,6 @@
 
 ////////////////////////////// -> Mutable Labels
 
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-
 ////////////////////////////// -> Views
 
 @property (weak, nonatomic) IBOutlet    UIView              * checkinSlider;
@@ -54,26 +51,34 @@
 
 - (void)customInit {
     
-    [[NGCoreTimer coreTimer] registerListener:self];
+//    self.dateLabel.font = self.timeLabel.font = [UIFont fontWithName:@"GothamNarrow-Medium" size:24];
     
-    self.dateLabel.font = self.timeLabel.font = [UIFont fontWithName:@"GothamNarrow-Medium" size:24];
-    self.checkinSlider.layer.borderWidth = 2;
-    self.checkinSlider.layer.borderColor = [UIColor darkGrayColor].CGColor;
     self.checkinSlider.clipsToBounds = YES;
     
     self.checkins = [NSArray array];
     self.checkinFactory = [NGCheckinFactory new];
+    self.checkinFactory.isSimulating = YES;
     
     NSDate * date = [NSDate date];
     date = [date dateByStrippingHours];
+    
+    CALayer * layer = [CALayer layer];
+    layer.backgroundColor = [UIColor colorWithRed:213.0/255 green:210.0/255 blue:198.0/255 alpha:1.0f].CGColor;
+    layer.frame = CGRectMake(0, 96, self.nibView.bounds.size.width, 32);
+    [self.layer addSublayer:layer];
+    
+    CALayer * otherLayer = [CALayer layer];
+    otherLayer.backgroundColor = [UIColor colorWithRed:245.0f/255 green:242.0f/255 blue:229.0f/255 alpha:1.0f].CGColor;
+    otherLayer.frame = CGRectMake(0, self.bounds.size.height/2.0f, self.bounds.size.width, 2);
+    [self.layer insertSublayer:otherLayer below:layer];
     
     self.lowerBound= [date dateByAddingHours:6.0];
     self.upperBound  = [self.lowerBound dateByAddingHours:15.0];
 }
 
+/*
 - (void)coreTimer:(NGCoreTimer *)timer timerChanged:(id)changedData {
     NSDateFormatter * formatter = [NSDateFormatter new];
-    NSDate * date = [NSDate date];
     
     [formatter setDateFormat:@"MMM d, YYYY"];
     self.dateLabel.text = [formatter stringFromDate:date].uppercaseString;
@@ -81,6 +86,7 @@
     [formatter setDateFormat:@"h:mm a"];
     self.timeLabel.text = [formatter stringFromDate:date].uppercaseString;
 }
+*/
 
 - (void)loadCheckinData:(NGDailyTimeClockData *)data {
     
@@ -95,21 +101,29 @@
     }
 }
 
-- (void)clockIn {
-    [self clockInWithForcedDate:[self.checkinFactory clockIn]];
+- (NSDate *)clockIn {
+    NSDate * clockinDate = [self.checkinFactory clockIn];
+    [self clockInWithForcedDate:clockinDate];
+    
+    return clockinDate;
 }
 
-- (void)clockOut {
+- (NSDate *)clockOut {
+    NSDate * clockoutDate = [self.checkinFactory clockOut];
     [self clockOutWithForcedDate:[self.checkinFactory clockOut]];
+
+    return clockoutDate;
 }
 
 - (void)clockInWithForcedDate:(NSDate *)date {
     _currentStart = date;
+    [self.checkinFactory manualClockIn:date];
     [self clockInActual];
 }
 
 - (void)clockOutWithForcedDate:(NSDate *)date {
     _currentEnd = date;
+    [self.checkinFactory manualClockOut:date];
     [self clockOutActual];
 }
 
@@ -179,8 +193,26 @@
 
 @implementation NGCheckinFactory
 
+- (void)manualClockIn:(NSDate *)date {
+    
+    if(self.startDate == nil) {
+        _startDate = date;
+        self.start = _startDate;
+    } else {
+        self.start = date;
+    }
+}
+
+
+- (void)manualClockOut:(NSDate *)date {
+    self.end = date;
+}
 
 - (NSDate *)clockIn {
+
+    if(!self.isSimulating) {
+        return [NSDate date];
+    }
     
     if(self.startDate == nil) {
         _startDate = [[[NSDate date] dateByStrippingHours] dateByAddingTimeInterval:HOURS(8)];
@@ -194,6 +226,10 @@
 }
 
 - (NSDate *)clockOut {
+    
+    if(!self.isSimulating) {
+        return [NSDate date];
+    }
     
     CGFloat hours = (CGFloat)arc4random_uniform(120)/60;
     self.end = [self.start dateByAddingTimeInterval:HOURS(2+hours)];

@@ -45,6 +45,11 @@
     
     [self.alignFaceLabel fitTextToWidth:self.alignFaceLabel.frame.size.width forFontName:@"GothamNarrow-Medium"];
 	// Do any additional setup after loading the view.
+    
+#if TARGET_IPHONE_SIMULATOR
+    UIGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap:)];
+    [self.view addGestureRecognizer:recognizer];
+#endif
 }
 
 - (void)cameraView:(NGCameraView *)view faceFoundInFrame:(CGRect)frame {
@@ -71,6 +76,12 @@
         self.cameraView.faceCaptureEnabled = NO;
     }];
 }
+
+#if TARGET_IPHONE_SIMULATOR
+- (void)onTap:(id)tap {
+    [self doSomethingWithImage:nil];
+}
+#endif
 
 - (void)doSomethingWithImage:(UIImage *)image {
     NGUserPanelController * controller = [NGUserPanelController new];

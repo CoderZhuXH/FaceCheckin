@@ -9,6 +9,8 @@
 #import "NGBaseViewController.h"
 #import "CUCellFramework.h"
 
+#define currentCheckinKey @"currentCheckinKey"
+
 @interface NGUserPanelController : NGBaseViewController<CUCellFrameworkDelegate>
 
 @property (weak, nonatomic) IBOutlet        UIButton    * checkinButton;

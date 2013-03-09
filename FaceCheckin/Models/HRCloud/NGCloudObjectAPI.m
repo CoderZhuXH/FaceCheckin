@@ -8,8 +8,10 @@
 
 #import "NGCloudObjectAPI.h"
 #import "NGHRCloudApi.h"
+#import "NGCheckinData.h"
 
 #import "NSDate+NGExtensions.h"
+#import "AFNetworking.h"
 
 @implementation NGCloudObject
 
@@ -28,7 +30,7 @@
         NSMutableArray * resultArray = [NSMutableArray arrayWithCapacity:[responseObject count]];
         
         for (NSDictionary * cloudObjectDatum in responseObject) {
-            NGCloudObject * obj = [[NGCloudObject alloc] initWithDictionary:cloudObjectDatum];
+            NGCloudObject * obj = [[[self class] alloc] initWithDictionary:cloudObjectDatum];
             [resultArray addObject:obj];
         }
         
@@ -50,20 +52,25 @@
         [mutableMe removeObjectsForKeys:@[jkCloudObjectId, jkCloudObjectEmployeeNumber, jkCloudObjectEmployeeName]];
         
         _cloudObject = [NSDictionary dictionaryWithDictionary:mutableMe];
-        
         _fastEmployeeNumber = [_employeeNumber integerValue];
     }
+    
+    [self configureObject];
     return self;
+}
+
+- (void)configureObject {
+    // using with inheritence
 }
 
 #pragma mark - Services and support
 
 - (NGCloudObject *)cloudObjectWithEmployeeIdAndName {
-    return [[NGCloudObject alloc] initWithDictionary:@{jkCloudObjectEmployeeName: self.employeeName, jkCloudObjectEmployeeNumber: self.employeeNumber}];
+    return [[[self class] alloc] initWithDictionary:@{jkCloudObjectEmployeeName: self.employeeName, jkCloudObjectEmployeeNumber: self.employeeNumber, jkCloudObjectId : [NSString string]}];
 }
 
-+ (NGCloudObject *)templateWithEmployeeId:(NSInteger)empID andName:(NSString *)name {
-    return [[NGCloudObject alloc] initWithDictionary:@{jkCloudObjectEmployeeName: name, jkCloudObjectEmployeeNumber: [NSNumber numberWithInteger:empID]}];
++ (NGCloudObject *)templateWithEmployeeId:(NSString *)empID andName:(NSString *)name {
+    return [[[self class] alloc] initWithDictionary:@{jkCloudObjectEmployeeName: name, jkCloudObjectEmployeeNumber: empID ,jkCloudObjectId:[NSString string]}];
 }
 
 
@@ -91,98 +98,3 @@
 @end
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-@implementation NGTimeClockCloudObject
-
-+ (void)getCloudObjectWithCallback:(NGCloudObjectAPICallback)callback {
-    
-    [NGTimeClockCloudObject getCloudObjects:@"Time_Clock" withCallback:^(NSArray *cloudObjects, NSError *error) {
-        if(!error) {
-            
-            NSMutableArray * returnArray = [NSMutableArray arrayWithCapacity:cloudObjects.count];
-            
-            for (NGCloudObject * cloudObj in cloudObjects) {
-                
-                NSDictionary * dict = [cloudObj dictionaryRepresentation];
-                NGTimeClockCloudObject * obj = [[NGTimeClockCloudObject alloc] initWithDictionary:dict];
-                [returnArray addObject:obj];
-                
-            }
-            
-            callback([NSArray arrayWithArray:returnArray], nil);
-        } else {
-            callback(nil, error);
-        }
-        
-    }];
-}
-
-- (id)initWithDictionary:(NSDictionary *)dictionary {
-    self = [super initWithDictionary:dictionary];
-    
-    if (self) {
-        
-        NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"M/d/yyyy"];
-        
-        NSDate * father = [formatter dateFromString:[self.cloudObject objectForKey:jkClockCloudObjectDate]];
-        
-        [formatter setDateFormat:@"HH:mm"];
-        
-        NSDate * timeIn     = [formatter dateFromString:[self.cloudObject objectForKey:jkClockCloudObjectTimeIn]];
-        NSDate * timeOut    = [formatter dateFromString:[self.cloudObject objectForKey:jkClockCloudObjectTimeOut]];
-        
-        NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        
-        NSDateComponents * componentsIn     = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:timeIn];
-        NSDateComponents * componentsOut    = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:timeOut];
-        
-        timeIn  = [calendar dateByAddingComponents:componentsIn toDate:father options:0];
-        timeOut = [calendar dateByAddingComponents:componentsOut toDate:father options:0];
-        
-        _dateCheckingIn = timeIn;
-        _dateCheckingOut = timeOut;
-        
-        [formatter setDateFormat:@"EEE"];
-        _dayOfWeek = [formatter stringFromDate:father];
-        
-        /*
-        NSAssert(_dateCheckingOut   != nil, @"");
-        NSAssert(_dateCheckingIn    != nil, @"");
-        NSAssert([_dateCheckingOut compare:_dateCheckingIn] == NSOrderedDescending,@"");
-         */
-        
-        _hoursWorked = [_dateCheckingOut minutesBySubtracting:_dateCheckingIn];
-        
-    }
-    
-    return self;
-}
-
-
-- (void)uploadData:(void (^)(NSError *))callback {
-    callback(nil);
-}
-
-@end
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-@implementation NSArray (NGCloudObjectExtensions)
-
-- (NSArray *)cloudObjectsForEmployeeNumberFast:(NSInteger)employeeNumber {
-    
-    NSMutableArray * results = [NSMutableArray array];
-    
-    for (NGCloudObject * base in self) {
-        
-        if(base.fastEmployeeNumber == employeeNumber) {
-            [results addObject:base];
-        }
-    }
-    
-    return [NSArray arrayWithArray:results];
-}
-
-@end

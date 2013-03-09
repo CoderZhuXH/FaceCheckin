@@ -12,12 +12,11 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-#define CheckpointRectAt(x,y) CGRectMake(x, y, 8.0f, 64.0f)
+#define CheckpointRectAt(x,y) CGRectMake(x, y, 3.0f, 64.0f)
+#define CheckpointColor [UIColor colorWithRed:213.0/255 green:210.0/255 blue:198.0/255 alpha:1.0f]
+#define BGColor     [UIColor colorWithRed:244.0f/255 green:241.0f/255 blue:227.0f/255 alpha:1]
 
 @interface NGCheckinInterval ()
-
-@property (weak, nonatomic) IBOutlet UILabel *inLabel;
-@property (weak, nonatomic) IBOutlet UILabel *outLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *inTime;
 @property (weak, nonatomic) IBOutlet UILabel *outTime;
@@ -36,10 +35,12 @@
 }
 
 - (void)customInit {
+    /*
     self.inLabel.font   = self.outLabel.font    = [UIFont fontWithName:@"GothamNarrow-Medium" size:15];
+     */
     self.inTime.font    = self.outTime.font     = [UIFont fontWithName:@"GothamNarrow-Medium" size:15];
     
-    self.outTime.hidden = self.outLabel.hidden  = YES;
+    self.outTime.hidden = YES;
     
     self.backgroundColor = [UIColor clearColor];
     self.nibView.backgroundColor = [UIColor clearColor];
@@ -62,7 +63,7 @@
     self.startDate = date;
     
     CALayer * lyr = [CALayer layer];
-    lyr.backgroundColor = [UIColor darkGrayColor].CGColor;
+    lyr.backgroundColor = CheckpointColor.CGColor;
     lyr.frame = CheckpointRectAt(0, 0);
     
     [self.layer addSublayer:lyr];
@@ -76,15 +77,16 @@
     NSInteger minutesSirMinutes = [self.endDate minutesBySubtracting:self.startDate];
     self.frame = CGRectMake(self.frame.origin.x, 0, minutesSirMinutes * ppm, self.frame.size.height);
     
+
+    
     CALayer * lyr       = [CALayer layer];
-    lyr.backgroundColor = [UIColor darkGrayColor].CGColor;
-    lyr.frame           = CheckpointRectAt(self.frame.size.width - 8, 0);
+    lyr.backgroundColor = CheckpointColor.CGColor;
+    lyr.frame           = CheckpointRectAt(self.frame.size.width - 3, 0);
     [self.layer addSublayer:lyr];
     
-    self.nibView.backgroundColor    = [UIColor lightGrayColor];
-    self.backgroundColor            = [UIColor lightGrayColor];
+    self.nibView.backgroundColor    = BGColor;
+    self.backgroundColor            = BGColor;
     
-    self.outLabel.hidden    = NO;
     self.outTime.hidden     = NO;
     
     self.outTime.text = [self _formatDate:self.endDate];

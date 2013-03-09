@@ -33,7 +33,6 @@
          */
     }
     return self;
-
 }
 
 + (NSDictionary *)baseArgs {
@@ -41,7 +40,6 @@
 }
 
 - (void)testAuth {
-    
     
     [self postPath:@"/fc/account/authenticate.json" parameters:[[self class] baseArgs]
            success:

@@ -11,6 +11,9 @@
 #import "UILabel+NGExtensions.h"
 #import "NGCameraViewController.h"
 
+#import "NGCloudObjectAPI.h"
+#import "NGCheckinData.h"
+
 @interface NGLockScreenController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -30,11 +33,11 @@
     NSDate * currentDate = [NSDate date];
     
     self.timeLabel.text = [formatter stringFromDate:currentDate];
-    [formatter setDateFormat:@"MMM d YYYY"];
+    [formatter setDateFormat:@"EEE, MMM dd YYYY"];
     self.dateLabel.text = [[formatter stringFromDate:currentDate] uppercaseString];
     
-    [self.timeLabel fitTextToWidth:self.timeLabel.frame.size.width forFontName:@"GothamNarrow-Bold"];
-    [self.dateLabel fitTextToWidth:self.timeLabel.frame.size.width forFontName:@"GothamNarrow-Medium"];
+    self.timeLabel.font = [UIFont fontWithName:@"GothamNarrow-Bold" size:74];
+    self.dateLabel.font = [UIFont fontWithName:@"GothamNarrow-Medium" size:67];
 }
 
 - (void)viewDidLoad
@@ -43,7 +46,43 @@
     [[NGCoreTimer coreTimer] registerListener:self];
     
     
-	// Do any additional setup after loading the view, typically from a nib.
+    /*
+    NSString * path = [[NSBundle mainBundle] pathForResource:@"TimeClockMock" ofType:@"json"];
+    NSData * data = [NSData dataWithContentsOfFile:path];
+    
+    id array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    NSMutableArray * timeClockCloudObjects = [NSMutableArray arrayWithCapacity:[array count]];
+    
+    for (NSDictionary * dict in array) {
+        
+        NGTimeClockCloudObject * obj = [[NGTimeClockCloudObject alloc] initWithDictionary:dict];
+        
+        NSAssert(obj.dateCheckingIn   , @"Should be somthing");
+        NSAssert(obj.dateCheckingOut  , @"Should be somthing");
+        NSAssert(obj.dayOfWeek        , @"Should be somthing");
+        NSAssert(obj.hoursWorked > 0    , @"Should be positive and not %.2f", obj.hoursWorked);
+        NSAssert(obj.dayOfWeek        , @"Has version");
+        
+        [timeClockCloudObjects addObject:obj];
+    }
+    
+    NSDate * checkin = [[[NSDate date] dateByStrippingHours] dateByAddingHours:8];
+    NSDate * checkOut = [[[NSDate date] dateByStrippingHours] dateByAddingHours:16];
+    
+    NGCheckinData * cData = [[NGCheckinData alloc] initWithCheckIn:checkin andCheckout:checkOut];
+    
+    NGTimeClockCloudObject * cloud = [timeClockCloudObjects objectAtIndex:0];
+    
+    [cloud mergeWithCheckinData:cData];
+    
+    NSDictionary * letsee = [cloud dictionaryRepresentation];
+    NSLog(@"%@", [letsee description]);
+
+    [cloud uploadData:^(NSError *error) {
+        
+    }];
+     */
 }
 
 - (void)didReceiveMemoryWarning

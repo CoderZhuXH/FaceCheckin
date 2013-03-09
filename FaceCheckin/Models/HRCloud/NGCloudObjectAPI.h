@@ -7,6 +7,7 @@
 //
 
 #import "NGDomainObjectBase.h"
+#import "NGHRCloudApi.h"
 
 typedef void(^NGCloudObjectAPICallback)(NSArray * cloudObjects, NSError * error);
 
@@ -19,7 +20,7 @@ typedef void(^NGCloudObjectAPICallback)(NSArray * cloudObjects, NSError * error)
 
 #pragma mark - Builders
 
-+ (NGCloudObject *)templateWithEmployeeId:(NSInteger)id andName:(NSString *)name;
++ (NGCloudObject *)templateWithEmployeeId:(NSString *)empID andName:(NSString *)name;
 - (NGCloudObject *)cloudObjectWithEmployeeIdAndName;
 
 #pragma mark - APIs
@@ -29,7 +30,7 @@ typedef void(^NGCloudObjectAPICallback)(NSArray * cloudObjects, NSError * error)
 #pragma mark - Properties
 //
 @property (nonatomic, readonly) NSString        * employeeName;
-@property (nonatomic, readonly) NSNumber        * employeeNumber;
+@property (nonatomic, readonly) NSString        * employeeNumber;
 // BONUS
 @property (nonatomic, readonly) NSInteger       fastEmployeeNumber;
 //
@@ -37,37 +38,6 @@ typedef void(^NGCloudObjectAPICallback)(NSArray * cloudObjects, NSError * error)
 @property (nonatomic, readonly) NSString        * objectId;
 @property (nonatomic, readonly) NSDictionary    * cloudObject;
 
-@end
-
-
-@interface NGTimeClockCloudObject : NGCloudObject
-
-+ (void)getCloudObjectWithCallback:(NGCloudObjectAPICallback)callback;
-
-// real
-#define jkClockCloudObjectTimeIn    @"Time_In_Txt"
-#define jkClockCloudObjectTimeOut   @"Time_out_Txt"
-#define jkClockCloudObjectDate      @"Date"
-
-// calculated
-#define jkClockCloudObjectDayOfWeek     @"Day_of_Week"
-#define jkClockCloudObjectHours_Worked  @"Hours_Worked"
-
-@property (nonatomic, strong) NSDate * dateCheckingIn;
-@property (nonatomic, strong) NSDate * dateCheckingOut;
-
-@property (nonatomic, readonly) CGFloat hoursWorked; // 2 decimals
-@property (nonatomic, readonly) NSString * dayOfWeek;
-
-- (void)uploadData:(void (^)(NSError * error))callback;
-
-
-@end
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-@interface NSArray (NGCloudObjectExtensions)
-
-- (NSArray *)cloudObjectsForEmployeeNumberFast:(NSInteger)employeeNumber;
+- (void)configureObject;
 
 @end

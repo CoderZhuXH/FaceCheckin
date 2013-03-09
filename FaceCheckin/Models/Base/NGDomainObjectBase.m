@@ -20,7 +20,6 @@
     return self;
 }
 
-
 - (NSDictionary *)dictionaryRepresentation {
     return nil;
 }

@@ -38,6 +38,28 @@
 		7049A3CD16E585E700900216 /* NGFaceRecognitionAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 7049A3CC16E585E700900216 /* NGFaceRecognitionAlbum.m */; };
 		7049A3CF16E6679E00900216 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7049A3CE16E6679D00900216 /* AssetsLibrary.framework */; };
 		7049A3D216E66A3600900216 /* UIImage+NGExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7049A3D116E66A3600900216 /* UIImage+NGExtensions.m */; };
+		704E6F8616EA5EDF00255501 /* NGCheckinData.m in Sources */ = {isa = PBXBuildFile; fileRef = 704E6F8516EA5EDF00255501 /* NGCheckinData.m */; };
+		704E6F8916EAA9D500255501 /* NGTimeClockCloudObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 704E6F8816EAA9D500255501 /* NGTimeClockCloudObject.m */; };
+		704E6F8D16EAB4D700255501 /* ClockBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6F8B16EAB4D700255501 /* ClockBg.png */; };
+		704E6F8E16EAB4D700255501 /* ClockBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6F8C16EAB4D700255501 /* ClockBg@2x.png */; };
+		704E6F9116EAB81300255501 /* LockscreenBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6F8F16EAB81300255501 /* LockscreenBg.png */; };
+		704E6F9216EAB81300255501 /* LockscreenBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6F9016EAB81300255501 /* LockscreenBg@2x.png */; };
+		704E6F9416EAB89F00255501 /* GothamNarrow-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 704E6F9316EAB89F00255501 /* GothamNarrow-Light.otf */; };
+		704E6F9516EABB4700255501 /* GothamNarrow-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 704E6F9316EAB89F00255501 /* GothamNarrow-Light.otf */; };
+		704E6F9B16EABBF200255501 /* Box.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6F9716EABBF200255501 /* Box.png */; };
+		704E6F9C16EABBF200255501 /* Box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6F9816EABBF200255501 /* Box@2x.png */; };
+		704E6F9D16EABBF200255501 /* FaceBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6F9916EABBF200255501 /* FaceBox.png */; };
+		704E6F9E16EABBF200255501 /* FaceBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6F9A16EABBF200255501 /* FaceBox@2x.png */; };
+		704E6FA016EABDDF00255501 /* TableBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6F9F16EABDDF00255501 /* TableBackground.png */; };
+		704E6FA216EABDF700255501 /* TableBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6FA116EABDF700255501 /* TableBackground@2x.png */; };
+		704E6FA516EABEB000255501 /* TopBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6FA316EABEB000255501 /* TopBar.png */; };
+		704E6FA616EABEB000255501 /* TopBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6FA416EABEB000255501 /* TopBar@2x.png */; };
+		704E6FA916EABF3B00255501 /* CancelButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6FA716EABF3B00255501 /* CancelButton.png */; };
+		704E6FAA16EABF3B00255501 /* CancelButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6FA816EABF3B00255501 /* CancelButton@2x.png */; };
+		704E6FAD16EAC3F400255501 /* ProfileBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6FAB16EAC3F400255501 /* ProfileBackground.png */; };
+		704E6FAE16EAC3F400255501 /* ProfileBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6FAC16EAC3F400255501 /* ProfileBackground@2x.png */; };
+		704E6FB116EAC50000255501 /* LineSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6FAF16EAC4FF00255501 /* LineSeparator.png */; };
+		704E6FB216EAC50000255501 /* LineSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 704E6FB016EAC50000255501 /* LineSeparator@2x.png */; };
 		709EC20116DBEF99005F891C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC20016DBEF99005F891C /* UIKit.framework */; };
 		709EC20316DBEF99005F891C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC20216DBEF99005F891C /* Foundation.framework */; };
 		709EC20516DBEF99005F891C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC20416DBEF99005F891C /* CoreGraphics.framework */; };
@@ -57,8 +79,6 @@
 		70C7C98416DFD000001EE73F /* NGLockScreenController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C7C98216DFD000001EE73F /* NGLockScreenController.xib */; };
 		70C7C98716DFD0A0001EE73F /* NGUserPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C98616DFD0A0001EE73F /* NGUserPanelController.m */; };
 		70C7C98916DFD0B6001EE73F /* NGUserPanelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C7C98816DFD0B6001EE73F /* NGUserPanelController.xib */; };
-		70C7C99216DFD68A001EE73F /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C7C99016DFD68A001EE73F /* square.png */; };
-		70C7C99316DFD68A001EE73F /* square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C7C99116DFD68A001EE73F /* square@2x.png */; };
 		70C7C99D16DFDBFA001EE73F /* CUCellFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C99816DFDBFA001EE73F /* CUCellFramework.m */; };
 		70C7C99E16DFDBFA001EE73F /* CUCellBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C99C16DFDBFA001EE73F /* CUCellBase.m */; };
 		70C7C9A516DFE064001EE73F /* NGNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9A416DFE064001EE73F /* NGNibView.m */; };
@@ -67,7 +87,6 @@
 		70C7C9B416DFE826001EE73F /* NGDailyReportCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9B316DFE826001EE73F /* NGDailyReportCellObject.m */; };
 		70C7C9B816DFEACD001EE73F /* NGDomainObjectBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9B716DFEACD001EE73F /* NGDomainObjectBase.m */; };
 		70C7C9BB16DFEB08001EE73F /* NGDailyTimeClockData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9BA16DFEB08001EE73F /* NGDailyTimeClockData.m */; };
-		70C7C9BE16DFEB57001EE73F /* NGCheckinData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9BD16DFEB57001EE73F /* NGCheckinData.m */; };
 		70C7C9C316E021C0001EE73F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C9C216E021C0001EE73F /* QuartzCore.framework */; };
 		70C7C9C616E02724001EE73F /* NGHourlyStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C9C516E02724001EE73F /* NGHourlyStatus.m */; };
 		70C7C9C816E02738001EE73F /* NGHourlyStatus.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C7C9C716E02738001EE73F /* NGHourlyStatus.xib */; };
@@ -89,8 +108,6 @@
 		70FC56DE16E9213900E313D0 /* Calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70FC56D816E9213900E313D0 /* Calendar@2x.png */; };
 		70FC56DF16E9213900E313D0 /* Clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 70FC56D916E9213900E313D0 /* Clock.png */; };
 		70FC56E016E9213900E313D0 /* Clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70FC56DA16E9213900E313D0 /* Clock@2x.png */; };
-		70FC56E116E9213900E313D0 /* Cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 70FC56DB16E9213900E313D0 /* Cross.png */; };
-		70FC56E216E9213900E313D0 /* Cross@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70FC56DC16E9213900E313D0 /* Cross@2x.png */; };
 		70FC56E516E93A4600E313D0 /* TimeClockMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 70FC56E416E93A4600E313D0 /* TimeClockMock.json */; };
 		70FC56E616E93C5300E313D0 /* TimeClockMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 70FC56E416E93A4600E313D0 /* TimeClockMock.json */; };
 /* End PBXBuildFile section */
@@ -159,6 +176,29 @@
 		7049A3CE16E6679D00900216 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		7049A3D016E66A3600900216 /* UIImage+NGExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+NGExtensions.h"; sourceTree = "<group>"; };
 		7049A3D116E66A3600900216 /* UIImage+NGExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+NGExtensions.m"; sourceTree = "<group>"; };
+		704E6F8416EA5EDF00255501 /* NGCheckinData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGCheckinData.h; sourceTree = "<group>"; };
+		704E6F8516EA5EDF00255501 /* NGCheckinData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGCheckinData.m; sourceTree = "<group>"; };
+		704E6F8716EAA9D500255501 /* NGTimeClockCloudObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGTimeClockCloudObject.h; sourceTree = "<group>"; };
+		704E6F8816EAA9D500255501 /* NGTimeClockCloudObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGTimeClockCloudObject.m; sourceTree = "<group>"; };
+		704E6F8B16EAB4D700255501 /* ClockBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClockBg.png; sourceTree = "<group>"; };
+		704E6F8C16EAB4D700255501 /* ClockBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClockBg@2x.png"; sourceTree = "<group>"; };
+		704E6F8F16EAB81300255501 /* LockscreenBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LockscreenBg.png; sourceTree = "<group>"; };
+		704E6F9016EAB81300255501 /* LockscreenBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LockscreenBg@2x.png"; sourceTree = "<group>"; };
+		704E6F9316EAB89F00255501 /* GothamNarrow-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamNarrow-Light.otf"; sourceTree = "<group>"; };
+		704E6F9716EABBF200255501 /* Box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Box.png; sourceTree = "<group>"; };
+		704E6F9816EABBF200255501 /* Box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Box@2x.png"; sourceTree = "<group>"; };
+		704E6F9916EABBF200255501 /* FaceBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FaceBox.png; sourceTree = "<group>"; };
+		704E6F9A16EABBF200255501 /* FaceBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FaceBox@2x.png"; sourceTree = "<group>"; };
+		704E6F9F16EABDDF00255501 /* TableBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TableBackground.png; sourceTree = "<group>"; };
+		704E6FA116EABDF700255501 /* TableBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TableBackground@2x.png"; sourceTree = "<group>"; };
+		704E6FA316EABEB000255501 /* TopBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TopBar.png; sourceTree = "<group>"; };
+		704E6FA416EABEB000255501 /* TopBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TopBar@2x.png"; sourceTree = "<group>"; };
+		704E6FA716EABF3B00255501 /* CancelButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CancelButton.png; sourceTree = "<group>"; };
+		704E6FA816EABF3B00255501 /* CancelButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelButton@2x.png"; sourceTree = "<group>"; };
+		704E6FAB16EAC3F400255501 /* ProfileBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileBackground.png; sourceTree = "<group>"; };
+		704E6FAC16EAC3F400255501 /* ProfileBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfileBackground@2x.png"; sourceTree = "<group>"; };
+		704E6FAF16EAC4FF00255501 /* LineSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LineSeparator.png; sourceTree = "<group>"; };
+		704E6FB016EAC50000255501 /* LineSeparator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LineSeparator@2x.png"; sourceTree = "<group>"; };
 		709EC1FD16DBEF99005F891C /* FaceCheckin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceCheckin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		709EC20016DBEF99005F891C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		709EC20216DBEF99005F891C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -185,8 +225,6 @@
 		70C7C98516DFD0A0001EE73F /* NGUserPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGUserPanelController.h; sourceTree = "<group>"; };
 		70C7C98616DFD0A0001EE73F /* NGUserPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGUserPanelController.m; sourceTree = "<group>"; };
 		70C7C98816DFD0B6001EE73F /* NGUserPanelController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NGUserPanelController.xib; sourceTree = "<group>"; };
-		70C7C99016DFD68A001EE73F /* square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square.png; sourceTree = "<group>"; };
-		70C7C99116DFD68A001EE73F /* square@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "square@2x.png"; sourceTree = "<group>"; };
 		70C7C99716DFDBFA001EE73F /* CUCellFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUCellFramework.h; sourceTree = "<group>"; };
 		70C7C99816DFDBFA001EE73F /* CUCellFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUCellFramework.m; sourceTree = "<group>"; };
 		70C7C99916DFDBFA001EE73F /* CUCellProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUCellProtocols.h; sourceTree = "<group>"; };
@@ -204,8 +242,6 @@
 		70C7C9B716DFEACD001EE73F /* NGDomainObjectBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGDomainObjectBase.m; sourceTree = "<group>"; };
 		70C7C9B916DFEB08001EE73F /* NGDailyTimeClockData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGDailyTimeClockData.h; sourceTree = "<group>"; };
 		70C7C9BA16DFEB08001EE73F /* NGDailyTimeClockData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGDailyTimeClockData.m; sourceTree = "<group>"; };
-		70C7C9BC16DFEB57001EE73F /* NGCheckinData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGCheckinData.h; sourceTree = "<group>"; };
-		70C7C9BD16DFEB57001EE73F /* NGCheckinData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGCheckinData.m; sourceTree = "<group>"; };
 		70C7C9C216E021C0001EE73F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		70C7C9C416E02724001EE73F /* NGHourlyStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGHourlyStatus.h; sourceTree = "<group>"; };
 		70C7C9C516E02724001EE73F /* NGHourlyStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGHourlyStatus.m; sourceTree = "<group>"; };
@@ -236,8 +272,6 @@
 		70FC56D816E9213900E313D0 /* Calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar@2x.png"; sourceTree = "<group>"; };
 		70FC56D916E9213900E313D0 /* Clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clock.png; sourceTree = "<group>"; };
 		70FC56DA16E9213900E313D0 /* Clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Clock@2x.png"; sourceTree = "<group>"; };
-		70FC56DB16E9213900E313D0 /* Cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cross.png; sourceTree = "<group>"; };
-		70FC56DC16E9213900E313D0 /* Cross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cross@2x.png"; sourceTree = "<group>"; };
 		70FC56E416E93A4600E313D0 /* TimeClockMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TimeClockMock.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -358,6 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				70FC569C16E81EF500E313D0 /* sssymboliconsblock.ttf */,
+				704E6F9316EAB89F00255501 /* GothamNarrow-Light.otf */,
 				7046BDAA16DD4F4A0077BB39 /* GothamNarrow-Medium.otf */,
 				7046BDA016DD477C0077BB39 /* GothamNarrow-Bold.otf */,
 				7046BDA116DD477C0077BB39 /* GothamNarrow-Book.otf */,
@@ -411,6 +446,36 @@
 				7049A3CC16E585E700900216 /* NGFaceRecognitionAlbum.m */,
 			);
 			path = FaceRecognition;
+			sourceTree = "<group>";
+		};
+		704E6F8A16EAB4D700255501 /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				704E6FAB16EAC3F400255501 /* ProfileBackground.png */,
+				704E6FAC16EAC3F400255501 /* ProfileBackground@2x.png */,
+				704E6F9F16EABDDF00255501 /* TableBackground.png */,
+				704E6FA116EABDF700255501 /* TableBackground@2x.png */,
+				704E6F8F16EAB81300255501 /* LockscreenBg.png */,
+				704E6F9016EAB81300255501 /* LockscreenBg@2x.png */,
+				704E6F8B16EAB4D700255501 /* ClockBg.png */,
+				704E6F8C16EAB4D700255501 /* ClockBg@2x.png */,
+			);
+			path = Backgrounds;
+			sourceTree = "<group>";
+		};
+		704E6F9616EABBF200255501 /* Frames */ = {
+			isa = PBXGroup;
+			children = (
+				704E6FAF16EAC4FF00255501 /* LineSeparator.png */,
+				704E6FB016EAC50000255501 /* LineSeparator@2x.png */,
+				704E6FA316EABEB000255501 /* TopBar.png */,
+				704E6FA416EABEB000255501 /* TopBar@2x.png */,
+				704E6F9716EABBF200255501 /* Box.png */,
+				704E6F9816EABBF200255501 /* Box@2x.png */,
+				704E6F9916EABBF200255501 /* FaceBox.png */,
+				704E6F9A16EABBF200255501 /* FaceBox@2x.png */,
+			);
+			path = Frames;
 			sourceTree = "<group>";
 		};
 		709EC1F416DBEF99005F891C = {
@@ -517,9 +582,9 @@
 		70C7C98F16DFD68A001EE73F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				704E6F9616EABBF200255501 /* Frames */,
+				704E6F8A16EAB4D700255501 /* Backgrounds */,
 				70FC56D616E9213900E313D0 /* Icons */,
-				70C7C99016DFD68A001EE73F /* square.png */,
-				70C7C99116DFD68A001EE73F /* square@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -558,15 +623,15 @@
 		70C7C99F16DFDD0C001EE73F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				70FC568716E6BE6900E313D0 /* HRCloud */,
-				7049A3C716E5859D00900216 /* FaceRecognition */,
 				7049A3C316E5833B00900216 /* APIs */,
 				70C7C9B516DFEACD001EE73F /* Base */,
 				70C7C9B116DFE806001EE73F /* CellItems */,
+				7049A3C716E5859D00900216 /* FaceRecognition */,
+				70FC568716E6BE6900E313D0 /* HRCloud */,
+				704E6F8416EA5EDF00255501 /* NGCheckinData.h */,
+				704E6F8516EA5EDF00255501 /* NGCheckinData.m */,
 				70C7C9B916DFEB08001EE73F /* NGDailyTimeClockData.h */,
 				70C7C9BA16DFEB08001EE73F /* NGDailyTimeClockData.m */,
-				70C7C9BC16DFEB57001EE73F /* NGCheckinData.h */,
-				70C7C9BD16DFEB57001EE73F /* NGCheckinData.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -616,6 +681,8 @@
 				70FC569216E7F7D000E313D0 /* MockResponse.json */,
 				70FC569E16E8269F00E313D0 /* NGCloudObjectAPI.h */,
 				70FC569F16E8269F00E313D0 /* NGCloudObjectAPI.m */,
+				704E6F8716EAA9D500255501 /* NGTimeClockCloudObject.h */,
+				704E6F8816EAA9D500255501 /* NGTimeClockCloudObject.m */,
 			);
 			path = HRCloud;
 			sourceTree = "<group>";
@@ -640,12 +707,12 @@
 		70FC56D616E9213900E313D0 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				704E6FA716EABF3B00255501 /* CancelButton.png */,
+				704E6FA816EABF3B00255501 /* CancelButton@2x.png */,
 				70FC56D716E9213900E313D0 /* Calendar.png */,
 				70FC56D816E9213900E313D0 /* Calendar@2x.png */,
 				70FC56D916E9213900E313D0 /* Clock.png */,
 				70FC56DA16E9213900E313D0 /* Clock@2x.png */,
-				70FC56DB16E9213900E313D0 /* Cross.png */,
-				70FC56DC16E9213900E313D0 /* Cross@2x.png */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -730,6 +797,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				704E6F9516EABB4700255501 /* GothamNarrow-Light.otf in Resources */,
 				70FC56E616E93C5300E313D0 /* TimeClockMock.json in Resources */,
 				709EC20B16DBEF99005F891C /* InfoPlist.strings in Resources */,
 				709EC21316DBEF99005F891C /* Default.png in Resources */,
@@ -743,8 +811,6 @@
 				70C7C98316DFD000001EE73F /* NGCameraViewController.xib in Resources */,
 				70C7C98416DFD000001EE73F /* NGLockScreenController.xib in Resources */,
 				70C7C98916DFD0B6001EE73F /* NGUserPanelController.xib in Resources */,
-				70C7C99216DFD68A001EE73F /* square.png in Resources */,
-				70C7C99316DFD68A001EE73F /* square@2x.png in Resources */,
 				70C7C9B016DFE671001EE73F /* NGDailyReportCell.xib in Resources */,
 				70C7C9C816E02738001EE73F /* NGHourlyStatus.xib in Resources */,
 				70C7C9CB16E06B34001EE73F /* NGCheckinInterval.xib in Resources */,
@@ -754,8 +820,24 @@
 				70FC56DE16E9213900E313D0 /* Calendar@2x.png in Resources */,
 				70FC56DF16E9213900E313D0 /* Clock.png in Resources */,
 				70FC56E016E9213900E313D0 /* Clock@2x.png in Resources */,
-				70FC56E116E9213900E313D0 /* Cross.png in Resources */,
-				70FC56E216E9213900E313D0 /* Cross@2x.png in Resources */,
+				704E6F8D16EAB4D700255501 /* ClockBg.png in Resources */,
+				704E6F8E16EAB4D700255501 /* ClockBg@2x.png in Resources */,
+				704E6F9116EAB81300255501 /* LockscreenBg.png in Resources */,
+				704E6F9216EAB81300255501 /* LockscreenBg@2x.png in Resources */,
+				704E6F9B16EABBF200255501 /* Box.png in Resources */,
+				704E6F9C16EABBF200255501 /* Box@2x.png in Resources */,
+				704E6F9D16EABBF200255501 /* FaceBox.png in Resources */,
+				704E6F9E16EABBF200255501 /* FaceBox@2x.png in Resources */,
+				704E6FA016EABDDF00255501 /* TableBackground.png in Resources */,
+				704E6FA216EABDF700255501 /* TableBackground@2x.png in Resources */,
+				704E6FA516EABEB000255501 /* TopBar.png in Resources */,
+				704E6FA616EABEB000255501 /* TopBar@2x.png in Resources */,
+				704E6FA916EABF3B00255501 /* CancelButton.png in Resources */,
+				704E6FAA16EABF3B00255501 /* CancelButton@2x.png in Resources */,
+				704E6FAD16EAC3F400255501 /* ProfileBackground.png in Resources */,
+				704E6FAE16EAC3F400255501 /* ProfileBackground@2x.png in Resources */,
+				704E6FB116EAC50000255501 /* LineSeparator.png in Resources */,
+				704E6FB216EAC50000255501 /* LineSeparator@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -768,6 +850,7 @@
 				7046BDA516DD477C0077BB39 /* GothamNarrow-Book.otf in Resources */,
 				70FC569D16E81EF500E313D0 /* sssymboliconsblock.ttf in Resources */,
 				70FC56E516E93A4600E313D0 /* TimeClockMock.json in Resources */,
+				704E6F9416EAB89F00255501 /* GothamNarrow-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,7 +897,6 @@
 				70C7C9B416DFE826001EE73F /* NGDailyReportCellObject.m in Sources */,
 				70C7C9B816DFEACD001EE73F /* NGDomainObjectBase.m in Sources */,
 				70C7C9BB16DFEB08001EE73F /* NGDailyTimeClockData.m in Sources */,
-				70C7C9BE16DFEB57001EE73F /* NGCheckinData.m in Sources */,
 				70C7C9C616E02724001EE73F /* NGHourlyStatus.m in Sources */,
 				70C7C9D016E13A43001EE73F /* NGCheckinInterval.m in Sources */,
 				7049A3BA16E5818C00900216 /* AFHTTPClient.m in Sources */,
@@ -835,6 +917,8 @@
 				70FC569116E6D7A700E313D0 /* MBProgressHUD.m in Sources */,
 				70FC569B16E811CF00E313D0 /* NGProfileInfo.m in Sources */,
 				70FC56A016E8269F00E313D0 /* NGCloudObjectAPI.m in Sources */,
+				704E6F8616EA5EDF00255501 /* NGCheckinData.m in Sources */,
+				704E6F8916EAA9D500255501 /* NGTimeClockCloudObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

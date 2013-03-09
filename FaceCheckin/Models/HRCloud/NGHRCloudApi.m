@@ -30,9 +30,13 @@ static NGHRCloudApi * _backing;
     self = [super initWithBaseURL:url];
     if (self) {
         [self clearAuthorizationHeader];
-        [self setDefaultHeader:@"Accept" value:@"application/json"];
-        [self setDefaultHeader:@"Content-Type" value:@"application/json"];
+        
         [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
+        [self setDefaultHeader:@"Accept" value:@"application/json"];
+
+        [self setDefaultHeader:@"Content-Type" value:@"application/json"];
+        [self setParameterEncoding:AFJSONParameterEncoding];
+        
         [self setAuthorizationHeaderWithUsername:@"alexandergb@neogov.net" password:@"welcome"];
     }
     return self;

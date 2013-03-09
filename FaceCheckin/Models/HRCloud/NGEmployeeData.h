@@ -27,7 +27,7 @@ PROP_NRO BOOL isActive;
 PROP_NRO NSString * firstName;
 PROP_NRO NSString * lastName;
 PROP_NRO NSString * email;
-PROP_NRO NSNumber * employeeNumber;
+PROP_NRO NSString * employeeNumber;
 PROP_NRO NSString * evaluationCycleDate;
 
 PROP_NRO NSInteger fastEmployeeNumber;

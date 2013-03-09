@@ -28,8 +28,8 @@
 #endif
 
 + (void)getRecognitionResulsForImageData:(NSData *)imageData forNameSpace:(NSString *)nameSpace withResult:(NGFaceRecognitionCallback)cblk {
-    
-    /*
+
+#ifndef TARGET_IPHONE_SIMULATOR
     
     NSMutableDictionary * postArguments = [
   @{@"uids"    : @"all",
@@ -55,9 +55,7 @@
     }];
     
     [op start];
-     
-     */
-    
+#else
     id JSON = [[self class] mockedData];
     NSLog(@"Got data: %@", JSON);
     NGFaceRecognitionResult * result = [[NGFaceRecognitionResult alloc] initWithDictionary:JSON withUserData:nameSpace];
@@ -67,6 +65,8 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         cblk(result, nil);
     });
+#endif
+    
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary withUserData:(id)object {

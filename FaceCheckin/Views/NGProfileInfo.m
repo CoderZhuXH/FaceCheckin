@@ -15,8 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel * nameSurnameLabel;
 @property (weak, nonatomic) IBOutlet UILabel * positionLabel;
-@property (weak, nonatomic) IBOutlet UILabel * coreCalendarLabel;
-@property (weak, nonatomic) IBOutlet UILabel * hoursLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @end
@@ -41,25 +39,18 @@ static NSArray * observableKeys;
 }
 
 - (void)customInit {
-
-    self.coreCalendarLabel.font = [UIFont fontWithName:@"GothamBook" size:14.0];
-    self.hoursLabel.text = @"-- hours";
     
     // Batch call bitch
     self.positionLabel.font     = [UIFont fontWithName:@"GothamNarrow-Medium" size:17.0];
-    
     self.nameSurnameLabel.font  = [UIFont fontWithName:@"GothamNarrow-Bold" size:20.0];
-    self.hoursLabel.font        = [UIFont fontWithName:@"GothamNarrow-Bold" size:24.0];
+    
+    self.nibView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ProfileBackground"]];
     
     [self addObserver:self forKeyPath:@"hoursWorked" options:NSKeyValueObservingOptionNew context:nil];
-    [self addObserver:self forKeyPath:@"profileImage" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     
-    if([keyPath isEqualToString:@"hoursWorked"]) {
-        self.hoursLabel.text = [NSString stringWithFormat:@"%.2f hours", self.hoursWorked];
-    }
     
     if([keyPath isEqualToString:@"profileImage"]) {
         [self loadImage:self.profileImage];
@@ -79,7 +70,6 @@ static NSArray * observableKeys;
 
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"hoursWorked"];
-    [self removeObserver:self forKeyPath:@"profileImage"];
 }
 
 @end
