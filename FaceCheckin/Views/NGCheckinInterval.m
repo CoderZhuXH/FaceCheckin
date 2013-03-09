@@ -12,7 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-#define CheckpointRectAt(x,y) CGRectMake(x, y, 3.0f, 64.0f)
+#define CheckpointRectAt(x,y) CGRectMake(x, y, 3.0f, 80.0f)
 #define CheckpointColor [UIColor colorWithRed:213.0/255 green:210.0/255 blue:198.0/255 alpha:1.0f]
 #define BGColor     [UIColor colorWithRed:244.0f/255 green:241.0f/255 blue:227.0f/255 alpha:1]
 
@@ -49,7 +49,7 @@
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
     // default frame goes here
-    self.frame = CGRectMake(0, 0, 50.f,64.0f);
+    self.frame = CGRectMake(0, 0, self.nibView.bounds.size.width,self.nibView.bounds.size.height);
 }
 
 - (NSString*) _formatDate:(NSDate *)date {
@@ -76,8 +76,6 @@
     
     NSInteger minutesSirMinutes = [self.endDate minutesBySubtracting:self.startDate];
     self.frame = CGRectMake(self.frame.origin.x, 0, minutesSirMinutes * ppm, self.frame.size.height);
-    
-
     
     CALayer * lyr       = [CALayer layer];
     lyr.backgroundColor = CheckpointColor.CGColor;

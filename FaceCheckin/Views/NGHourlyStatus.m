@@ -61,17 +61,19 @@
     
     NSDate * date = [NSDate date];
     date = [date dateByStrippingHours];
-    
+    /*
     CALayer * layer = [CALayer layer];
     layer.backgroundColor = [UIColor colorWithRed:213.0/255 green:210.0/255 blue:198.0/255 alpha:1.0f].CGColor;
     layer.frame = CGRectMake(0, 96, self.nibView.bounds.size.width, 32);
     [self.layer addSublayer:layer];
     
+    */
+
     CALayer * otherLayer = [CALayer layer];
     otherLayer.backgroundColor = [UIColor colorWithRed:245.0f/255 green:242.0f/255 blue:229.0f/255 alpha:1.0f].CGColor;
-    otherLayer.frame = CGRectMake(0, self.bounds.size.height/2.0f, self.bounds.size.width, 2);
-    [self.layer insertSublayer:otherLayer below:layer];
-    
+    otherLayer.frame = CGRectMake(0, self.bounds.size.height-80.0f, self.bounds.size.width, 2);
+    [self.layer addSublayer:otherLayer];
+     
     self.lowerBound= [date dateByAddingHours:6.0];
     self.upperBound  = [self.lowerBound dateByAddingHours:15.0];
 }
