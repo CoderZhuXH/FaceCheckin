@@ -12,11 +12,11 @@
                         "threshold": 20,
                         "uids": [
                                  {
-                                 "uid": "BrunoAlfirevic@NG_TEST",
+                                 "uid": "BrunoBulic@NG_TEST",
                                  "confidence": 100
                                  },
                                  {
-                                 "uid": "BrunoBulic@NG_TEST",
+                                 "uid": "BrunoAlfirevic@NG_TEST",
                                  "confidence": 3
                                  }
                                  ],

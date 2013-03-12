@@ -20,6 +20,8 @@
 - (NSDate *)dateByStrippingHours;
 + (NSDate *)dateFromComponentsGregorian:(NSDateComponents *)components;
 
+- (NSComparisonResult)compareByDates:(NSDate *)other;
+
 - (NSInteger)secondsBySubtracting:(NSDate *)other;
 - (NSInteger)minutesBySubtracting:(NSDate *)date;
 
@@ -30,7 +32,7 @@
 
 - (NSArray *)entireWeekFromDate;
 
-#define DATE_GT_OR_EQUAL(x,y) ([x compare:y] == NSOrderedDescending || [x compare:y] == NSOrderedSame)
-#define DATE_LT_OR_EQUAL(x,y) ([x compare:y] == NSOrderedAscending || [x compare:y] == NSOrderedSame)
+#define DATE_GT_OR_EQUAL(x,y) ([x compareByDates:y] == NSOrderedDescending || [x compareByDates:y] == NSOrderedSame)
+#define DATE_LT_OR_EQUAL(x,y) ([x compareByDates:y] == NSOrderedAscending || [x compareByDates:y] == NSOrderedSame)
 
 @end

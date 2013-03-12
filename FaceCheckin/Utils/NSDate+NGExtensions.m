@@ -40,6 +40,24 @@
     return [internalCalendar dateFromComponents:components];
 }
 
+- (NSComparisonResult)compareByDates:(NSDate *)other {
+    
+    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [currentCalendar components: NSDayCalendarUnit
+                                                      fromDate: self
+                                                        toDate: other
+                                                       options: 0];
+    if(components.day == 0) {
+        return NSOrderedSame;
+    } else if (components.day < 0) {
+        return NSOrderedDescending;
+    } else {
+        return NSOrderedAscending;
+    }
+    
+    return 0;
+}
+
 - (NSInteger)secondsBySubtracting:(NSDate *)other {
     NSTimeInterval firstByte = [self timeIntervalSinceDate:other];
     return (NSUInteger)ceil(firstByte);

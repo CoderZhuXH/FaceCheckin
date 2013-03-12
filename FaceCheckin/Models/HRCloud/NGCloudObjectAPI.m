@@ -20,8 +20,9 @@
     NGHRCloudApi * api = [NGHRCloudApi sharedApi];
     
     NSString * pathToGet =  [NSString stringWithFormat:@"/rest/CLOUD/%@", cloudObjectName];
+    NSDictionary * getArgs = @{@"pagenumber": [NSNumber numberWithInteger:1], @"perpage":[NSNumber numberWithInteger:100]};
     
-    [api getPath:pathToGet parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [api getPath:pathToGet parameters:getArgs success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSLog(@"Got response: %@", responseObject);
         
@@ -73,7 +74,6 @@
     return [[[self class] alloc] initWithDictionary:@{jkCloudObjectEmployeeName: name, jkCloudObjectEmployeeNumber: empID ,jkCloudObjectId:[NSString string]}];
 }
 
-
 #pragma mark - TO JSON. First!
 
 - (NSDictionary *)dictionaryRepresentation {
@@ -96,5 +96,3 @@
 }
 
 @end
-
-////////////////////////////////////////////////////////////////////////////////////////////////////

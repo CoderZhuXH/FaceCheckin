@@ -12,6 +12,7 @@
 #import "NGCameraViewController.h"
 
 #import "NGCloudObjectAPI.h"
+#import "NGTimeClockCloudObject.h"
 #import "NGCheckinData.h"
 
 @interface NGLockScreenController ()
@@ -80,9 +81,12 @@
     NSLog(@"%@", [letsee description]);
 
     [cloud uploadData:^(NSError *error) {
-        
+        if(error)
+        {
+            NSAssert(false, @"");
+        }
     }];
-     */
+    */
 }
 
 - (void)didReceiveMemoryWarning

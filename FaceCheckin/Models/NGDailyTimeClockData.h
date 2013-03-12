@@ -27,3 +27,11 @@
 - (BOOL)insertCheckinData:(NGCheckinData *)data;
 
 @end
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@interface NSArray (NGDailyTimeClockDataExt)
+
+- (CGFloat)totalHoursFromNGDailyTimeClockDataArray;
+
+@end

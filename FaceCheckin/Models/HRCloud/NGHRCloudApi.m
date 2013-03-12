@@ -35,8 +35,6 @@ static NGHRCloudApi * _backing;
         [self setDefaultHeader:@"Accept" value:@"application/json"];
 
         [self setDefaultHeader:@"Content-Type" value:@"application/json"];
-        [self setParameterEncoding:AFJSONParameterEncoding];
-        
         [self setAuthorizationHeaderWithUsername:@"alexandergb@neogov.net" password:@"welcome"];
     }
     return self;
@@ -44,15 +42,15 @@ static NGHRCloudApi * _backing;
 
 @end
 
-@implementation NGHRCloudTextApi
+@implementation NGHRCloudUploadApi
 
-static NGHRCloudTextApi * _hrCloudTextApi;
+static NGHRCloudUploadApi * _hrCloudTextApi;
 
-+ (NGHRCloudTextApi *)sharedApi {
++ (NGHRCloudUploadApi *)sharedApi {
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _hrCloudTextApi = [[NGHRCloudTextApi alloc] initWithBaseURL:[NSURL URLWithString:kNGHRCloudApiBaseUrl]];
+        _hrCloudTextApi = [[NGHRCloudUploadApi alloc] initWithBaseURL:[NSURL URLWithString:kNGHRCloudApiBaseUrl]];
     });
     
     return _hrCloudTextApi;
@@ -64,8 +62,11 @@ static NGHRCloudTextApi * _hrCloudTextApi;
     if (self) {
         [self clearAuthorizationHeader];
         
-        [self setDefaultHeader:@"Content-Type" value:@"application/json"];
+        [self setDefaultHeader:@"Accept" value:@"application/json"];
         [self setAuthorizationHeaderWithUsername:@"alexandergb@neogov.net" password:@"welcome"];
+        
+        [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
+        [self setParameterEncoding:AFJSONParameterEncoding];
     }
     return self;
 }

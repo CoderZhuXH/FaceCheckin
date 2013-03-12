@@ -19,7 +19,6 @@
     CGFloat         _hours;
 }
 
-
 - (id)initBasic:(NSDate *)date
 {
     self = [super init];
@@ -134,6 +133,23 @@
     }
     
     return _hours;
+}
+
+@end
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@implementation NSArray (NGDailyTimeClockDataExt)
+
+-(CGFloat)totalHoursFromNGDailyTimeClockDataArray {
+    
+    CGFloat hours = 0;
+    
+    for (NGDailyTimeClockData * elem in self) {
+        hours += elem.hours;
+    }
+    
+    return hours;
 }
 
 @end

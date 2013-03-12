@@ -15,8 +15,8 @@
 
 @end
 
-@interface NGHRCloudTextApi : AFHTTPClient
+@interface NGHRCloudUploadApi : AFHTTPClient
 
-+ (NGHRCloudTextApi *)sharedApi;
++ (NGHRCloudUploadApi *)sharedApi;
 
 @end

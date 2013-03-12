@@ -16,7 +16,7 @@ static NSDictionary * _imageRecognizerTranslator;
 
 + (void)initialize {
     if(self == [NGEmployeeData class]) {
-        _imageRecognizerTranslator = @{@"BrunoAlfirevic" : @"28902ae038ce43c0bfbff78dad1bad5a", @"BrunoBulic" : @"34d47b567419a34d8c0c39de5b060d4c"};
+        _imageRecognizerTranslator = @{@"BrunoAlfirevic" : @"28902ae038ce43c0bfbff78dad1bad5a", @"BrunoBulic" : @"10a3bc2ac86db97fb8ecfacc92fae211"};
     }
 }
 

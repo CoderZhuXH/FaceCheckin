@@ -46,6 +46,10 @@
         NSMutableArray * cloudObjectForEmployeeId = [NSMutableArray arrayWithCapacity:cloudObjects.count];
         
         for (NGTimeClockCloudObject * timeClockCloudObject in cloudObjects) {
+            
+            NSAssert(timeClockCloudObject.employeeNumber != nil, @"Employee number must exist here");
+            NSAssert(timeClockCloudObject.fastEmployeeNumber == [timeClockCloudObject.employeeNumber integerValue], @"%d must be equal to %d from string",timeClockCloudObject.fastEmployeeNumber, [timeClockCloudObject.employeeNumber integerValue]);
+            
             if(timeClockCloudObject.fastEmployeeNumber == employeeData.fastEmployeeNumber) {
                 timeClockCloudObject.employeeId = employeeData.employeeId;
                 [cloudObjectForEmployeeId addObject:timeClockCloudObject];
@@ -138,15 +142,18 @@
     NSMutableDictionary * dict = [[self dictionaryRepresentation] mutableCopy];
     [dict removeObjectForKey:jkCloudObjectId];
     
-    NGHRCloudApi * api = [NGHRCloudApi sharedApi];
-    NSURLRequest * request = [api requestWithMethod:@"POST" path:@"/rest/CLOUD/Time_Clock" parameters:dict];
+    NGHRCloudUploadApi * api = [NGHRCloudUploadApi sharedApi];
     
-    AFJSONRequestOperation * op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+    NSMutableURLRequest * request = [[api requestWithMethod:@"POST" path:@"/rest/CLOUD/Time_Clock" parameters:dict] mutableCopy];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"]; // override value to compensate for the API
+    
+    AFJSONRequestOperation * op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success: ^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
+    {
         NSAssert(response.statusCode == 200, @"");
         callback(nil);
         NSLog(@"%@", [JSON description]);
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        callback(nil);
+        callback(error);
         NSLog(@"%@", [JSON description]);
     }];
     

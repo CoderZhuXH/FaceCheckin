@@ -244,9 +244,7 @@
         
         // fill existing data
         if(startIndex > 0) {
-            NSInteger counter = 0;
-            CGFloat hours = 0;
-            
+            NSInteger counter = 0;            
             NSDate * today = [[NSDate date] dateByStrippingHours];
             
             for(int i = startIndex; i < arrOfDailyTimeClockData.count && i < startIndex + 7; i++) {
@@ -254,7 +252,7 @@
                 NGDailyTimeClockData * data = [self.checkinsArrayFromAPI objectAtIndex:counter++];
                 NGDailyTimeClockData * apiData = [arrOfDailyTimeClockData objectAtIndex:i];
                 
-                if([data.dayInfo compare:apiData.dayInfo] != NSOrderedSame) {
+                if([data.dayInfo compareByDates:apiData.dayInfo] != NSOrderedSame) {
                     i--;
                     continue;
                 }
@@ -267,11 +265,7 @@
                 if([apiData.dayInfo compare:today] == NSOrderedSame) {
                     [self.hourlyStatusManager loadCheckinData:data];
                 }
-                
-                hours += data.hours;
             }
-            
-            self.totalHoursReal.text = [NSString stringWithFormat:@"%.2f", hours];
         }
         
         
@@ -293,7 +287,6 @@
         }
         
         [self reloadDataSource];
-        
     }];
 }
 
@@ -308,6 +301,11 @@
     self.dataSource             = [[CUCellDataSource alloc] initWithArray:self.loginArray withDelegate:self];
     
     self.dataLoginView.dataSource = self.dataSource;
+
+    
+    CGFloat hours = [self.checkinsArrayFromAPI totalHoursFromNGDailyTimeClockDataArray];
+    self.totalHoursReal.text = [NSString stringWithFormat:@"%.2f", hours];
+    
     [self.dataLoginView reloadData];
 }
 
