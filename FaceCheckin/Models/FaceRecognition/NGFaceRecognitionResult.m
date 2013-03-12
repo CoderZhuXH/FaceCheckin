@@ -15,7 +15,6 @@
 @implementation NGFaceRecognitionResult
 
 
-
 #ifdef DEBUG
 
 + (NSDictionary *)mockedData {
@@ -29,7 +28,7 @@
 
 + (void)getRecognitionResulsForImageData:(NSData *)imageData forNameSpace:(NSString *)nameSpace withResult:(NGFaceRecognitionCallback)cblk {
 
-#ifndef TARGET_IPHONE_SIMULATOR
+#ifdef FACERECOGNITION_USE_SKY_BIOMETRY
     
     NSMutableDictionary * postArguments = [
   @{@"uids"    : @"all",

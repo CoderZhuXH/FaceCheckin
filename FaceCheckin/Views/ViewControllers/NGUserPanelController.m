@@ -51,6 +51,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalHours;
 @property (weak, nonatomic) IBOutlet UILabel *totalHoursReal;
 
+
+@property (weak, nonatomic) IBOutlet VGMultistateButton *mutlistateCheckinButton;
+
 @end
 
 @implementation NGUserPanelController
@@ -105,6 +108,10 @@
     }
 }
 
+- (void)button:(VGMultistateButton *)button didChangeStateTo:(NSString *)state {
+    [self doCheckin:button];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -149,6 +156,16 @@
     }];
     
     self.checkinsArrayFromAPI   = [NGDailyTimeClockData getPlaceholders];
+    
+    NSDate * today = [[NSDate date] dateByStrippingHours];
+    
+    for (NGDailyTimeClockData * data in self.checkinsArrayFromAPI) {
+        if([data.dayInfo compare:today] == NSOrderedSame) {
+            self.todayTableSlot = data;
+            break;
+        }
+    }
+    
     [self reloadDataSource];
     
     CALayer * lyr = [CALayer layer];
@@ -157,11 +174,15 @@
 
     [self.dataLoginView.layer addSublayer:lyr];
     
-    
+    [[NGCoreTimer coreTimer] registerListener:self];
     self.totalHours.font = [UIFont fontWithName:@"GothamNarrow-Bold" size:24];
     self.totalHoursReal.font = [UIFont fontWithName:@"GothamNarrow-Bold" size:24];
-
+    self.hourLabel.font = [UIFont fontWithName:@"GothamNarrow-Bold" size:22];
     
+    NSArray * states = [VGMultistateButton createClockinButtonStates];
+    [self.mutlistateCheckinButton forceStates:states];
+    self.mutlistateCheckinButton.delegate = self;
+
     [self updateCheckinButtonText];
     
     [self.imageView setImage:self.imageToShow];
@@ -175,11 +196,10 @@
     [NGEmployeeData getEmployeeDataForEncryptedID:encryptedId forCallback:^(NGEmployeeData *data, NSError *error) {
 
         [self.loadingIndicator stopAnimating];
-        [self.profileInfoView loadPerfsFromProfile:data];
-        
-        self.profileInfoView.profileImage = self.imageToShow;
-        
         self.profileInfoView.hidden = NO;
+        
+        [self.profileInfoView loadPerfsFromProfile:data];
+
         
         if (error == nil) {
             self.loadingHud.labelText = [NSString stringWithFormat:@"Hello, %@! Loading Your clockin data...", data.firstName];
@@ -198,12 +218,12 @@
 
 - (void)loadCloudObject:(NSString *)cloudObjectId forUser:(NGEmployeeData *)employee {
     
-    [NGTimeClockCloudObject getCloudObjectWithCallback:^(NSArray *cloudObjects, NSError *error) {
+    [NGTimeClockCloudObject getCloudObjectForEmployeeData:employee withCallback:^(NSArray *cloudObjects, NSError *error) {
+        
         self.loadingHud.labelText = [NSString stringWithFormat:@"And we're done! You can now clock in normally.", nil];
         [self.loadingHud hide:YES afterDelay:1.5f];
         
-        NSArray * cloudObjectsForEmployee = [cloudObjects cloudObjectsForEmployeeNumberFast:employee.fastEmployeeNumber];
-        NSArray * arrOfDailyTimeClockData = [NGDailyTimeClockData createDailyClockDataFromCloudObjects:cloudObjectsForEmployee]; // we have data... BITCH!
+        NSArray * arrOfDailyTimeClockData = [NGDailyTimeClockData createDailyClockDataFromCloudObjects:cloudObjects]; // we have data... BITCH!
         
         
         NSDate * startWatchDate = [[self.checkinsArrayFromAPI objectAtIndex:0] dayInfo];
@@ -222,42 +242,40 @@
             }
         }
         
-        if(startIndex < 0) return;
-        
-        NSInteger counter = 0;
-        CGFloat hours = 0;
-        
-        NSDate * today = [[NSDate date] dateByStrippingHours];
-        
-        for(int i = startIndex; i < arrOfDailyTimeClockData.count && i < startIndex + 7; i++) {
+        // fill existing data
+        if(startIndex > 0) {
+            NSInteger counter = 0;
+            CGFloat hours = 0;
             
-            NGDailyTimeClockData * data = [self.checkinsArrayFromAPI objectAtIndex:counter++];
-            NGDailyTimeClockData * apiData = [arrOfDailyTimeClockData objectAtIndex:i];
+            NSDate * today = [[NSDate date] dateByStrippingHours];
             
-            if([data.dayInfo compare:apiData.dayInfo] != NSOrderedSame)
-            {
-                i--;
-                continue;
+            for(int i = startIndex; i < arrOfDailyTimeClockData.count && i < startIndex + 7; i++) {
+                
+                NGDailyTimeClockData * data = [self.checkinsArrayFromAPI objectAtIndex:counter++];
+                NGDailyTimeClockData * apiData = [arrOfDailyTimeClockData objectAtIndex:i];
+                
+                if([data.dayInfo compare:apiData.dayInfo] != NSOrderedSame) {
+                    i--;
+                    continue;
+                }
+                
+                for (NGCheckinData * cData in apiData.checkins) {
+                    BOOL wereCool = [data insertCheckinData:cData];
+                    NSAssert(wereCool, @"Inserting Checkin data of %@ to %@. Wrong.", apiData.dayInfo, data.dayInfo);
+                }
+                
+                if([apiData.dayInfo compare:today] == NSOrderedSame) {
+                    [self.hourlyStatusManager loadCheckinData:data];
+                }
+                
+                hours += data.hours;
             }
             
-            for (NGCheckinData * cData in apiData.checkins) {
-                BOOL wereCool = [data insertCheckinData:cData];
-                NSAssert(wereCool, @"Inserting Checkin data of %@ to %@. Wrong.", apiData.dayInfo, data.dayInfo);
-            }
-            
-            hours += data.hours;
-                        
-            if([apiData.dayInfo compare:today] == NSOrderedSame) {
-                [self.hourlyStatusManager loadCheckinData:data];
-            }
+            self.totalHoursReal.text = [NSString stringWithFormat:@"%.2f", hours];
         }
         
-        for (NGDailyTimeClockData * data in self.checkinsArrayFromAPI) {
-            if([data.dayInfo compare:today] == NSOrderedSame) {
-                self.todayTableSlot = data;
-            }
-        }
         
+        // handle misc
         self.todayData = (NGTimeClockCloudObject *)[NGTimeClockCloudObject templateWithEmployeeId:employee.employeeNumber andName:[NSString stringWithFormat:@"%@ %@",employee.firstName,employee.lastName]];
 
         NSString * key = [[self class] buildKeyForEmployeeId:self.todayData.employeeNumber];
@@ -274,7 +292,6 @@
             [self.hourlyStatusManager loadCheckinData:d];
         }
         
-        self.totalHoursReal.text = [NSString stringWithFormat:@"%.2f", hours];
         [self reloadDataSource];
         
     }];
@@ -292,6 +309,14 @@
     
     self.dataLoginView.dataSource = self.dataSource;
     [self.dataLoginView reloadData];
+}
+
+- (void)coreTimer:(NGCoreTimer *)timer timerChanged:(id)changedData {
+    
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"h:m a"];
+    
+    self.hourLabel.text = [formatter stringFromDate:[NSDate date]];
 }
 
 - (IBAction)onTap:(id)tap {

@@ -9,7 +9,9 @@
 #import "FaceCheckinTests.h"
 #import "NGDailyTimeClockData.h"
 #import "NGCloudObjectAPI.h"
+#import "NGTimeClockCloudObject.h"
 #import "NGCheckinData.h"
+#import "NGCheckinInterval.h"
 
 #import "NSDate+NGExtensions.h"
 
@@ -82,60 +84,12 @@
     
 }
 
-- (void)testDictionaryRepresentation {
-    NSString * path = [[NSBundle mainBundle] pathForResource:@"TimeClockMock" ofType:@"json"];
-    NSData * data = [NSData dataWithContentsOfFile:path];
+- (void)testDateFormatInInterval {
     
-    id array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSInteger difference = 90;
+    NSString * result = [NGCheckinInterval formatHMSForMinuteDifference:difference];
     
-    NSMutableArray * timeClockCloudObjects = [NSMutableArray arrayWithCapacity:[array count]];
-    
-    for (NSDictionary * dict in array) {
-        
-        NGTimeClockCloudObject * obj = [[NGTimeClockCloudObject alloc] initWithDictionary:dict];
-        
-        STAssertNotNil(obj.dateCheckingIn   , @"Should be somthing");
-        STAssertNotNil(obj.dateCheckingOut  , @"Should be somthing");
-        STAssertNotNil(obj.dayOfWeek        , @"Should be somthing");
-        STAssertTrue(obj.hoursWorked > 0    , @"Should be positive and not %.2f", obj.hoursWorked);
-        STAssertNotNil(obj.dayOfWeek        , @"Has version");
-        
-        [timeClockCloudObjects addObject:obj];
-    }
-    
-    NSDate * checkin = [[[NSDate date] dateByStrippingHours] dateByAddingHours:8];
-    NSDate * checkOut = [[[NSDate date] dateByStrippingHours] dateByAddingHours:16];
-    
-    NGCheckinData * cData = [[NGCheckinData alloc] initWithCheckIn:checkin andCheckout:checkOut];
-    
-    NGTimeClockCloudObject * cloud = [timeClockCloudObjects objectAtIndex:0];
-    
-    [cloud mergeWithCheckinData:cData];
-    NSDictionary * letsee = [cloud dictionaryRepresentation];
-    
-    NSLog(@"%@", [letsee description]);
-    
-    NSConditionLock *tl = [NSConditionLock new];
-    
-    [cloud uploadData:^(NSError *error) {
-        if(error) {
-            STAssertNotNil(nil, @"");
-        } else {
-            STAssertNil(nil, @"");
-        }
-        
-     [tl unlockWithCondition:1];
-     
-    }];
-    
-    // now lock the semaphore - which will block this thread until
-    // [self.theLock unlockWithCondition:1] gets invoked
-    [tl lockWhenCondition:1];
-    
-    // make sure the async callback did in fact happen by
-    // checking whether it modified a variable
-    STAssertTrue (true, @"delegate did not get called");
-    
+    STAssertTrue([result isEqualToString:@"1h 30m"], @"Should be equal to 1h 30m, and not %@",result);
 }
 
 

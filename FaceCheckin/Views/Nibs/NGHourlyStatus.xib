@@ -34,14 +34,13 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIView" id="539204384">
+					<object class="IBUIView" id="716606709">
 						<reference key="NSNextResponder" ref="995878295"/>
 						<int key="NSvFlags">266</int>
 						<array class="NSMutableArray" key="NSSubviews"/>
-						<string key="NSFrame">{{0, 96}, {704, 32}}</string>
+						<string key="NSFrame">{{0, 97}, {704, 32}}</string>
 						<reference key="NSSuperview" ref="995878295"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>
@@ -49,16 +48,16 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
-					<object class="IBUIView" id="116902975">
+					<object class="IBUIView" id="610694138">
 						<reference key="NSNextResponder" ref="995878295"/>
 						<int key="NSvFlags">274</int>
 						<array class="NSMutableArray" key="NSSubviews"/>
 						<string key="NSFrame">{{0, 48}, {704, 80}}</string>
 						<reference key="NSSuperview" ref="995878295"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="539204384"/>
+						<reference key="NSNextKeyView" ref="716606709"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<object class="NSColor" key="IBUIBackgroundColor" id="993628036">
+						<object class="NSColor" key="IBUIBackgroundColor" id="863351636">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
 						</object>
@@ -68,9 +67,9 @@
 				<string key="NSFrameSize">{704, 128}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="116902975"/>
+				<reference key="NSNextKeyView" ref="610694138"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
-				<reference key="IBUIBackgroundColor" ref="993628036"/>
+				<reference key="IBUIBackgroundColor" ref="863351636"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
 		</array>
@@ -88,7 +87,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">checkinSlider</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="116902975"/>
+						<reference key="destination" ref="610694138"/>
 					</object>
 					<int key="connectionID">16</int>
 				</object>
@@ -116,21 +115,21 @@
 						<int key="objectID">3</int>
 						<reference key="object" ref="995878295"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="116902975"/>
-							<reference ref="539204384"/>
+							<reference ref="610694138"/>
+							<reference ref="716606709"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">MainView</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">17</int>
-						<reference key="object" ref="539204384"/>
+						<reference key="object" ref="716606709"/>
 						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="995878295"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">15</int>
-						<reference key="object" ref="116902975"/>
+						<reference key="object" ref="610694138"/>
 						<reference key="parent" ref="995878295"/>
 						<string key="objectName">Checkin Slider</string>
 					</object>

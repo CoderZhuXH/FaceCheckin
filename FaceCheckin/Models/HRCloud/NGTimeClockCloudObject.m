@@ -12,6 +12,13 @@
 #import "AFNetworking.h"
 
 #import "NSDate+NGExtensions.h"
+#import "NGEmployeeData.h"
+
+#define DateFormatV1Point0 @"M/d/yyyy"
+#define DateFormatV1Point5 @"M/d/yyyy HH:mm:ss a"
+
+// make sure you are using a correct date format
+#define CurrentDateFormat DateFormatV1Point0
 
 @implementation NGTimeClockCloudObject
 
@@ -27,13 +34,35 @@
     }];
 }
 
++ (void)getCloudObjectForEmployeeData:(NGEmployeeData *)employeeData withCallback:(NGCloudObjectAPICallback)callback {
+    
+    [[self class] getCloudObjectWithCallback:^(NSArray *cloudObjects, NSError *error) {
+        
+        if (error) {
+            callback(nil, error);
+            return;
+        }
+        
+        NSMutableArray * cloudObjectForEmployeeId = [NSMutableArray arrayWithCapacity:cloudObjects.count];
+        
+        for (NGTimeClockCloudObject * timeClockCloudObject in cloudObjects) {
+            if(timeClockCloudObject.fastEmployeeNumber == employeeData.fastEmployeeNumber) {
+                timeClockCloudObject.employeeId = employeeData.employeeId;
+                [cloudObjectForEmployeeId addObject:timeClockCloudObject];
+            }
+        }
+        
+        callback([NSArray arrayWithArray:cloudObjectForEmployeeId], nil);
+    }];
+}
+
 - (BOOL)isReadyToSend {
     return (self.dateCheckingIn != nil) && (self.dateCheckingOut != nil);
 }
 
 - (void)configureObject {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"M/d/yyyy HH:mm:ss a"]; // something happened here
+    [formatter setDateFormat:CurrentDateFormat]; // something happened here
     
     NSDate * father = [formatter dateFromString:[self.cloudObject objectForKey:jkClockCloudObjectDate]];
     
@@ -82,7 +111,11 @@
     
     if(!self.dateCheckingIn) return fromSuper;
     
-    [formatter setDateFormat:@"M/d/yyyy HH:mm:ss a"];
+    if(self.employeeId && self.employeeId.length > 0) {
+        [fromSuper setObject:self.employeeId forKey:jkClockCloudObjectEmployeeId];
+    }
+    
+    [formatter setDateFormat:CurrentDateFormat];
     [fromSuper setObject:[formatter stringFromDate:_dateCheckingIn] forKey:jkClockCloudObjectDate];
     
     [formatter setDateFormat:@"HH:mm"];
@@ -100,7 +133,6 @@
     
     return [NSDictionary dictionaryWithDictionary:fromSuper];
 }
-
 
 - (void)uploadData:(void (^)(NSError *))callback {
     NSMutableDictionary * dict = [[self dictionaryRepresentation] mutableCopy];

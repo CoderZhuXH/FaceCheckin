@@ -8,12 +8,16 @@
 
 #import "NGBaseViewController.h"
 #import "CUCellFramework.h"
+#import "NGCoreTimer.h"
+#import "VGMultistateButton+NGExtensions.h"
+
 
 #define currentCheckinKey @"currentCheckinKey"
 
-@interface NGUserPanelController : NGBaseViewController<CUCellFrameworkDelegate>
+@interface NGUserPanelController : NGBaseViewController<CUCellFrameworkDelegate,NGCoreTimerProcotol,VGMultistateButtonDelegate>
 
 @property (weak, nonatomic) IBOutlet        UIButton    * checkinButton;
 @property (nonatomic, unsafe_unretained)    UIImage     * imageToShow;
+@property (weak, nonatomic) IBOutlet        UILabel     * hourLabel;
 
 @end

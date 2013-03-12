@@ -1,19 +1,9 @@
  [
   {
-  "Id": "db2288b141fda136664f2366f5ca57af",
-  "Employee_Number": "001",
-  "Employee_Name": "Alexander Graham Bell AGB",
-  "Date": "3/5/2013",
-  "Day_of_Week": "Tue",
-  "Time_In_Txt": "10:00",
-  "Time_out_Txt": "14:00",
-  "Hours_Worked": "4.00"
-  },
-  {
   "Id": "db2288b141fda1369e351bc5fbe69c50",
   "Employee_Number": "001",
   "Employee_Name": "Alexander Graham Bell AGB",
-  "Date": "3/4/2013",
+  "Date": "3/4/2013 12:00:00 AM",
   "Day_of_Week": "Mon",
   "Time_In_Txt": "10:00",
   "Time_out_Txt": "14:00",
@@ -23,7 +13,7 @@
   "Id": "db2288b141fda136534aa9f8efcae2bb",
   "Employee_Number": "9420",
   "Employee_Name": "Andre Agassi",
-  "Date": "3/5/2013",
+  "Date": "3/5/2013 12:00:00 AM",
   "Day_of_Week": "Tue",
   "Time_In_Txt": "13:00",
   "Time_out_Txt": "14:00",
@@ -33,10 +23,50 @@
   "Id": "db2288b141fda13600bc0f7627274899",
   "Employee_Number": "39022",
   "Employee_Name": "Goran Ivanesevic",
-  "Date": "3/6/2013",
+  "Date": "3/6/2013 12:00:00 AM",
   "Day_of_Week": "Wed",
   "Time_In_Txt": "13:00",
   "Time_out_Txt": "14:00",
   "Hours_Worked": "1.00"
+  },
+  {
+  "Id": "ad2e6843755ef080a2399060eaa4027c",
+  "Employee_Number": "001",
+  "Employee_Name": "Alexander Graham Bell AGB",
+  "Date": "3/7/2013 12:00:00 AM",
+  "Day_of_Week": "Thu",
+  "Time_In_Txt": "09:30",
+  "Time_out_Txt": "18:30",
+  "Hours_Worked": "9.00"
+  },
+  {
+  "Id": "febba7f758ec4161ea514133edc8f129",
+  "Employee_Number": "39022",
+  "Employee_Name": "Goran Ivanesevic",
+  "Date": "3/8/2013 12:00:00 AM",
+  "Day_of_Week": "Fri",
+  "Time_In_Txt": "08:00",
+  "Time_out_Txt": "11:22",
+  "Hours_Worked": "3.37"
+  },
+  {
+  "Id": "febba7f758ec4161b437f975673bad16",
+  "Employee_Number": "39022",
+  "Employee_Name": "Goran Ivanesevic",
+  "Date": "3/8/2013 12:00:00 AM",
+  "Day_of_Week": "Fri",
+  "Time_In_Txt": "12:15",
+  "Time_out_Txt": "15:54",
+  "Hours_Worked": "3.65"
+  },
+  {
+  "Id": "db2288b141fda136664f2366f5ca57af",
+  "Employee_Number": "001",
+  "Employee_Name": "Alexander Graham Bell AGB",
+  "Date": "3/5/2013 12:00:00 AM",
+  "Day_of_Week": "Tuesday",
+  "Time_In_Txt": "10:00",
+  "Time_out_Txt": "14:00",
+  "Hours_Worked": "4.00"
   }
-]
+  ]

@@ -16,4 +16,6 @@
 
 @property (atomic, assign) UIImage * profileImage;
 
+- (void)setProfileImageUrl:(NSString *)pstrImgUrl;
+
 @end

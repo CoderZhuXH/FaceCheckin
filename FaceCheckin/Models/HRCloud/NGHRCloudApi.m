@@ -43,3 +43,32 @@ static NGHRCloudApi * _backing;
 }
 
 @end
+
+@implementation NGHRCloudTextApi
+
+static NGHRCloudTextApi * _hrCloudTextApi;
+
++ (NGHRCloudTextApi *)sharedApi {
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _hrCloudTextApi = [[NGHRCloudTextApi alloc] initWithBaseURL:[NSURL URLWithString:kNGHRCloudApiBaseUrl]];
+    });
+    
+    return _hrCloudTextApi;
+}
+
+- (id)initWithBaseURL:(NSURL *)url
+{
+    self = [super initWithBaseURL:url];
+    if (self) {
+        [self clearAuthorizationHeader];
+        
+        [self setDefaultHeader:@"Content-Type" value:@"application/json"];
+        [self setAuthorizationHeaderWithUsername:@"alexandergb@neogov.net" password:@"welcome"];
+    }
+    return self;
+}
+
+
+@end

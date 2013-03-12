@@ -75,6 +75,20 @@
 		709EC22716DBEF99005F891C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC20216DBEF99005F891C /* Foundation.framework */; };
 		709EC22F16DBEF99005F891C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 709EC22D16DBEF99005F891C /* InfoPlist.strings */; };
 		709EC23216DBEF9A005F891C /* FaceCheckinTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 709EC23116DBEF9A005F891C /* FaceCheckinTests.m */; };
+		70B6D3A516EEA2940083687F /* ClockInButton-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B6D39916EEA2940083687F /* ClockInButton-Normal.png */; };
+		70B6D3A616EEA2940083687F /* ClockInButton-Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B6D39A16EEA2940083687F /* ClockInButton-Normal@2x.png */; };
+		70B6D3A716EEA2940083687F /* ClockInButton-Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B6D39B16EEA2940083687F /* ClockInButton-Pressed.png */; };
+		70B6D3A816EEA2940083687F /* ClockInButton-Pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B6D39C16EEA2940083687F /* ClockInButton-Pressed@2x.png */; };
+		70B6D3A916EEA2940083687F /* ClockOutButton-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B6D39D16EEA2940083687F /* ClockOutButton-Normal.png */; };
+		70B6D3AA16EEA2940083687F /* ClockOutButton-Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B6D39E16EEA2940083687F /* ClockOutButton-Normal@2x.png */; };
+		70B6D3AB16EEA2940083687F /* ClockOutButton-Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B6D39F16EEA2940083687F /* ClockOutButton-Pressed.png */; };
+		70B6D3AC16EEA2940083687F /* ClockOutButton-Pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B6D3A016EEA2940083687F /* ClockOutButton-Pressed@2x.png */; };
+		70B6D3AD16EEA2940083687F /* DoneButton-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B6D3A116EEA2940083687F /* DoneButton-Normal.png */; };
+		70B6D3AE16EEA2940083687F /* DoneButton-Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B6D3A216EEA2940083687F /* DoneButton-Normal@2x.png */; };
+		70B6D3AF16EEA2940083687F /* DoneButton-Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B6D3A316EEA2940083687F /* DoneButton-Pressed.png */; };
+		70B6D3B016EEA2940083687F /* DoneButton-Pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B6D3A416EEA2940083687F /* DoneButton-Pressed@2x.png */; };
+		70B6D3B316EEA5490083687F /* VGMultistateButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B6D3B216EEA5490083687F /* VGMultistateButton.m */; };
+		70B6D3B616EEA8A90083687F /* VGMultistateButton+NGExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B6D3B516EEA8A90083687F /* VGMultistateButton+NGExtensions.m */; };
 		70C7C98316DFD000001EE73F /* NGCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C7C98116DFD000001EE73F /* NGCameraViewController.xib */; };
 		70C7C98416DFD000001EE73F /* NGLockScreenController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C7C98216DFD000001EE73F /* NGLockScreenController.xib */; };
 		70C7C98716DFD0A0001EE73F /* NGUserPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C98616DFD0A0001EE73F /* NGUserPanelController.m */; };
@@ -220,6 +234,22 @@
 		709EC22E16DBEF99005F891C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		709EC23016DBEF9A005F891C /* FaceCheckinTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceCheckinTests.h; sourceTree = "<group>"; };
 		709EC23116DBEF9A005F891C /* FaceCheckinTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceCheckinTests.m; sourceTree = "<group>"; };
+		70B6D39916EEA2940083687F /* ClockInButton-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClockInButton-Normal.png"; sourceTree = "<group>"; };
+		70B6D39A16EEA2940083687F /* ClockInButton-Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClockInButton-Normal@2x.png"; sourceTree = "<group>"; };
+		70B6D39B16EEA2940083687F /* ClockInButton-Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClockInButton-Pressed.png"; sourceTree = "<group>"; };
+		70B6D39C16EEA2940083687F /* ClockInButton-Pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClockInButton-Pressed@2x.png"; sourceTree = "<group>"; };
+		70B6D39D16EEA2940083687F /* ClockOutButton-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClockOutButton-Normal.png"; sourceTree = "<group>"; };
+		70B6D39E16EEA2940083687F /* ClockOutButton-Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClockOutButton-Normal@2x.png"; sourceTree = "<group>"; };
+		70B6D39F16EEA2940083687F /* ClockOutButton-Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClockOutButton-Pressed.png"; sourceTree = "<group>"; };
+		70B6D3A016EEA2940083687F /* ClockOutButton-Pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClockOutButton-Pressed@2x.png"; sourceTree = "<group>"; };
+		70B6D3A116EEA2940083687F /* DoneButton-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DoneButton-Normal.png"; sourceTree = "<group>"; };
+		70B6D3A216EEA2940083687F /* DoneButton-Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DoneButton-Normal@2x.png"; sourceTree = "<group>"; };
+		70B6D3A316EEA2940083687F /* DoneButton-Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DoneButton-Pressed.png"; sourceTree = "<group>"; };
+		70B6D3A416EEA2940083687F /* DoneButton-Pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DoneButton-Pressed@2x.png"; sourceTree = "<group>"; };
+		70B6D3B116EEA5490083687F /* VGMultistateButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VGMultistateButton.h; sourceTree = "<group>"; };
+		70B6D3B216EEA5490083687F /* VGMultistateButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VGMultistateButton.m; sourceTree = "<group>"; };
+		70B6D3B416EEA8A90083687F /* VGMultistateButton+NGExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VGMultistateButton+NGExtensions.h"; sourceTree = "<group>"; };
+		70B6D3B516EEA8A90083687F /* VGMultistateButton+NGExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VGMultistateButton+NGExtensions.m"; sourceTree = "<group>"; };
 		70C7C98116DFD000001EE73F /* NGCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NGCameraViewController.xib; sourceTree = "<group>"; };
 		70C7C98216DFD000001EE73F /* NGLockScreenController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NGLockScreenController.xib; sourceTree = "<group>"; };
 		70C7C98516DFD0A0001EE73F /* NGUserPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGUserPanelController.h; sourceTree = "<group>"; };
@@ -323,6 +353,8 @@
 				70C7C9CF16E13A43001EE73F /* NGCheckinInterval.m */,
 				70FC569916E811CF00E313D0 /* NGProfileInfo.h */,
 				70FC569A16E811CF00E313D0 /* NGProfileInfo.m */,
+				70B6D3B116EEA5490083687F /* VGMultistateButton.h */,
+				70B6D3B216EEA5490083687F /* VGMultistateButton.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -349,6 +381,8 @@
 				7023F05A16DC53A4009306C2 /* NSDate+NGExtensions.m */,
 				7049A3D016E66A3600900216 /* UIImage+NGExtensions.h */,
 				7049A3D116E66A3600900216 /* UIImage+NGExtensions.m */,
+				70B6D3B416EEA8A90083687F /* VGMultistateButton+NGExtensions.h */,
+				70B6D3B516EEA8A90083687F /* VGMultistateButton+NGExtensions.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -565,6 +599,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		70B6D39816EEA2940083687F /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				70B6D39916EEA2940083687F /* ClockInButton-Normal.png */,
+				70B6D39A16EEA2940083687F /* ClockInButton-Normal@2x.png */,
+				70B6D39B16EEA2940083687F /* ClockInButton-Pressed.png */,
+				70B6D39C16EEA2940083687F /* ClockInButton-Pressed@2x.png */,
+				70B6D39D16EEA2940083687F /* ClockOutButton-Normal.png */,
+				70B6D39E16EEA2940083687F /* ClockOutButton-Normal@2x.png */,
+				70B6D39F16EEA2940083687F /* ClockOutButton-Pressed.png */,
+				70B6D3A016EEA2940083687F /* ClockOutButton-Pressed@2x.png */,
+				70B6D3A116EEA2940083687F /* DoneButton-Normal.png */,
+				70B6D3A216EEA2940083687F /* DoneButton-Normal@2x.png */,
+				70B6D3A316EEA2940083687F /* DoneButton-Pressed.png */,
+				70B6D3A416EEA2940083687F /* DoneButton-Pressed@2x.png */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		70C7C98016DFD000001EE73F /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
@@ -582,6 +635,7 @@
 		70C7C98F16DFD68A001EE73F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				70B6D39816EEA2940083687F /* Buttons */,
 				704E6F9616EABBF200255501 /* Frames */,
 				704E6F8A16EAB4D700255501 /* Backgrounds */,
 				70FC56D616E9213900E313D0 /* Icons */,
@@ -838,6 +892,18 @@
 				704E6FAE16EAC3F400255501 /* ProfileBackground@2x.png in Resources */,
 				704E6FB116EAC50000255501 /* LineSeparator.png in Resources */,
 				704E6FB216EAC50000255501 /* LineSeparator@2x.png in Resources */,
+				70B6D3A516EEA2940083687F /* ClockInButton-Normal.png in Resources */,
+				70B6D3A616EEA2940083687F /* ClockInButton-Normal@2x.png in Resources */,
+				70B6D3A716EEA2940083687F /* ClockInButton-Pressed.png in Resources */,
+				70B6D3A816EEA2940083687F /* ClockInButton-Pressed@2x.png in Resources */,
+				70B6D3A916EEA2940083687F /* ClockOutButton-Normal.png in Resources */,
+				70B6D3AA16EEA2940083687F /* ClockOutButton-Normal@2x.png in Resources */,
+				70B6D3AB16EEA2940083687F /* ClockOutButton-Pressed.png in Resources */,
+				70B6D3AC16EEA2940083687F /* ClockOutButton-Pressed@2x.png in Resources */,
+				70B6D3AD16EEA2940083687F /* DoneButton-Normal.png in Resources */,
+				70B6D3AE16EEA2940083687F /* DoneButton-Normal@2x.png in Resources */,
+				70B6D3AF16EEA2940083687F /* DoneButton-Pressed.png in Resources */,
+				70B6D3B016EEA2940083687F /* DoneButton-Pressed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -919,6 +985,8 @@
 				70FC56A016E8269F00E313D0 /* NGCloudObjectAPI.m in Sources */,
 				704E6F8616EA5EDF00255501 /* NGCheckinData.m in Sources */,
 				704E6F8916EAA9D500255501 /* NGTimeClockCloudObject.m in Sources */,
+				70B6D3B316EEA5490083687F /* VGMultistateButton.m in Sources */,
+				70B6D3B616EEA8A90083687F /* VGMultistateButton+NGExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

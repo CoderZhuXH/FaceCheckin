@@ -17,5 +17,6 @@
 - (CGFloat)setClockOutDate:(NSDate *)date pixelsPerMinute:(CGFloat)ppm;
 
 - (void)setPositionOnSlider:(CGFloat)xCoord;
++ (NSString *)formatHMSForMinuteDifference:(NSInteger)minuteDifference;
 
 @end

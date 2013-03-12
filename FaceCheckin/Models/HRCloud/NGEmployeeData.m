@@ -26,8 +26,13 @@ static NSDictionary * _imageRecognizerTranslator;
     
     [[NGHRCloudApi sharedApi] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NGEmployeeData * data = [[NGEmployeeData alloc] initWithDictionary:responseObject];
+
         NSLog(@"Got object %@", responseObject);
-        callback(data,nil);
+        [NGEmployeeImage imgUrlForEmployeeId:data.employeeId withResult:^(NGEmployeeImage *employeeImage) {
+            data->_employeeImage = employeeImage;
+            callback(data,nil);
+        }];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         callback(nil,error);
     }];
@@ -52,7 +57,7 @@ static NSDictionary * _imageRecognizerTranslator;
 {
     self = [super initWithDictionary:dictionary];
     if (self) {
-        _id                 = [dictionary   objectForKey:@"id"];
+        _employeeId         = [dictionary   objectForKey:@"id"];
         _uri                = [dictionary   objectForKey:@"uri"];
         _isActive           = [[dictionary  objectForKey:@"active"] boolValue];
         _employeeNumber     = [dictionary   objectForKey:@"employeenumber"];
@@ -93,3 +98,39 @@ static NSDictionary * _imageRecognizerTranslator;
 }
 
 @end
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@implementation NGEmployeeImage
+
++ (void)imgUrlForEmployeeId:(NSString *)empId withResult:(void (^)(NGEmployeeImage *))result {
+    
+    NSString * path = [NSString stringWithFormat:@"/rest/employees/%@/PhotoUrl/l",empId];
+    
+    NGEmployeeImage * image = [[NGEmployeeImage alloc] initWithDictionary:@{@"id" : empId}];
+
+    [[NGHRCloudApi sharedApi] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            image->_imgUrl = [responseObject objectForKey:jkEmployeeImageKey];
+        }
+        
+        result(image);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        result(image);
+    }];
+}
+
+- (id)initWithDictionary:(NSDictionary *)dictionary {
+    self = [super initWithDictionary:dictionary];
+    if (self) {
+        _employeeId = [dictionary objectForKey:@"id"];
+    }
+    
+    return self;
+}
+
+@end
+
+
+

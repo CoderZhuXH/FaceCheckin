@@ -10,6 +10,7 @@
 #import "NGEmployeeData.h"
 
 #import "UILabel+NGExtensions.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface NGProfileInfo ()
 
@@ -49,8 +50,11 @@ static NSArray * observableKeys;
     [self addObserver:self forKeyPath:@"hoursWorked" options:NSKeyValueObservingOptionNew context:nil];
 }
 
+- (void)setProfileImageUrl:(NSString *)pstrImgUrl {
+    [self.profileImageView setImageWithURL:[NSURL URLWithString:pstrImgUrl]];
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    
     
     if([keyPath isEqualToString:@"profileImage"]) {
         [self loadImage:self.profileImage];
@@ -60,6 +64,7 @@ static NSArray * observableKeys;
 - (void)loadPerfsFromProfile:(NGEmployeeData *)employeeData {
     self.nameSurnameLabel.text  = employeeData.firstName;
     self.positionLabel.text     = employeeData.position.title;
+    [self setProfileImageUrl:employeeData.employeeImage.imgUrl];
 }
 
 - (void)loadImage:(UIImage *) image {
