@@ -304,7 +304,7 @@
 - (void)coreTimer:(NGCoreTimer *)timer timerChanged:(id)changedData {
     
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"h:m a"];
+    [formatter setDateFormat:@"h:mm a"];
     
     self.hourLabel.text = [formatter stringFromDate:[NSDate date]];
 }
