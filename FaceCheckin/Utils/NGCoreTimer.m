@@ -56,7 +56,7 @@ static NSArray * keys;
 - (id)initPrivate {
     self = [super init];
     if (self) {
-        _mainTimer = [NSTimer scheduledTimerWithTimeInterval:30.0f target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
+        _mainTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
     }
     
     return self;

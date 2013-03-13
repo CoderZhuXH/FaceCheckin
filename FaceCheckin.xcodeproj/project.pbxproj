@@ -89,6 +89,9 @@
 		70B6D3B016EEA2940083687F /* DoneButton-Pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B6D3A416EEA2940083687F /* DoneButton-Pressed@2x.png */; };
 		70B6D3B316EEA5490083687F /* VGMultistateButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B6D3B216EEA5490083687F /* VGMultistateButton.m */; };
 		70B6D3B616EEA8A90083687F /* VGMultistateButton+NGExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B6D3B516EEA8A90083687F /* VGMultistateButton+NGExtensions.m */; };
+		70B6D3B816EFB86D0083687F /* NGTimerArrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70B6D3B716EFB86D0083687F /* NGTimerArrow.xib */; };
+		70B6D3BB16EFB89D0083687F /* NGTimerArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B6D3BA16EFB89C0083687F /* NGTimerArrow.m */; };
+		70B6D3BE16EFCB7A0083687F /* UIView+NGExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B6D3BD16EFCB790083687F /* UIView+NGExtensions.m */; };
 		70C7C98316DFD000001EE73F /* NGCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C7C98116DFD000001EE73F /* NGCameraViewController.xib */; };
 		70C7C98416DFD000001EE73F /* NGLockScreenController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C7C98216DFD000001EE73F /* NGLockScreenController.xib */; };
 		70C7C98716DFD0A0001EE73F /* NGUserPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7C98616DFD0A0001EE73F /* NGUserPanelController.m */; };
@@ -250,6 +253,11 @@
 		70B6D3B216EEA5490083687F /* VGMultistateButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VGMultistateButton.m; sourceTree = "<group>"; };
 		70B6D3B416EEA8A90083687F /* VGMultistateButton+NGExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VGMultistateButton+NGExtensions.h"; sourceTree = "<group>"; };
 		70B6D3B516EEA8A90083687F /* VGMultistateButton+NGExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VGMultistateButton+NGExtensions.m"; sourceTree = "<group>"; };
+		70B6D3B716EFB86D0083687F /* NGTimerArrow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NGTimerArrow.xib; sourceTree = "<group>"; };
+		70B6D3B916EFB89B0083687F /* NGTimerArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGTimerArrow.h; sourceTree = "<group>"; };
+		70B6D3BA16EFB89C0083687F /* NGTimerArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGTimerArrow.m; sourceTree = "<group>"; };
+		70B6D3BC16EFCB790083687F /* UIView+NGExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NGExtensions.h"; sourceTree = "<group>"; };
+		70B6D3BD16EFCB790083687F /* UIView+NGExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NGExtensions.m"; sourceTree = "<group>"; };
 		70C7C98116DFD000001EE73F /* NGCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NGCameraViewController.xib; sourceTree = "<group>"; };
 		70C7C98216DFD000001EE73F /* NGLockScreenController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NGLockScreenController.xib; sourceTree = "<group>"; };
 		70C7C98516DFD0A0001EE73F /* NGUserPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGUserPanelController.h; sourceTree = "<group>"; };
@@ -355,6 +363,8 @@
 				70FC569A16E811CF00E313D0 /* NGProfileInfo.m */,
 				70B6D3B116EEA5490083687F /* VGMultistateButton.h */,
 				70B6D3B216EEA5490083687F /* VGMultistateButton.m */,
+				70B6D3B916EFB89B0083687F /* NGTimerArrow.h */,
+				70B6D3BA16EFB89C0083687F /* NGTimerArrow.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -373,8 +383,8 @@
 		7023F04816DC38A1009306C2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				7023F05516DC3C20009306C2 /* Models */,
 				7023F05116DC3B6B009306C2 /* Exceptions */,
+				7023F05516DC3C20009306C2 /* Models */,
 				7023F05616DC3C44009306C2 /* NGCoreTimer.h */,
 				7023F05716DC3C44009306C2 /* NGCoreTimer.m */,
 				7023F05916DC53A4009306C2 /* NSDate+NGExtensions.h */,
@@ -383,6 +393,8 @@
 				7049A3D116E66A3600900216 /* UIImage+NGExtensions.m */,
 				70B6D3B416EEA8A90083687F /* VGMultistateButton+NGExtensions.h */,
 				70B6D3B516EEA8A90083687F /* VGMultistateButton+NGExtensions.m */,
+				70B6D3BC16EFCB790083687F /* UIView+NGExtensions.h */,
+				70B6D3BD16EFCB790083687F /* UIView+NGExtensions.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -754,6 +766,7 @@
 			isa = PBXGroup;
 			children = (
 				70FC569516E80DBD00E313D0 /* NGProfileInfo.xib */,
+				70B6D3B716EFB86D0083687F /* NGTimerArrow.xib */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -904,6 +917,7 @@
 				70B6D3AE16EEA2940083687F /* DoneButton-Normal@2x.png in Resources */,
 				70B6D3AF16EEA2940083687F /* DoneButton-Pressed.png in Resources */,
 				70B6D3B016EEA2940083687F /* DoneButton-Pressed@2x.png in Resources */,
+				70B6D3B816EFB86D0083687F /* NGTimerArrow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -987,6 +1001,8 @@
 				704E6F8916EAA9D500255501 /* NGTimeClockCloudObject.m in Sources */,
 				70B6D3B316EEA5490083687F /* VGMultistateButton.m in Sources */,
 				70B6D3B616EEA8A90083687F /* VGMultistateButton+NGExtensions.m in Sources */,
+				70B6D3BB16EFB89D0083687F /* NGTimerArrow.m in Sources */,
+				70B6D3BE16EFCB7A0083687F /* UIView+NGExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "NGBaseViewController.h"
+#import "UIView+NGExtensions.h"
 
 @interface NGBaseViewController ()
 

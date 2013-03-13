@@ -25,8 +25,7 @@
 #define jkClockCloudObjectDayOfWeek     @"Day_of_Week"
 #define jkClockCloudObjectHours_Worked  @"Hours_Worked"
 
-#define jkClockCloudObjectEmployeeId    @"Employee_Id"
-#define jkClockCloudObjectObjectId      @"Id"
+#define jkTimeClockCloudObjectName      @"Time_Clock"
 
 @property (nonatomic, strong) NSDate * dateCheckingIn;
 @property (nonatomic, strong) NSDate * dateCheckingOut;
@@ -34,11 +33,6 @@
 @property (nonatomic, readonly) CGFloat hoursWorked; // 2 decimals
 @property (nonatomic, readonly) NSString * dayOfWeek;
 
-@property (nonatomic, strong) NSString * employeeId;
-
-- (BOOL)isReadyToSend;
-
-- (void)uploadData:(void (^)(NSError * error))callback;
 - (void)mergeWithCheckinData:(NGCheckinData *)checkinData;
 
 @end
@@ -48,5 +42,6 @@
 @interface NSArray (NGCloudObjectExtensions)
 
 - (NSArray *)cloudObjectsForEmployeeNumberFast:(NSInteger)employeeNumber;
+- (NSArray *)cloudObjectsForThisWeek;
 
 @end

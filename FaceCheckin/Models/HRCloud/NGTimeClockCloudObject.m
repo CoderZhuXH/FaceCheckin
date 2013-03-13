@@ -22,9 +22,11 @@
 
 @implementation NGTimeClockCloudObject
 
+#pragma mark - Getting data
+
 + (void)getCloudObjectWithCallback:(NGCloudObjectAPICallback)callback {
     
-    [NGTimeClockCloudObject getCloudObjects:@"Time_Clock" withCallback:^(NSArray *cloudObjects, NSError *error) {
+    [NGTimeClockCloudObject getCloudObjects:jkTimeClockCloudObjectName withCallback:^(NSArray *cloudObjects, NSError *error) {
         if(!error) {
             callback(cloudObjects, nil);
         } else {
@@ -47,11 +49,10 @@
         
         for (NGTimeClockCloudObject * timeClockCloudObject in cloudObjects) {
             
-            NSAssert(timeClockCloudObject.employeeNumber != nil, @"Employee number must exist here");
-            NSAssert(timeClockCloudObject.fastEmployeeNumber == [timeClockCloudObject.employeeNumber integerValue], @"%d must be equal to %d from string",timeClockCloudObject.fastEmployeeNumber, [timeClockCloudObject.employeeNumber integerValue]);
+            NSAssert(timeClockCloudObject.employeeData.employeeNumber != nil, @"Employee number must exist here");
+            NSAssert(timeClockCloudObject.fastEmployeeNumber == [timeClockCloudObject.employeeData.employeeNumber integerValue], @"%d must be equal to %d from string",timeClockCloudObject.fastEmployeeNumber, [timeClockCloudObject.employeeData.employeeNumber integerValue]);
             
             if(timeClockCloudObject.fastEmployeeNumber == employeeData.fastEmployeeNumber) {
-                timeClockCloudObject.employeeId = employeeData.employeeId;
                 [cloudObjectForEmployeeId addObject:timeClockCloudObject];
             }
         }
@@ -60,11 +61,19 @@
     }];
 }
 
+#pragma mark - 
+
+
 - (BOOL)isReadyToSend {
-    return (self.dateCheckingIn != nil) && (self.dateCheckingOut != nil);
+    BOOL validToSend = (self.dateCheckingIn != nil);
+    return validToSend;
 }
 
 - (void)configureObject {
+    
+    // just in case
+    self->_secretCloudObjectName = jkTimeClockCloudObjectName;
+    
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:CurrentDateFormat]; // something happened here
     
@@ -115,10 +124,6 @@
     
     if(!self.dateCheckingIn) return fromSuper;
     
-    if(self.employeeId && self.employeeId.length > 0) {
-        [fromSuper setObject:self.employeeId forKey:jkClockCloudObjectEmployeeId];
-    }
-    
     [formatter setDateFormat:CurrentDateFormat];
     [fromSuper setObject:[formatter stringFromDate:_dateCheckingIn] forKey:jkClockCloudObjectDate];
     
@@ -133,31 +138,11 @@
         [fromSuper setObject:[formatter stringFromDate:_dateCheckingOut] forKey:jkClockCloudObjectTimeOut];
         _hoursWorked = [_dateCheckingOut minutesBySubtracting:_dateCheckingIn] / 60.0f;
         [fromSuper setObject:[NSString stringWithFormat:@"%.2f",_hoursWorked] forKey:jkClockCloudObjectHours_Worked];
+    } else {
+        [fromSuper setObject:@"0.00" forKey:jkClockCloudObjectHours_Worked];
     }
     
     return [NSDictionary dictionaryWithDictionary:fromSuper];
-}
-
-- (void)uploadData:(void (^)(NSError *))callback {
-    NSMutableDictionary * dict = [[self dictionaryRepresentation] mutableCopy];
-    [dict removeObjectForKey:jkCloudObjectId];
-    
-    NGHRCloudUploadApi * api = [NGHRCloudUploadApi sharedApi];
-    
-    NSMutableURLRequest * request = [[api requestWithMethod:@"POST" path:@"/rest/CLOUD/Time_Clock" parameters:dict] mutableCopy];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"]; // override value to compensate for the API
-    
-    AFJSONRequestOperation * op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success: ^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
-    {
-        NSAssert(response.statusCode == 200, @"");
-        callback(nil);
-        NSLog(@"%@", [JSON description]);
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        callback(error);
-        NSLog(@"%@", [JSON description]);
-    }];
-    
-    [op start];
 }
 
 @end
@@ -178,6 +163,24 @@
     }
     
     return [NSArray arrayWithArray:results];
+}
+
+- (NSArray *)cloudObjectsForThisWeek {
+    NSMutableArray * cloudObjectsForThisWeek = [NSMutableArray arrayWithCapacity:15]; //let's say 15:)
+    
+    NSArray * dateArrays = [[NSDate date] entireWeekFromDate];
+    
+    NSDate * begin = [dateArrays objectAtIndex:0];
+    NSDate * ending = [dateArrays lastObject];
+    
+    for (NGTimeClockCloudObject *tcco in self) {
+        
+        if(DATE_GT_OR_EQUAL(tcco.dateCheckingIn, begin) && DATE_LT_OR_EQUAL(tcco.dateCheckingIn, ending)) {
+            [cloudObjectsForThisWeek addObject:tcco];
+        }
+    }
+    
+    return [NSArray arrayWithArray:cloudObjectsForThisWeek];
 }
 
 @end

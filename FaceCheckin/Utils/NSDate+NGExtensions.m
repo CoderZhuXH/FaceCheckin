@@ -81,9 +81,7 @@
     
     // create a calendar
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    
     NSDate *newDate2 = [gregorian dateByAddingComponents:components toDate:now options:0];
-    NSLog(@"Clean: %@", newDate2);
     
     return newDate2;
 }

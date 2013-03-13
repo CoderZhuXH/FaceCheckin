@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "UIView+NGExtensions.h"
+
 @interface NGNibView : UIView
 
 @property (nonatomic, strong) IBOutlet UIView * nibView;

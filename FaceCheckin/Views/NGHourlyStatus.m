@@ -13,6 +13,8 @@
 #import "NGDailyTimeClockData.h"
 #import "NGCheckinInterval.h"
 
+#import "NGTimerArrow.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 @interface NGHourlyStatus ()
@@ -32,6 +34,8 @@
 
 @property (nonatomic, strong) NSDate            * upperBound;
 @property (nonatomic, strong) NSDate            * lowerBound;
+
+@property (nonatomic, strong) NGTimerArrow      * arrow;
 
 ////////////////////////////// -> Instance methods of Interest
 
@@ -57,29 +61,45 @@
     
     self.checkins = [NSArray array];
     self.checkinFactory = [NGCheckinFactory new];
+    
+#ifdef DEMO_MODE
     self.checkinFactory.isSimulating = YES;
+#endif
     
     NSDate * date = [NSDate date];
     date = [date dateByStrippingHours];
 
-    CALayer * otherLayer = [CALayer layer];
-    otherLayer.backgroundColor = [UIColor colorWithRed:245.0f/255 green:242.0f/255 blue:229.0f/255 alpha:1.0f].CGColor;
+    UIView * otherLayer = [[UIView alloc] initWithFrame:CGRectZero];
+    otherLayer.backgroundColor = [UIColor colorWithRed:245.0f/255 green:242.0f/255 blue:229.0f/255 alpha:1.0f];
     otherLayer.frame = CGRectMake(0, self.bounds.size.height-81.0f, self.bounds.size.width, 2);
-    [self.layer addSublayer:otherLayer];
+    [self addSubview:otherLayer];
+    [self sendSubviewToBack:otherLayer];
      
     self.lowerBound= [date dateByAddingHours:6.0];
     self.upperBound  = [self.lowerBound dateByAddingHours:15.0];
+    self.pixelsPerMinute = [self.upperBound pixelPerMinuteInTimeIntervalSinceDate:self.lowerBound forPixels:self.checkinSlider.frame.size.width];
+    
+#ifndef DEMO_MODE
+    [[NGCoreTimer coreTimer] registerListener:self];
+#endif
 }
 
 - (void)coreTimer:(NGCoreTimer *)timer timerChanged:(id)changedData {
-    NSDateFormatter * formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"hh:mm:ss"];
+#ifndef DEMO_MODE
+    if (!self.arrow) {
+        self.arrow = [[NGTimerArrow alloc] init];
+        [self.arrow moveToPoint:CGPointMake(0, self.frame.size.height-self.arrow.frame.size.height)];
+        [self.nibView addSubview:self.arrow];
+    }
     
     NSDate * date = [NSDate date];
+    NSUInteger minutes = [date minutesBySubtracting:self.lowerBound];
     
-
+    CGFloat delta = self.pixelsPerMinute * minutes;
+    [self.arrow putCenterToPosition:delta];
+    [self.arrow drawDate:date];
+#endif
 }
-
  
 - (void)loadCheckinData:(NGDailyTimeClockData *)data {
     
@@ -131,8 +151,7 @@
     [self.checkinInterval setClockInDate:_currentStart];
     
     if(self.checkins.count == 0) {
-        self.pixelsPerMinute = [self.upperBound pixelPerMinuteInTimeIntervalSinceDate:self.lowerBound forPixels:self.checkinSlider.frame.size.width];
-        
+                
         CGFloat delta = [_currentStart minutesBySubtracting:self.lowerBound];
         deltaPixels = delta * self.pixelsPerMinute;
         [self.checkinInterval setPositionOnSlider:deltaPixels];

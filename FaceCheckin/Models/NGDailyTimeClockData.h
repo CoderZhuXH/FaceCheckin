@@ -16,6 +16,7 @@
 - (id)initWithCheckins:(NSArray *)checkins;
 
 + (NSArray *)createDailyClockDataFromCloudObjects:(NSArray *)cloudObjects;
+
 + (NSArray *)getPlaceholders;
 
 @property (nonatomic, readonly) NSArray * checkins;
