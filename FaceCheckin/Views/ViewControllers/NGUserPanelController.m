@@ -232,6 +232,21 @@
         
         NSInteger startIndex = -1;
         
+        for (NGTimeClockCloudObject * c in weeklyCloudObjects) {
+            if(c.dateCheckingOut == nil) {
+                
+                if([[NSDate date] compareByDates:c.dateCheckingIn] == NSOrderedSame) {
+                    self.todayData = c;
+                    [self.mutlistateCheckinButton forceButtonToState:@"ClockOut"];
+                } else {
+                    c.dateCheckingOut = [[c.dateCheckingIn dateByStrippingHours] dateByAddingHours:23];
+                    [c uploadData:^(id responseJson, NSError *error) {
+                        NSLog(@"Done checking out with %@", responseJson);
+                    }];
+                }
+            }
+        }
+        
         for(int i = 0; i < arrOfDailyTimeClockData.count; i++) {
             NGDailyTimeClockData * data = [arrOfDailyTimeClockData objectAtIndex:i];
             
@@ -270,12 +285,7 @@
             }
         }
         
-        for (NGTimeClockCloudObject * c in weeklyCloudObjects) {
-            if((c.dateCheckingOut == nil) && [[NSDate date] compareByDates:c.dateCheckingIn] == NSOrderedSame)  {
-                self.todayData = c;
-                [self.mutlistateCheckinButton forceButtonToState:@"ClockOut"];
-            }
-        }
+
         
         // handle misc
         if(!self.todayData) {
