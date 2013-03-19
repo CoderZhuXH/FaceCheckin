@@ -10,6 +10,7 @@
 #import "NSDate+NGExtensions.h"
 #import "UILabel+NGExtensions.h"
 #import "NGCameraViewController.h"
+#import "NGLoginController.h"
 
 #import "NGCloudObjectAPI.h"
 #import "NGTimeClockCloudObject.h"
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 - (IBAction)onTap:(id)sender;
+- (IBAction)onboardButtonPressed:(id)sender;
 
 @end
 
@@ -45,48 +47,6 @@
 {
     [super viewDidLoad];
     [[NGCoreTimer coreTimer] registerListener:self];
-    
-    
-    /*
-    NSString * path = [[NSBundle mainBundle] pathForResource:@"TimeClockMock" ofType:@"json"];
-    NSData * data = [NSData dataWithContentsOfFile:path];
-    
-    id array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
-    NSMutableArray * timeClockCloudObjects = [NSMutableArray arrayWithCapacity:[array count]];
-    
-    for (NSDictionary * dict in array) {
-        
-        NGTimeClockCloudObject * obj = [[NGTimeClockCloudObject alloc] initWithDictionary:dict];
-        
-        NSAssert(obj.dateCheckingIn   , @"Should be somthing");
-        NSAssert(obj.dateCheckingOut  , @"Should be somthing");
-        NSAssert(obj.dayOfWeek        , @"Should be somthing");
-        NSAssert(obj.hoursWorked > 0    , @"Should be positive and not %.2f", obj.hoursWorked);
-        NSAssert(obj.dayOfWeek        , @"Has version");
-        
-        [timeClockCloudObjects addObject:obj];
-    }
-    
-    NSDate * checkin = [[[NSDate date] dateByStrippingHours] dateByAddingHours:8];
-    NSDate * checkOut = [[[NSDate date] dateByStrippingHours] dateByAddingHours:16];
-    
-    NGCheckinData * cData = [[NGCheckinData alloc] initWithCheckIn:checkin andCheckout:checkOut];
-    
-    NGTimeClockCloudObject * cloud = [timeClockCloudObjects objectAtIndex:0];
-    
-    [cloud mergeWithCheckinData:cData];
-    
-    NSDictionary * letsee = [cloud dictionaryRepresentation];
-    NSLog(@"%@", [letsee description]);
-
-    [cloud uploadData:^(NSError *error) {
-        if(error)
-        {
-            NSAssert(false, @"");
-        }
-    }];
-    */
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,5 +59,10 @@
     
     NGCameraViewController * vc = [[NGCameraViewController alloc] initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:vc animated:NO];
+}
+
+- (IBAction)onboardButtonPressed:(id)sender {
+    NGLoginController * lc = [[NGLoginController alloc] initWithLoginControllerMode:NGLoginControllerModeOnboard];
+    [self.navigationController pushViewController:lc animated:NO];
 }
 @end

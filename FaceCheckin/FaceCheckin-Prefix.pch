@@ -22,8 +22,10 @@
 #define kSkyBiometryAPISecret   @"6d0be5ea3bf049c4b983c4a7be523d64"
 
 // #define FACERECOGNITION_USE_SKY_BIOMETRY
-// #define DEMO_MODE
+#define DEMO_MODE
 
+#define DefaultAnimationDurationMoveObjects 1.0f
+#define DefaultAnimationDuration 0.3f
 
 /* bruno tid 00fe0135_286501df138b5 
  BrunoBulic@NG_TEST

@@ -110,7 +110,8 @@
     NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:2 + self.cloudObject.count];
     NSAssert(self.employeeData != nil, @"Employee data must be valid to even try to implement an object!");
     
-    NSDictionary * empDict = [self.employeeData dictionaryRepresentation];
+    // was scary because of typcasting, but is no longer scary :)
+    NSMutableDictionary * empDict = [self.employeeData mutableDictionaryRepresentation];
     
     [dict setObject:self.objectId   forKey:jkCloudObjectId              ];
     [dict setObject:empDict         forKey:jkCloudObjectEmployeeData    ];
@@ -138,9 +139,8 @@
     
     NSMutableDictionary * dict = [[self dictionaryRepresentation] mutableCopy];
     
-    // API Fixes 
-    [dict removeObjectForKey:jkCloudObjectEmployeeData];
-    [dict setObject:self.employeeData.employeeId forKey:@"Employee_Id"];
+    [[dict objectForKey:jkCloudObjectEmployeeData] removeObjectForKey:jkCloudEmployeeDataName   ];
+    [[dict objectForKey:jkCloudObjectEmployeeData] removeObjectForKey:jkCloudEmployeeDataNumber ];
     
     NSMutableURLRequest * request;
     
@@ -225,7 +225,7 @@
     [dict setObject:self.employeeNumber forKey:jkCloudEmployeeDataNumber];
     [dict setObject:self.nameAndSurname forKey:jkCloudEmployeeDataName];
     
-    return [NSDictionary dictionaryWithDictionary:dict];
+    return dict;
 }
 
 + (NGCloudEmployeeData *)cloudEmployeeDataFromEmployee:(NGEmployeeData *)empData {

@@ -113,6 +113,16 @@
 		70C7C9D616E175ED001EE73F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C9D516E175EC001EE73F /* CoreVideo.framework */; };
 		70C7C9D816E1836A001EE73F /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C9D716E18369001EE73F /* CoreImage.framework */; };
 		70C7C9DB16E183AC001EE73F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C7C9D316E175E6001EE73F /* CoreMedia.framework */; };
+		70DE00FF16F781C800F5E078 /* NGLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE00FE16F781C800F5E078 /* NGLoginController.m */; };
+		70DE010116F7847100F5E078 /* NGLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70DE010016F7847100F5E078 /* NGLoginController.xib */; };
+		70DE010416F787C700F5E078 /* NGTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE010316F787C700F5E078 /* NGTextField.m */; };
+		70DE010716F790F300F5E078 /* Pic1.png in Resources */ = {isa = PBXBuildFile; fileRef = 70DE010516F790F200F5E078 /* Pic1.png */; };
+		70DE010816F790F300F5E078 /* Pic2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 70DE010616F790F300F5E078 /* Pic2.jpeg */; };
+		70DE010B16F7D74F00F5E078 /* NGPopoverBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE010A16F7D74E00F5E078 /* NGPopoverBackgroundView.m */; };
+		70DE010E16F7D7EB00F5E078 /* arrow-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 70DE010C16F7D7EB00F5E078 /* arrow-bg.png */; };
+		70DE010F16F7D7EB00F5E078 /* popover-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 70DE010D16F7D7EB00F5E078 /* popover-bg.png */; };
+		70DE011216F7DB7F00F5E078 /* NGCallHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE011116F7DB7E00F5E078 /* NGCallHelpViewController.m */; };
+		70DE011416F7DB8D00F5E078 /* NGCallHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70DE011316F7DB8D00F5E078 /* NGCallHelpViewController.xib */; };
 		70FC568A16E6C13500E313D0 /* NGHRCloudApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC568916E6C13500E313D0 /* NGHRCloudApi.m */; };
 		70FC568D16E6C87800E313D0 /* NGEmployeeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC568C16E6C87800E313D0 /* NGEmployeeData.m */; };
 		70FC569116E6D7A700E313D0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC569016E6D7A700E313D0 /* MBProgressHUD.m */; };
@@ -293,6 +303,20 @@
 		70C7C9D516E175EC001EE73F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		70C7C9D716E18369001EE73F /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		70C7C9D916E18392001EE73F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		70DE00FD16F781C800F5E078 /* NGLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGLoginController.h; sourceTree = "<group>"; };
+		70DE00FE16F781C800F5E078 /* NGLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGLoginController.m; sourceTree = "<group>"; };
+		70DE010016F7847100F5E078 /* NGLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NGLoginController.xib; sourceTree = "<group>"; };
+		70DE010216F787C700F5E078 /* NGTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGTextField.h; sourceTree = "<group>"; };
+		70DE010316F787C700F5E078 /* NGTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGTextField.m; sourceTree = "<group>"; };
+		70DE010516F790F200F5E078 /* Pic1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pic1.png; sourceTree = "<group>"; };
+		70DE010616F790F300F5E078 /* Pic2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Pic2.jpeg; sourceTree = "<group>"; };
+		70DE010916F7D74E00F5E078 /* NGPopoverBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGPopoverBackgroundView.h; sourceTree = "<group>"; };
+		70DE010A16F7D74E00F5E078 /* NGPopoverBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGPopoverBackgroundView.m; sourceTree = "<group>"; };
+		70DE010C16F7D7EB00F5E078 /* arrow-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-bg.png"; sourceTree = "<group>"; };
+		70DE010D16F7D7EB00F5E078 /* popover-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popover-bg.png"; sourceTree = "<group>"; };
+		70DE011016F7DB7E00F5E078 /* NGCallHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGCallHelpViewController.h; sourceTree = "<group>"; };
+		70DE011116F7DB7E00F5E078 /* NGCallHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGCallHelpViewController.m; sourceTree = "<group>"; };
+		70DE011316F7DB8D00F5E078 /* NGCallHelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NGCallHelpViewController.xib; sourceTree = "<group>"; };
 		70FC568816E6C13500E313D0 /* NGHRCloudApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGHRCloudApi.h; sourceTree = "<group>"; };
 		70FC568916E6C13500E313D0 /* NGHRCloudApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGHRCloudApi.m; sourceTree = "<group>"; };
 		70FC568B16E6C87800E313D0 /* NGEmployeeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGEmployeeData.h; sourceTree = "<group>"; };
@@ -365,6 +389,10 @@
 				70B6D3B216EEA5490083687F /* VGMultistateButton.m */,
 				70B6D3B916EFB89B0083687F /* NGTimerArrow.h */,
 				70B6D3BA16EFB89C0083687F /* NGTimerArrow.m */,
+				70DE010216F787C700F5E078 /* NGTextField.h */,
+				70DE010316F787C700F5E078 /* NGTextField.m */,
+				70DE010916F7D74E00F5E078 /* NGPopoverBackgroundView.h */,
+				70DE010A16F7D74E00F5E078 /* NGPopoverBackgroundView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -430,6 +458,10 @@
 				7023F05E16DC57F4009306C2 /* NGCameraViewController.m */,
 				70C7C98516DFD0A0001EE73F /* NGUserPanelController.h */,
 				70C7C98616DFD0A0001EE73F /* NGUserPanelController.m */,
+				70DE00FD16F781C800F5E078 /* NGLoginController.h */,
+				70DE00FE16F781C800F5E078 /* NGLoginController.m */,
+				70DE011016F7DB7E00F5E078 /* NGCallHelpViewController.h */,
+				70DE011116F7DB7E00F5E078 /* NGCallHelpViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -640,6 +672,8 @@
 				70C7C98816DFD0B6001EE73F /* NGUserPanelController.xib */,
 				70C7C9C716E02738001EE73F /* NGHourlyStatus.xib */,
 				70C7C9CA16E06B34001EE73F /* NGCheckinInterval.xib */,
+				70DE010016F7847100F5E078 /* NGLoginController.xib */,
+				70DE011316F7DB8D00F5E078 /* NGCallHelpViewController.xib */,
 			);
 			path = Nibs;
 			sourceTree = "<group>";
@@ -774,6 +808,10 @@
 		70FC56D616E9213900E313D0 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				70DE010C16F7D7EB00F5E078 /* arrow-bg.png */,
+				70DE010D16F7D7EB00F5E078 /* popover-bg.png */,
+				70DE010516F790F200F5E078 /* Pic1.png */,
+				70DE010616F790F300F5E078 /* Pic2.jpeg */,
 				704E6FA716EABF3B00255501 /* CancelButton.png */,
 				704E6FA816EABF3B00255501 /* CancelButton@2x.png */,
 				70FC56D716E9213900E313D0 /* Calendar.png */,
@@ -918,6 +956,12 @@
 				70B6D3AF16EEA2940083687F /* DoneButton-Pressed.png in Resources */,
 				70B6D3B016EEA2940083687F /* DoneButton-Pressed@2x.png in Resources */,
 				70B6D3B816EFB86D0083687F /* NGTimerArrow.xib in Resources */,
+				70DE010116F7847100F5E078 /* NGLoginController.xib in Resources */,
+				70DE010716F790F300F5E078 /* Pic1.png in Resources */,
+				70DE010816F790F300F5E078 /* Pic2.jpeg in Resources */,
+				70DE010E16F7D7EB00F5E078 /* arrow-bg.png in Resources */,
+				70DE010F16F7D7EB00F5E078 /* popover-bg.png in Resources */,
+				70DE011416F7DB8D00F5E078 /* NGCallHelpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1003,6 +1047,10 @@
 				70B6D3B616EEA8A90083687F /* VGMultistateButton+NGExtensions.m in Sources */,
 				70B6D3BB16EFB89D0083687F /* NGTimerArrow.m in Sources */,
 				70B6D3BE16EFCB7A0083687F /* UIView+NGExtensions.m in Sources */,
+				70DE00FF16F781C800F5E078 /* NGLoginController.m in Sources */,
+				70DE010416F787C700F5E078 /* NGTextField.m in Sources */,
+				70DE010B16F7D74F00F5E078 /* NGPopoverBackgroundView.m in Sources */,
+				70DE011216F7DB7F00F5E078 /* NGCallHelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

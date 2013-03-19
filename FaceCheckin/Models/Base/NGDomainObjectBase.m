@@ -24,4 +24,15 @@
     return nil;
 }
 
+- (NSMutableDictionary *)mutableDictionaryRepresentation {
+    
+    id mutability = [self dictionaryRepresentation];
+    
+    if([mutability isKindOfClass:[NSMutableDictionary class]]) {
+        return mutability;
+    }
+    
+    return [mutability mutableCopy];
+}
+
 @end

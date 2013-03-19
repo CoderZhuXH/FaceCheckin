@@ -16,6 +16,7 @@
 
 @optional
 - (NSDictionary *)dictionaryRepresentationWithUserData:(id)object;
+- (NSMutableDictionary *)mutableDictionaryRepresentation;
 - (id)initWithDictionary:(NSDictionary *)dictionary withUserData:(id)object;
 @end
 
