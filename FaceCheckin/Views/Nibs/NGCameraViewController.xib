@@ -39,25 +39,7 @@
 					<object class="IBUIView" id="192787324">
 						<reference key="NSNextResponder" ref="124991498"/>
 						<int key="NSvFlags">274</int>
-						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUIImageView" id="1036157865">
-								<reference key="NSNextResponder" ref="192787324"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{362, 188}, {300, 300}}</string>
-								<reference key="NSSuperview" ref="192787324"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="140464558"/>
-								<bool key="IBUIOpaque">NO</bool>
-								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">1</int>
-								<bool key="IBUIMultipleTouchEnabled">YES</bool>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">Box.png</string>
-								</object>
-							</object>
-						</array>
+						<array class="NSMutableArray" key="NSSubviews"/>
 						<string key="NSFrameSize">{1024, 768}</string>
 						<reference key="NSSuperview" ref="124991498"/>
 						<reference key="NSWindow"/>
@@ -100,6 +82,23 @@
 							<int key="NSfFlags">16</int>
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
+					</object>
+					<object class="IBUIImageView" id="1036157865">
+						<reference key="NSNextResponder" ref="124991498"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{362, 170}, {300, 300}}</string>
+						<reference key="NSSuperview" ref="124991498"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="140464558"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">1</int>
+						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">Box.png</string>
+						</object>
 					</object>
 				</array>
 				<string key="NSFrameSize">{1024, 768}</string>
@@ -175,6 +174,7 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="140464558"/>
 							<reference ref="192787324"/>
+							<reference ref="1036157865"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -188,15 +188,13 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">14</int>
 						<reference key="object" ref="192787324"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="1036157865"/>
-						</array>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="124991498"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">19</int>
 						<reference key="object" ref="1036157865"/>
-						<reference key="parent" ref="192787324"/>
+						<reference key="parent" ref="124991498"/>
 					</object>
 				</array>
 			</object>

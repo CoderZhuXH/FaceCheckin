@@ -71,7 +71,7 @@
 #pragma mark - End Pragma
     
     self.currentSession = [AVCaptureSession new];
-    [self.currentSession setSessionPreset:AVCaptureSessionPreset640x480];
+    [self.currentSession setSessionPreset:AVCaptureSessionPresetHigh];
 	
     // Select a video device, make an input
     
@@ -220,6 +220,7 @@
 	return result;
 }
 
+/// Currently unused but maybe... call me maybe.
 + (CIImage *)faceboxImageForFace:(CIFeature *)face {
     CIColor * color = [CIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.5];
     
@@ -241,23 +242,11 @@
     CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
     CIImage *image = [[CIImage alloc] initWithCVPixelBuffer:imageBuffer];
     
-    CGRect deltas = [[self class] multipliersForViewport:self.layer.frame.size originalSize:image.extent.size];
-    CGAffineTransform t = [NGCameraHelpers imageTransformForOrientation];
+    // I know the image is rotated from source and a few more isssues!
+    image = [self prepareImageForDetection:image];
     
-    image = [image imageByApplyingTransform:CGAffineTransformScale(t, -1*deltas.size.height, 1*deltas.size.height)];
-    image = [image imageByApplyingTransform:CGAffineTransformMakeTranslation(-image.extent.origin.x, -image.extent.origin.y)];
-    
-    deltas = [[self class] multipliersForViewport:self.layer.bounds.size originalSize:image.extent.size];
-    CIVector * vect = [CIVector vectorWithX:deltas.origin.x Y:deltas.origin.y Z:self.layer.frame.size.width W:self.layer.frame.size.height];
-    
-    image = [CIFilter filterWithName:@"CICrop" keysAndValues:kCIInputImageKey, image, @"inputRectangle",vect,nil].outputImage;
-    image = [image imageByApplyingTransform:CGAffineTransformMakeTranslation(-image.extent.origin.x, -image.extent.origin.y)];
-
-    RectDesc(@"Final Size:", image.extent);
-    
-    // I know the image is rotated!
     NSArray * feats = [self.faceDetector featuresInImage:image];
-        
+    
     dispatch_sync(dispatch_get_main_queue(), ^{
         [self drawFeatures:feats inRectangle:self.previewLayer.bounds withAperture:self.bounds.size];
     });
@@ -282,6 +271,7 @@
         newFrame.size.height    =  feature.size.height;
         newFrame.size.width     =  feature.size.width;
     }
+    
 
     if(features.count == 0) {
         [self.delegate cameraView:self faceFoundInFrame:CGRectZero];
@@ -292,6 +282,26 @@
     }
     
     self.faceRectangle.frame = newFrame;
+}
+
+- (CIImage *)prepareImageForDetection:(CIImage *)originalImage {
+    
+    CIImage * resultImage = nil;
+    @autoreleasepool {
+        CGRect deltas = [[self class] multipliersForViewport:self.layer.frame.size originalSize:originalImage.extent.size];
+        CGAffineTransform t = [NGCameraHelpers imageTransformForOrientation];
+        
+        originalImage = [originalImage imageByApplyingTransform:CGAffineTransformScale(t, -1*deltas.size.width, 1*deltas.size.height)];
+        originalImage = [originalImage imageByApplyingTransform:CGAffineTransformMakeTranslation(-originalImage.extent.origin.x, -originalImage.extent.origin.y)];
+        
+        deltas = [[self class] multipliersForViewport:self.layer.bounds.size originalSize:originalImage.extent.size];
+        CIVector * vect = [CIVector vectorWithX:deltas.origin.x Y:deltas.origin.y Z:self.layer.frame.size.width W:self.layer.frame.size.height];
+        
+        originalImage = [CIFilter filterWithName:@"CICrop" keysAndValues:kCIInputImageKey, originalImage, @"inputRectangle",vect,nil].outputImage;
+        resultImage = [originalImage imageByApplyingTransform:CGAffineTransformMakeTranslation(-originalImage.extent.origin.x, -originalImage.extent.origin.y)];
+    }
+    
+    return resultImage;
 }
 
 - (void)_reallyTakePicture {
@@ -338,11 +348,13 @@
     CGRect result = CGRectMake(0, 0, 1, 1);
     
     if (ratio > 1) {
-        CGFloat newWidth = ratio * viewportSize.width;
         CGFloat newHeight = viewportSize.height;
+        CGFloat newWidth = ratio * newHeight;
         
+        // the factor of the dominant side
         CGFloat widthFactor = newWidth / size.width;
         CGFloat heightFactor = newHeight / size.height;
+
         
         result.size.width = widthFactor;
         result.size.height = heightFactor;
@@ -350,7 +362,7 @@
     }
     else {
         CGFloat newWidth = viewportSize.width;
-        CGFloat newHeight = viewportSize.height / ratio;
+        CGFloat newHeight = viewportSize.height * ratio;
         
         CGFloat widthFactor = newWidth / size.width;
         CGFloat heightFactor = newHeight / size.height;
@@ -358,6 +370,8 @@
         result.size.width = widthFactor;
         result.size.height = heightFactor;
     }
+    
+    NSAssert(result.size.width = result.size.height, @"Those should be equal!");
     
     result.origin.x = (size.width - viewportSize.width) / 2.0f;
     result.origin.y = (size.height - viewportSize.height) / 2.0f;

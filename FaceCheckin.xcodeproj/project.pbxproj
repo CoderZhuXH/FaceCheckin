@@ -14,7 +14,6 @@
 		7023F05816DC3C44009306C2 /* NGCoreTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F05716DC3C44009306C2 /* NGCoreTimer.m */; };
 		7023F05B16DC53A4009306C2 /* NSDate+NGExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F05A16DC53A4009306C2 /* NSDate+NGExtensions.m */; };
 		7023F05F16DC57F4009306C2 /* NGCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F05E16DC57F4009306C2 /* NGCameraViewController.m */; };
-		7026CEFF16FB87F700652D97 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7026CEFE16FB87F700652D97 /* OpenGLES.framework */; };
 		7046BD9C16DD45600077BB39 /* GothamBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7046BD9B16DD45600077BB39 /* GothamBold.otf */; };
 		7046BD9E16DD466B0077BB39 /* GothamBook.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7046BD9D16DD466B0077BB39 /* GothamBook.otf */; };
 		7046BDA216DD477C0077BB39 /* GothamNarrow-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7046BDA016DD477C0077BB39 /* GothamNarrow-Bold.otf */; };
@@ -355,7 +354,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7026CEFF16FB87F700652D97 /* OpenGLES.framework in Frameworks */,
 				7049A3CF16E6679E00900216 /* AssetsLibrary.framework in Frameworks */,
 				70C7C9DB16E183AC001EE73F /* CoreMedia.framework in Frameworks */,
 				70C7C9D816E1836A001EE73F /* CoreImage.framework in Frameworks */,

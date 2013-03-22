@@ -10,7 +10,7 @@
 
 @interface BBObservableObjectData : NSObject
 
-@property (nonatomic, strong) id<BBListenerDelegate> invocationTarget;
+@property (nonatomic, unsafe_unretained) id<BBListenerDelegate> invocationTarget;
 @property (nonatomic, strong) NSArray * invokeKeys;
 
 @end

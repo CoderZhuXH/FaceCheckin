@@ -9,7 +9,11 @@
 #import "NGCameraViewController.h"
 #import "UILabel+NGExtensions.h"
 
+#import "NSDate+NGExtensions.h"
+
 #import "NGUserPanelController.h"
+
+#define ScreenSaverNSTimeIntervalTimeout 30.0f
 
 @interface NGCameraViewController ()
 
@@ -18,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *faceSquareView;
 
 @property (strong, nonatomic) NSTimer * capturingIn;
+
+@property (nonatomic, strong) NSDate * screensaverDate;
 
 - (void)longPressToLoad:(id)someData;
 
@@ -46,30 +52,46 @@
     [self.alignFaceLabel fitTextToWidth:self.alignFaceLabel.frame.size.width forFontName:@"GothamNarrow-Medium"];
 	// Do any additional setup after loading the view.
     
-#if TARGET_IPHONE_SIMULATOR
     UIGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap:)];
     [self.view addGestureRecognizer:recognizer];
-#endif
 }
 
 - (void)cameraView:(NGCameraView *)view faceFoundInFrame:(CGRect)frame {
-   
-    return;
+
+    if(!CGRectEqualToRect(frame, CGRectZero)) {
+        self.screensaverDate = [NSDate date];
+    }
     
     BOOL contains = CGRectContainsRect(self.faceSquareView.frame, frame);
-    
     if(contains) {
         [self longPressToLoad:nil];
     }
 }
 
--(void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
+    self.screensaverDate = [NSDate date];
+    [[NGCoreTimer coreTimer] registerListener:self];
+    self.cameraView.faceCaptureEnabled = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [[NGCoreTimer coreTimer] unregisterListener:self];
+    self.cameraView.faceCaptureEnabled = NO;
+}
+
+-(void)coreTimer:(NGCoreTimer *)timer timerChanged:(id)changedData {
     
-    double delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        self.cameraView.faceCaptureEnabled = YES;
-    });
+    @autoreleasepool {
+        @synchronized(self.navigationController) {
+            NSDate * date = [NSDate date];
+            NSTimeInterval interval = [date secondsBySubtracting:self.screensaverDate];
+            
+            if(interval >= ScreenSaverNSTimeIntervalTimeout) {
+                [[NGCoreTimer coreTimer] unregisterListener:self];
+                [self.navigationController popViewControllerAnimated:NO];
+            }
+        }
+    }
 }
 
 - (void)longPressToLoad:(id)someData {
@@ -79,18 +101,29 @@
     }];
 }
 
-#if TARGET_IPHONE_SIMULATOR
+
 - (void)onTap:(id)tap {
+#if TARGET_IPHONE_SIMULATOR
     [self doSomethingWithImage:nil];
-}
 #endif
+    
+    // reset date
+    self.screensaverDate = [NSDate date];
+}
+
 
 - (void)doSomethingWithImage:(UIImage *)image {
     NGUserPanelController * controller = [NGUserPanelController new];
     controller.imageToShow = image;
     [self.navigationController pushViewController:controller animated:YES];
+    [[NGCoreTimer coreTimer] unregisterListener:self];
 }
 
+-(void)dealloc {
+    [[NGCoreTimer coreTimer] unregisterListener:self];
+    self.cameraView.delegate = nil;
+    self.cameraView.faceCaptureEnabled = NO;
+}
 
 - (void)didReceiveMemoryWarning
 {

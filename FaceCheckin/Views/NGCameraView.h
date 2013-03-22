@@ -16,7 +16,7 @@
 - (void)cameraView:(NGCameraView *)view didTakeSnapshot:(UIImage *)image;
 - (void)cameraView:(NGCameraView *)view failedTakingSnapshot:(NSError *)error;
 
-- (void)cameraView:(NGCameraView *)view faceFoundInFrame:(CGRect)frame;
+- (void)cameraView:(NGCameraView *)view faceFoundInFrame:(CGRect)rect;
 
 @end
 
@@ -26,6 +26,9 @@ typedef void(^NGCameraViewCapturedImageCallback)(UIImage * capturedImage, NSErro
 
 @property (nonatomic, assign) id<NGCameraViewDelegate> delegate;
 @property (nonatomic, assign,setter = toggleFaceCapture:) BOOL faceCaptureEnabled;
+
+/// will trigger the cameraView:faceFoundInFrame:rect even if there's no face but with CGRectZero if there's no face.
+@property (nonatomic, assign) BOOL streamFaceData;
 
 - (void)takePicture:(NGCameraViewCapturedImageCallback)callback;
 - (void)takePictureWithDelegate;

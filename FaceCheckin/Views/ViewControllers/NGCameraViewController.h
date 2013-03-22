@@ -9,7 +9,8 @@
 #import "NGBaseViewController.h"
 
 #import "NGCameraView.h"
+#import "NGCoreTimer.h"
 
-@interface NGCameraViewController : NGBaseViewController<NGCameraViewDelegate>
+@interface NGCameraViewController : NGBaseViewController<NGCameraViewDelegate, NGCoreTimerProcotol>
 
 @end
