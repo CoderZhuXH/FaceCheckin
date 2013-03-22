@@ -8,6 +8,7 @@
 
 #import "NGCameraView.h"
 #import "UIImage+NGExtensions.h"
+#import "NGCameraHelpers.h"
 
 #import <AssetsLibrary/AssetsLibrary.h>
 
@@ -27,7 +28,7 @@
 
 @property (nonatomic, strong) UIImageView                   * capturingImageView;
 @property (nonatomic, strong) UIImageView                   * imageWithFace;
-@property (nonatomic, strong) UIImageView                   * faceRectangle;
+@property (nonatomic, strong) UIView                        * faceRectangle;
 
 ////////////////////////////////////////////////// ->  Take a shot
 
@@ -70,7 +71,7 @@
 #pragma mark - End Pragma
     
     self.currentSession = [AVCaptureSession new];
-    [self.currentSession setSessionPreset:AVCaptureSessionPresetHigh];
+    [self.currentSession setSessionPreset:AVCaptureSessionPreset640x480];
 	
     // Select a video device, make an input
     
@@ -219,36 +220,46 @@
 	return result;
 }
 
++ (CIImage *)faceboxImageForFace:(CIFeature *)face {
+    CIColor * color = [CIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.5];
+    
+    CIImage * image = [CIFilter filterWithName:@"CIConstantColorGenerator" keysAndValues:@"inputColor", color, nil].outputImage;
+    CGRect newRect = face.bounds;
+    newRect.size.width = 10;
+    newRect.size.height = 10;
+
+    image = [CIFilter filterWithName:@"CICrop" keysAndValues:kCIInputImageKey, image, @"inputRectangle", [CIVector vectorWithCGRect:newRect], nil].outputImage;
+    return image;
+}
+
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
     
     /* Checkings */
     if(!self.faceCaptureEnabled) return;
     if(_operationUnderWay) return;
     
-    CVPixelBufferRef pixelBuffer = (CVPixelBufferRef)CMSampleBufferGetImageBuffer(sampleBuffer);
-    CIImage * image = [CIImage imageWithCVPixelBuffer:pixelBuffer];
-
-    UIDeviceOrientation curDeviceOrientation = [[UIDevice currentDevice] orientation];
-    CGAffineTransform t;
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    CIImage *image = [[CIImage alloc] initWithCVPixelBuffer:imageBuffer];
     
-    if (curDeviceOrientation == UIDeviceOrientationPortrait) {
-        t = CGAffineTransformMakeRotation(-M_PI / 2);
-    } else if (curDeviceOrientation == UIDeviceOrientationPortraitUpsideDown) {
-        t = CGAffineTransformMakeRotation(M_PI / 2);
-    } else if (curDeviceOrientation == UIDeviceOrientationLandscapeRight) {
-        t = CGAffineTransformMakeRotation(0);
-    } else {
-        t = CGAffineTransformMakeRotation(M_PI);
-    }
+    CGRect deltas = [[self class] multipliersForViewport:self.layer.frame.size originalSize:image.extent.size];
+    CGAffineTransform t = [NGCameraHelpers imageTransformForOrientation];
     
-    image = [image imageByApplyingTransform:CGAffineTransformScale(t, -1, 1)];
+    image = [image imageByApplyingTransform:CGAffineTransformScale(t, -1*deltas.size.height, 1*deltas.size.height)];
+    image = [image imageByApplyingTransform:CGAffineTransformMakeTranslation(-image.extent.origin.x, -image.extent.origin.y)];
+    
+    deltas = [[self class] multipliersForViewport:self.layer.bounds.size originalSize:image.extent.size];
+    CIVector * vect = [CIVector vectorWithX:deltas.origin.x Y:deltas.origin.y Z:self.layer.frame.size.width W:self.layer.frame.size.height];
+    
+    image = [CIFilter filterWithName:@"CICrop" keysAndValues:kCIInputImageKey, image, @"inputRectangle",vect,nil].outputImage;
     image = [image imageByApplyingTransform:CGAffineTransformMakeTranslation(-image.extent.origin.x, -image.extent.origin.y)];
 
+    RectDesc(@"Final Size:", image.extent);
+    
     // I know the image is rotated!
     NSArray * feats = [self.faceDetector featuresInImage:image];
-
+        
     dispatch_sync(dispatch_get_main_queue(), ^{
-        [self drawFeatures:feats inRectangle:self.previewLayer.bounds withAperture:image.extent.size];
+        [self drawFeatures:feats inRectangle:self.previewLayer.bounds withAperture:self.bounds.size];
     });
 }
 
@@ -256,22 +267,20 @@
     if (!self.faceRectangle) {
         self.faceRectangle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"FaceBox"]];
         [self.faceRectangle setContentMode:UIViewContentModeScaleAspectFill];
+
         [self addSubview:self.faceRectangle];
     }
     
     CGRect newFrame;
-    CGSize deltas = [[self class] multipliersForViewport:rect.size originalSize:apertureSize];
     
     for (CIFaceFeature * feat in features) {
         
-        CGAffineTransform transform = CGAffineTransformMakeScale(1, -1);
-        transform = CGAffineTransformTranslate(transform, 0, -apertureSize.height);
-        CGRect feature = CGRectApplyAffineTransform(feat.bounds, transform);
+        CGRect feature = feat.bounds;
         
-        newFrame.origin.x       =  feature.origin.x     * deltas.width;
-        newFrame.origin.y       =  feature.origin.y     * deltas.height;
-        newFrame.size.height    =  feature.size.height  * deltas.height * 0.66;
-        newFrame.size.width     =  feature.size.width   * deltas.width * 0.66;
+        newFrame.origin.x       =  feature.origin.x;
+        newFrame.origin.y       =  (apertureSize.height - feature.origin.y) - feature.size.height;
+        newFrame.size.height    =  feature.size.height;
+        newFrame.size.width     =  feature.size.width;
     }
 
     if(features.count == 0) {
@@ -322,11 +331,11 @@
     }
 }
 
-+ (CGSize)multipliersForViewport:(CGSize)viewportSize originalSize:(CGSize)size {
++ (CGRect)multipliersForViewport:(CGSize)viewportSize originalSize:(CGSize)size {
     
     float ratio = size.width / size.height;
     
-    CGSize result;
+    CGRect result = CGRectMake(0, 0, 1, 1);
     
     if (ratio > 1) {
         CGFloat newWidth = ratio * viewportSize.width;
@@ -335,8 +344,8 @@
         CGFloat widthFactor = newWidth / size.width;
         CGFloat heightFactor = newHeight / size.height;
         
-        result.width = widthFactor;
-        result.height = heightFactor;
+        result.size.width = widthFactor;
+        result.size.height = heightFactor;
         
     }
     else {
@@ -346,9 +355,12 @@
         CGFloat widthFactor = newWidth / size.width;
         CGFloat heightFactor = newHeight / size.height;
         
-        result.width = widthFactor;
-        result.height = heightFactor;
+        result.size.width = widthFactor;
+        result.size.height = heightFactor;
     }
+    
+    result.origin.x = (size.width - viewportSize.width) / 2.0f;
+    result.origin.y = (size.height - viewportSize.height) / 2.0f;
     
     return result;
 }

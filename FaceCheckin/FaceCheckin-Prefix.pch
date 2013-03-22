@@ -27,6 +27,8 @@
 #define DefaultAnimationDurationMoveObjects 1.0f
 #define DefaultAnimationDuration 0.3f
 
+#define RectDesc(userDescription, CGRectToPrint) NSLog(@"%@",[NSString stringWithFormat:@"%@ (X,Y,W,H)=(%.2f,%.2f,%.2f,%.2f)", userDescription, CGRectToPrint.origin.x, CGRectToPrint.origin.y, CGRectToPrint.size.width, CGRectToPrint.size.height]);
+
 /* bruno tid 00fe0135_286501df138b5 
  BrunoBulic@NG_TEST
  

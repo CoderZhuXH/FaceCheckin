@@ -9,7 +9,7 @@
 #import "NGHRCloudApi.h"
 #import "AFJSONRequestOperation.h"
 
-#define kNGHRCloudApiBaseUrl @"http://api.qa.neogov.net"
+#define kNGHRCloudApiBaseUrl @"https://api.qa.neogov.net"
 
 @implementation NGHRCloudApi
 

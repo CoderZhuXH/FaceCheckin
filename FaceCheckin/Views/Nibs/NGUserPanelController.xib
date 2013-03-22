@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">12C3103</string>
+		<string key="IBDocument.SystemVersion">12D78</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">2083</string>
@@ -52,7 +52,6 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{348, 20}, {336, 27}}</string>
 										<reference key="NSSuperview" ref="163099099"/>
-										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="1067452543"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<object class="NSColor" key="IBUIBackgroundColor" id="783502285">
@@ -88,7 +87,6 @@
 								</array>
 								<string key="NSFrame">{{0, 31}, {704, 537}}</string>
 								<reference key="NSSuperview" ref="1064559899"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="973880306"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<int key="IBUIContentMode">2</int>
@@ -100,8 +98,6 @@
 								<array class="NSMutableArray" key="NSSubviews"/>
 								<string key="NSFrame">{{0, 640}, {704, 128}}</string>
 								<reference key="NSSuperview" ref="1064559899"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">2</int>
@@ -114,7 +110,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{266, 583}, {172, 44}}</string>
 								<reference key="NSSuperview" ref="1064559899"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1046986298"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -148,7 +143,6 @@
 						</array>
 						<string key="NSFrame">{{320, 0}, {704, 768}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="163099099"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -166,7 +160,6 @@
 								<int key="NSvFlags">256</int>
 								<string key="NSFrameSize">{320, 768}</string>
 								<reference key="NSSuperview" ref="262589614"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="129509017"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -183,7 +176,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{143, 96}, {37, 37}}</string>
 								<reference key="NSSuperview" ref="262589614"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="932037616"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -196,7 +188,6 @@
 								<int key="NSvFlags">271</int>
 								<string key="NSFrame">{{31, 202}, {260, 420}}</string>
 								<reference key="NSSuperview" ref="262589614"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="179907361"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<reference key="IBUIBackgroundColor" ref="783502285"/>
@@ -224,7 +215,6 @@
 								<array class="NSMutableArray" key="NSSubviews"/>
 								<string key="NSFrame">{{0, 32}, {320, 170}}</string>
 								<reference key="NSSuperview" ref="262589614"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="139578243"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<reference key="IBUIBackgroundColor" ref="783502285"/>
@@ -235,7 +225,6 @@
 								<int key="NSvFlags">256</int>
 								<string key="NSFrame">{{31, 641}, {26, 25}}</string>
 								<reference key="NSSuperview" ref="262589614"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="16541408"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -252,7 +241,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{64, 641}, {227, 36}}</string>
 								<reference key="NSSuperview" ref="262589614"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="400192819"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -283,7 +271,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{143, 643}, {148, 32}}</string>
 								<reference key="NSSuperview" ref="262589614"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="875626063"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -306,7 +293,6 @@
 						</array>
 						<string key="NSFrameSize">{320, 768}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="12226858"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="752867540"/>
@@ -317,7 +303,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{1024, 32}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="223308504"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -334,7 +319,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{4, 0}, {32, 32}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1064559899"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -365,7 +349,6 @@
 				</array>
 				<string key="NSFrameSize">{1024, 768}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="262589614"/>
 				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 					<int key="IBUIInterfaceOrientation">3</int>
@@ -628,167 +611,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">56</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">NGBaseViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NGBaseViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NGHourlyStatus</string>
-					<string key="superclassName">NGNibView</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">checkinSlider</string>
-						<string key="NS.object.0">UIView</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">checkinSlider</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">checkinSlider</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NGHourlyStatus.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NGNibView</string>
-					<string key="superclassName">UIView</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">nibView</string>
-						<string key="NS.object.0">UIView</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">nibView</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">nibView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NGNibView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NGProfileInfo</string>
-					<string key="superclassName">NGNibView</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="nameSurnameLabel">UILabel</string>
-						<string key="positionLabel">UILabel</string>
-						<string key="profileImageView">UIImageView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="nameSurnameLabel">
-							<string key="name">nameSurnameLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="positionLabel">
-							<string key="name">positionLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="profileImageView">
-							<string key="name">profileImageView</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NGProfileInfo.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NGUserPanelController</string>
-					<string key="superclassName">NGBaseViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="doCheckin:">id</string>
-						<string key="onTap:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="doCheckin:">
-							<string key="name">doCheckin:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="onTap:">
-							<string key="name">onTap:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="checkinButton">UIButton</string>
-						<string key="dataLoginView">UITableView</string>
-						<string key="hourLabel">UILabel</string>
-						<string key="hourlyStatusManager">NGHourlyStatus</string>
-						<string key="imageView">UIImageView</string>
-						<string key="loadingIndicator">UIActivityIndicatorView</string>
-						<string key="mutlistateCheckinButton">VGMultistateButton</string>
-						<string key="profileInfoView">NGProfileInfo</string>
-						<string key="totalHours">UILabel</string>
-						<string key="totalHoursReal">UILabel</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="checkinButton">
-							<string key="name">checkinButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="dataLoginView">
-							<string key="name">dataLoginView</string>
-							<string key="candidateClassName">UITableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="hourLabel">
-							<string key="name">hourLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="hourlyStatusManager">
-							<string key="name">hourlyStatusManager</string>
-							<string key="candidateClassName">NGHourlyStatus</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="imageView">
-							<string key="name">imageView</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="loadingIndicator">
-							<string key="name">loadingIndicator</string>
-							<string key="candidateClassName">UIActivityIndicatorView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="mutlistateCheckinButton">
-							<string key="name">mutlistateCheckinButton</string>
-							<string key="candidateClassName">VGMultistateButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="profileInfoView">
-							<string key="name">profileInfoView</string>
-							<string key="candidateClassName">NGProfileInfo</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="totalHours">
-							<string key="name">totalHours</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="totalHoursReal">
-							<string key="name">totalHoursReal</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NGUserPanelController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">VGMultistateButton</string>
-					<string key="superclassName">UIButton</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/VGMultistateButton.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>

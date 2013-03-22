@@ -53,6 +53,8 @@
 }
 
 - (void)cameraView:(NGCameraView *)view faceFoundInFrame:(CGRect)frame {
+   
+    return;
     
     BOOL contains = CGRectContainsRect(self.faceSquareView.frame, frame);
     

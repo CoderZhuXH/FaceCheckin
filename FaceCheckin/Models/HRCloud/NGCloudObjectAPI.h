@@ -59,7 +59,7 @@ typedef void(^NGCloudObjectAPISendDataCallback)(id responseJson, NSError * error
 
 #define jkCloudEmployeeDataId       @"Id"
 #define jkCloudEmployeeDataName     @"Name"
-#define jkCloudEmployeeDataNumber   @"Number"
+#define jkCloudEmployeeDataNumber   @"EmployeeNumber"
 
 @interface NGCloudEmployeeData : NGDomainObjectBase
 

@@ -91,7 +91,7 @@
     
     [dict setObject:[NSString string] forKey:jkCloudObjectId];
     
-    return [NSDictionary dictionaryWithDictionary:dict];
+    return [[[self class] alloc] initWithDictionary:dict];
 }
 
 + (NGCloudObject *)templateWithEmployee:(NGEmployeeData *)employee {

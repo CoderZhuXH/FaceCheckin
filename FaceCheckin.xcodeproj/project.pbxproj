@@ -14,6 +14,7 @@
 		7023F05816DC3C44009306C2 /* NGCoreTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F05716DC3C44009306C2 /* NGCoreTimer.m */; };
 		7023F05B16DC53A4009306C2 /* NSDate+NGExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F05A16DC53A4009306C2 /* NSDate+NGExtensions.m */; };
 		7023F05F16DC57F4009306C2 /* NGCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023F05E16DC57F4009306C2 /* NGCameraViewController.m */; };
+		7026CEFF16FB87F700652D97 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7026CEFE16FB87F700652D97 /* OpenGLES.framework */; };
 		7046BD9C16DD45600077BB39 /* GothamBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7046BD9B16DD45600077BB39 /* GothamBold.otf */; };
 		7046BD9E16DD466B0077BB39 /* GothamBook.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7046BD9D16DD466B0077BB39 /* GothamBook.otf */; };
 		7046BDA216DD477C0077BB39 /* GothamNarrow-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7046BDA016DD477C0077BB39 /* GothamNarrow-Bold.otf */; };
@@ -69,7 +70,6 @@
 		709EC21316DBEF99005F891C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 709EC21216DBEF99005F891C /* Default.png */; };
 		709EC21516DBEF99005F891C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 709EC21416DBEF99005F891C /* Default@2x.png */; };
 		709EC21716DBEF99005F891C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 709EC21616DBEF99005F891C /* Default-568h@2x.png */; };
-		709EC21A16DBEF99005F891C /* NGLockScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 709EC21916DBEF99005F891C /* NGLockScreenController.m */; };
 		709EC22516DBEF99005F891C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC22416DBEF99005F891C /* SenTestingKit.framework */; };
 		709EC22616DBEF99005F891C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC20016DBEF99005F891C /* UIKit.framework */; };
 		709EC22716DBEF99005F891C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709EC20216DBEF99005F891C /* Foundation.framework */; };
@@ -123,6 +123,11 @@
 		70DE010F16F7D7EB00F5E078 /* popover-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 70DE010D16F7D7EB00F5E078 /* popover-bg.png */; };
 		70DE011216F7DB7F00F5E078 /* NGCallHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE011116F7DB7E00F5E078 /* NGCallHelpViewController.m */; };
 		70DE011416F7DB8D00F5E078 /* NGCallHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70DE011316F7DB8D00F5E078 /* NGCallHelpViewController.xib */; };
+		70DE011C16F7EA4000F5E078 /* NGLockScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE011916F7EA4000F5E078 /* NGLockScreenController.m */; };
+		70DE011D16F7EA4000F5E078 /* NGLookalikesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE011B16F7EA4000F5E078 /* NGLookalikesViewController.m */; };
+		70DE011F16F7EA4C00F5E078 /* NGLookalikesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70DE011E16F7EA4C00F5E078 /* NGLookalikesViewController.xib */; };
+		70DE012316F7EB5A00F5E078 /* NGLookalikesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE012216F7EB5A00F5E078 /* NGLookalikesView.m */; };
+		70E02EE816FBBACC00A13C4A /* NGCameraHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E02EE716FBBACC00A13C4A /* NGCameraHelpers.m */; };
 		70FC568A16E6C13500E313D0 /* NGHRCloudApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC568916E6C13500E313D0 /* NGHRCloudApi.m */; };
 		70FC568D16E6C87800E313D0 /* NGEmployeeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC568C16E6C87800E313D0 /* NGEmployeeData.m */; };
 		70FC569116E6D7A700E313D0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FC569016E6D7A700E313D0 /* MBProgressHUD.m */; };
@@ -166,6 +171,7 @@
 		7023F05A16DC53A4009306C2 /* NSDate+NGExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NGExtensions.m"; sourceTree = "<group>"; };
 		7023F05D16DC57F4009306C2 /* NGCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGCameraViewController.h; sourceTree = "<group>"; };
 		7023F05E16DC57F4009306C2 /* NGCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGCameraViewController.m; sourceTree = "<group>"; };
+		7026CEFE16FB87F700652D97 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		7046BD9B16DD45600077BB39 /* GothamBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamBold.otf; sourceTree = "<group>"; };
 		7046BD9D16DD466B0077BB39 /* GothamBook.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamBook.otf; sourceTree = "<group>"; };
 		7046BDA016DD477C0077BB39 /* GothamNarrow-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamNarrow-Bold.otf"; sourceTree = "<group>"; };
@@ -239,8 +245,6 @@
 		709EC21216DBEF99005F891C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		709EC21416DBEF99005F891C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		709EC21616DBEF99005F891C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		709EC21816DBEF99005F891C /* NGLockScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NGLockScreenController.h; path = ../../NGLockScreenController.h; sourceTree = "<group>"; };
-		709EC21916DBEF99005F891C /* NGLockScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NGLockScreenController.m; path = ../../NGLockScreenController.m; sourceTree = "<group>"; };
 		709EC22316DBEF99005F891C /* FaceCheckinTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceCheckinTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		709EC22416DBEF99005F891C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		709EC22C16DBEF99005F891C /* FaceCheckinTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FaceCheckinTests-Info.plist"; sourceTree = "<group>"; };
@@ -317,6 +321,15 @@
 		70DE011016F7DB7E00F5E078 /* NGCallHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGCallHelpViewController.h; sourceTree = "<group>"; };
 		70DE011116F7DB7E00F5E078 /* NGCallHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGCallHelpViewController.m; sourceTree = "<group>"; };
 		70DE011316F7DB8D00F5E078 /* NGCallHelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NGCallHelpViewController.xib; sourceTree = "<group>"; };
+		70DE011816F7EA4000F5E078 /* NGLockScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGLockScreenController.h; sourceTree = "<group>"; };
+		70DE011916F7EA4000F5E078 /* NGLockScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGLockScreenController.m; sourceTree = "<group>"; };
+		70DE011A16F7EA4000F5E078 /* NGLookalikesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGLookalikesViewController.h; sourceTree = "<group>"; };
+		70DE011B16F7EA4000F5E078 /* NGLookalikesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGLookalikesViewController.m; sourceTree = "<group>"; };
+		70DE011E16F7EA4C00F5E078 /* NGLookalikesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NGLookalikesViewController.xib; sourceTree = "<group>"; };
+		70DE012116F7EB5A00F5E078 /* NGLookalikesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGLookalikesView.h; sourceTree = "<group>"; };
+		70DE012216F7EB5A00F5E078 /* NGLookalikesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGLookalikesView.m; sourceTree = "<group>"; };
+		70E02EE616FBBACC00A13C4A /* NGCameraHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGCameraHelpers.h; sourceTree = "<group>"; };
+		70E02EE716FBBACC00A13C4A /* NGCameraHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGCameraHelpers.m; sourceTree = "<group>"; };
 		70FC568816E6C13500E313D0 /* NGHRCloudApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGHRCloudApi.h; sourceTree = "<group>"; };
 		70FC568916E6C13500E313D0 /* NGHRCloudApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGHRCloudApi.m; sourceTree = "<group>"; };
 		70FC568B16E6C87800E313D0 /* NGEmployeeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGEmployeeData.h; sourceTree = "<group>"; };
@@ -342,6 +355,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7026CEFF16FB87F700652D97 /* OpenGLES.framework in Frameworks */,
 				7049A3CF16E6679E00900216 /* AssetsLibrary.framework in Frameworks */,
 				70C7C9DB16E183AC001EE73F /* CoreMedia.framework in Frameworks */,
 				70C7C9D816E1836A001EE73F /* CoreImage.framework in Frameworks */,
@@ -370,6 +384,7 @@
 		7023F04316DC3803009306C2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				70DE012016F7EB4C00F5E078 /* Support Views */,
 				70C7C9AA16DFE629001EE73F /* Table */,
 				70C7C98016DFD000001EE73F /* Nibs */,
 				7023F05C16DC57A4009306C2 /* ViewControllers */,
@@ -423,6 +438,8 @@
 				70B6D3B516EEA8A90083687F /* VGMultistateButton+NGExtensions.m */,
 				70B6D3BC16EFCB790083687F /* UIView+NGExtensions.h */,
 				70B6D3BD16EFCB790083687F /* UIView+NGExtensions.m */,
+				70E02EE616FBBACC00A13C4A /* NGCameraHelpers.h */,
+				70E02EE716FBBACC00A13C4A /* NGCameraHelpers.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -452,8 +469,10 @@
 		7023F05C16DC57A4009306C2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				709EC21816DBEF99005F891C /* NGLockScreenController.h */,
-				709EC21916DBEF99005F891C /* NGLockScreenController.m */,
+				70DE011816F7EA4000F5E078 /* NGLockScreenController.h */,
+				70DE011916F7EA4000F5E078 /* NGLockScreenController.m */,
+				70DE011A16F7EA4000F5E078 /* NGLookalikesViewController.h */,
+				70DE011B16F7EA4000F5E078 /* NGLookalikesViewController.m */,
 				7023F05D16DC57F4009306C2 /* NGCameraViewController.h */,
 				7023F05E16DC57F4009306C2 /* NGCameraViewController.m */,
 				70C7C98516DFD0A0001EE73F /* NGUserPanelController.h */,
@@ -559,6 +578,7 @@
 		709EC1F416DBEF99005F891C = {
 			isa = PBXGroup;
 			children = (
+				7026CEFE16FB87F700652D97 /* OpenGLES.framework */,
 				709EC20616DBEF99005F891C /* FaceCheckin */,
 				709EC22A16DBEF99005F891C /* FaceCheckinTests */,
 				709EC1FF16DBEF99005F891C /* Frameworks */,
@@ -674,6 +694,7 @@
 				70C7C9CA16E06B34001EE73F /* NGCheckinInterval.xib */,
 				70DE010016F7847100F5E078 /* NGLoginController.xib */,
 				70DE011316F7DB8D00F5E078 /* NGCallHelpViewController.xib */,
+				70DE011E16F7EA4C00F5E078 /* NGLookalikesViewController.xib */,
 			);
 			path = Nibs;
 			sourceTree = "<group>";
@@ -769,6 +790,15 @@
 				70C7C9B716DFEACD001EE73F /* NGDomainObjectBase.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		70DE012016F7EB4C00F5E078 /* Support Views */ = {
+			isa = PBXGroup;
+			children = (
+				70DE012116F7EB5A00F5E078 /* NGLookalikesView.h */,
+				70DE012216F7EB5A00F5E078 /* NGLookalikesView.m */,
+			);
+			path = "Support Views";
 			sourceTree = "<group>";
 		};
 		70FC568716E6BE6900E313D0 /* HRCloud */ = {
@@ -962,6 +992,7 @@
 				70DE010E16F7D7EB00F5E078 /* arrow-bg.png in Resources */,
 				70DE010F16F7D7EB00F5E078 /* popover-bg.png in Resources */,
 				70DE011416F7DB8D00F5E078 /* NGCallHelpViewController.xib in Resources */,
+				70DE011F16F7EA4C00F5E078 /* NGLookalikesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1003,7 +1034,6 @@
 			files = (
 				709EC20D16DBEF99005F891C /* main.m in Sources */,
 				709EC21116DBEF99005F891C /* NGAppDelegate.m in Sources */,
-				709EC21A16DBEF99005F891C /* NGLockScreenController.m in Sources */,
 				7023F04716DC3822009306C2 /* NGBaseViewController.m in Sources */,
 				7023F04F16DC3ADE009306C2 /* BBDomainObjectBase.m in Sources */,
 				7023F05016DC3ADE009306C2 /* BBObservableObject.m in Sources */,
@@ -1051,6 +1081,10 @@
 				70DE010416F787C700F5E078 /* NGTextField.m in Sources */,
 				70DE010B16F7D74F00F5E078 /* NGPopoverBackgroundView.m in Sources */,
 				70DE011216F7DB7F00F5E078 /* NGCallHelpViewController.m in Sources */,
+				70DE011C16F7EA4000F5E078 /* NGLockScreenController.m in Sources */,
+				70DE011D16F7EA4000F5E078 /* NGLookalikesViewController.m in Sources */,
+				70DE012316F7EB5A00F5E078 /* NGLookalikesView.m in Sources */,
+				70E02EE816FBBACC00A13C4A /* NGCameraHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
